@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: supplier_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: supplier_management
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - supplier_network
+
+  backend:
+    build: ./backend
+    container_name: supplier_backend
+    environment:
+      DB_HOST: mysql
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: supplier_management
+      DB_SSL: false
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mysql
+    volumes:
+      - ./backend/uploads:/app/uploads
+    networks:
+      - supplier_network
+
+  frontend:
+    build: ./frontend
+    container_name: supplier_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - supplier_network
+
+volumes:
+  mysql_data:
+
+networks:
+  supplier_network:
+    driver: bridge 
