@@ -43,6 +43,20 @@ BEGIN
     END IF;
 END $$;
 
+-- 更新现有记录的文件信息（为已有文件路径设置默认值）
+UPDATE suppliers 
+SET 
+    contract_file_original_name = CASE 
+        WHEN contract_file_path IS NOT NULL THEN split_part(contract_file_path, '/', -1)
+        ELSE NULL 
+    END,
+    contract_file_upload_time = CASE 
+        WHEN contract_file_path IS NOT NULL THEN created_at
+        ELSE NULL 
+    END
+WHERE contract_file_path IS NOT NULL 
+  AND contract_file_original_name IS NULL;
+
 -- 验证表结构
 SELECT 
     column_name, 
@@ -52,3 +66,16 @@ SELECT
 FROM information_schema.columns 
 WHERE table_name = 'suppliers' 
 ORDER BY ordinal_position;
+
+-- 检查数据迁移结果
+SELECT 
+    id,
+    company_name,
+    contact_phone,
+    contract_file_path,
+    contract_file_original_name,
+    contract_file_size,
+    contract_file_upload_time
+FROM suppliers 
+WHERE contract_file_path IS NOT NULL
+LIMIT 5;

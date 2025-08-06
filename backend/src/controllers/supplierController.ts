@@ -38,6 +38,13 @@ export class SupplierController {
       };
 
       if (req.file) {
+        console.log('文件上传信息:', {
+          filename: req.file.filename,
+          originalname: req.file.originalname,
+          size: req.file.size,
+          path: req.file.path
+        });
+        
         fileInfo = {
           contract_file_path: `uploads/contracts/${req.file.filename}`,
           contract_file_original_name: req.file.originalname,

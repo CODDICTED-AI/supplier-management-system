@@ -69,4 +69,11 @@ CREATE TRIGGER update_suppliers_updated_at BEFORE UPDATE ON suppliers
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column(); 
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- 添加注释说明
+COMMENT ON TABLE suppliers IS '供应商信息表';
+COMMENT ON COLUMN suppliers.contact_phone IS '联系人电话';
+COMMENT ON COLUMN suppliers.contract_file_original_name IS '合同文件原始名称';
+COMMENT ON COLUMN suppliers.contract_file_size IS '合同文件大小(字节)';
+COMMENT ON COLUMN suppliers.contract_file_upload_time IS '文件上传时间'; 

@@ -18,27 +18,49 @@ router.delete('/suppliers/:id', supplierController.deleteSupplier.bind(supplierC
 
 // 文件下载路由
 router.get('/files/download/:filename', (req, res) => {
-  const filename = req.params.filename;
-  const filepath = path.join(__dirname, '../uploads/contracts', filename);
-  
-  // 检查文件是否存在
-  if (!fs.existsSync(filepath)) {
-    return res.status(404).json({
-      success: false,
-      error: '文件不存在'
-    });
-  }
-
-  // 设置下载头
-  res.download(filepath, (err) => {
-    if (err) {
-      console.error('文件下载错误:', err);
-      res.status(500).json({
+  try {
+    const filename = req.params.filename;
+    const filepath = path.join(process.cwd(), 'uploads', 'contracts', filename);
+    
+    console.log('尝试下载文件:', filepath);
+    
+    // 检查文件是否存在
+    if (!fs.existsSync(filepath)) {
+      console.error('文件不存在:', filepath);
+      return res.status(404).json({
         success: false,
-        error: '文件下载失败'
+        error: '文件不存在'
       });
     }
-  });
+
+    // 获取文件信息
+    const stats = fs.statSync(filepath);
+    console.log('文件信息:', { size: stats.size, path: filepath });
+
+    // 设置响应头
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${encodeURIComponent(filename)}"`);
+    res.setHeader('Content-Length', stats.size);
+
+    // 发送文件
+    res.download(filepath, filename, (err) => {
+      if (err) {
+        console.error('文件下载错误:', err);
+        if (!res.headersSent) {
+          res.status(500).json({
+            success: false,
+            error: '文件下载失败'
+          });
+        }
+      }
+    });
+  } catch (error) {
+    console.error('下载处理错误:', error);
+    res.status(500).json({
+      success: false,
+      error: '服务器错误'
+    });
+  }
 });
 
 // 订单路由
