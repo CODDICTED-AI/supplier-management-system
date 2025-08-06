@@ -11,7 +11,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');
-  const [lockoutInfo, setLockoutInfo] = useState({ locked: false, timeLeft: 0 });
+  const [lockoutInfo, setLockoutInfo] = useState<{ locked: boolean; timeLeft?: number }>({ locked: false });
   const { login, getLockoutInfo } = useAuth();
 
   // 检查锁定状态
