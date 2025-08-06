@@ -134,33 +134,86 @@
   }
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .welcome-page .ant-card {
-    margin: 20px;
-    border-radius: 8px;
+/* PC端登录样式优化 */
+.welcome-page {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.login-card {
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
   }
-  
-  .welcome-page .ant-card-body {
-    padding: 24px 20px !important;
-  }
-  
-  .welcome-page .ant-typography h2 {
-    font-size: 24px !important;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@media (max-width: 480px) {
-  .welcome-page .ant-card {
-    margin: 10px;
+/* 登录表单样式 */
+.login-form .ant-input-affix-wrapper {
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+}
+
+.login-form .ant-input-affix-wrapper:hover {
+  border-color: #40a9ff;
+}
+
+.login-form .ant-input-affix-wrapper-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.login-form .ant-btn-primary {
+  background: #1890ff;
+  border-color: #1890ff;
+  transition: all 0.3s ease;
+}
+
+.login-form .ant-btn-primary:hover {
+  background: #40a9ff;
+  border-color: #40a9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .welcome-page {
+    flex-direction: column !important;
   }
   
-  .welcome-page .ant-card-body {
-    padding: 20px 16px !important;
+  .welcome-page > div:first-child {
+    min-height: 40vh;
+    flex: none !important;
   }
   
-  .welcome-page .ant-typography h2 {
-    font-size: 20px !important;
+  .welcome-page > div:last-child {
+    width: 100% !important;
+    min-height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-page > div:first-child {
+    padding: 30px 20px !important;
+  }
+  
+  .welcome-page > div:last-child {
+    padding: 30px 20px !important;
+  }
+  
+  .welcome-page h1 {
+    font-size: 24px !important;
+  }
+  
+  .welcome-page h2 {
+    font-size: 16px !important;
   }
 }
 

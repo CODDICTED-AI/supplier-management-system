@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Alert, Space } from 'antd';
-import { LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Form, Input, Button, Alert, Space, message } from 'antd';
+import { LockOutlined, EyeInvisibleOutlined, EyeTwoTone, LoadingOutlined } from '@ant-design/icons';
 import { useAuth } from '../../hooks/useAuth';
 
 interface LoginFormProps {
@@ -53,7 +53,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
       const result = login(values.password);
       
       if (result.success) {
-        onLoginSuccess?.();
+        message.success('登录成功，正在进入系统...');
+        // 延迟一下让用户看到成功消息
+        setTimeout(() => {
+          onLoginSuccess?.();
+        }, 500);
       } else {
         setError(result.error || '登录失败');
         // 重新检查锁定状态
@@ -70,7 +74,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
   const isDisabled = lockoutInfo.locked || loading;
 
   return (
-    <div style={{ width: '100%', maxWidth: '400px' }}>
+    <div style={{ width: '100%' }}>
       <Form
         form={form}
         onFinish={handleSubmit}
@@ -80,18 +84,23 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
       >
         <Form.Item
           name="password"
-          label="请输入访问密码"
+          label={<span style={{ color: '#262626', fontWeight: '500' }}>登录密码</span>}
           rules={[
             { required: true, message: '请输入密码' },
             { min: 1, message: '密码不能为空' },
           ]}
         >
           <Input.Password
-            prefix={<LockOutlined />}
-            placeholder="请输入密码"
+            prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
+            placeholder="请输入访问密码"
             disabled={isDisabled}
             iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             onPressEnter={() => form.submit()}
+            style={{
+              height: '40px',
+              borderRadius: '6px',
+              fontSize: '14px'
+            }}
           />
         </Form.Item>
 
@@ -118,29 +127,36 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
           </Form.Item>
         )}
 
-        <Form.Item>
-          <Space direction="vertical" style={{ width: '100%' }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={loading}
-              disabled={isDisabled}
-              block
-              size="large"
-            >
-              {loading ? '登录中...' : '登录'}
-            </Button>
-            
+        <Form.Item style={{ marginBottom: '0' }}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={loading}
+            disabled={isDisabled}
+            block
+            size="large"
+            style={{
+              height: '44px',
+              borderRadius: '6px',
+              fontSize: '16px',
+              fontWeight: '500',
+              marginTop: '8px'
+            }}
+          >
+            {loading ? '正在登录...' : '登录'}
+          </Button>
+          
+          {!error && !lockoutInfo.locked && (
             <div style={{ 
               textAlign: 'center', 
               fontSize: '12px', 
-              color: '#666',
-              marginTop: '8px'
+              color: '#8c8c8c',
+              marginTop: '16px',
+              lineHeight: '1.5'
             }}>
-              <div>连续输错5次密码将锁定5分钟</div>
-              <div>登录状态将保持24小时</div>
+              登录状态将保持24小时有效
             </div>
-          </Space>
+          )}
         </Form.Item>
       </Form>
     </div>

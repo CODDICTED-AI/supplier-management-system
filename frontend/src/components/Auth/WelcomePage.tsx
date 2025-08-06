@@ -12,99 +12,150 @@ interface WelcomePageProps {
 
 export const WelcomePage: React.FC<WelcomePageProps> = ({ onLoginSuccess }) => {
   return (
-    <div className="welcome-page welcome-background" style={{
+    <div className="welcome-page" style={{
       minHeight: '100vh',
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px',
+      background: '#f0f2f5',
     }}>
-      <Card
-        className="login-card"
-        style={{
-          width: '100%',
-          maxWidth: '480px',
-          borderRadius: '12px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-          border: 'none',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-        }}
-        bodyStyle={{
-          padding: '40px',
-          textAlign: 'center',
-        }}
-      >
-        <Space direction="vertical" size="large" style={{ width: '100%' }}>
-          {/* Logo区域 */}
-          <div>
-            <div className="logo-container" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '80px',
-              height: '80px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              marginBottom: '24px',
-              boxShadow: '0 4px 16px rgba(102, 126, 234, 0.3)',
-            }}>
-              <BankOutlined style={{ fontSize: '36px', color: 'white' }} />
-            </div>
+      {/* 左侧背景区域 */}
+      <div style={{
+        flex: 1,
+        background: 'linear-gradient(135deg, #1890ff 0%, #722ed1 100%)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '50px',
+        color: 'white',
+        position: 'relative',
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="rgba(255,255,255,0.05)" fill-opacity="0.4"%3E%3Cpath d="M20 20c0 11.046-8.954 20-20 20v-40c11.046 0 20 8.954 20 20z"/%3E%3C/g%3E%3C/svg%3E")',
+          opacity: 0.1,
+        }} />
+        
+        <div style={{ zIndex: 1, textAlign: 'center' }}>
+          <div style={{
+            fontSize: '64px',
+            marginBottom: '20px',
+            background: 'rgba(255, 255, 255, 0.2)',
+            borderRadius: '50%',
+            width: '120px',
+            height: '120px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 30px',
+          }}>
+            <BankOutlined />
           </div>
-
-          {/* 标题区域 */}
-          <div>
+          
+          <h1 style={{
+            fontSize: '32px',
+            fontWeight: 'bold',
+            marginBottom: '16px',
+            color: 'white',
+          }}>
+            农福尚汇
+          </h1>
+          
+          <h2 style={{
+            fontSize: '20px',
+            fontWeight: 'normal',
+            marginBottom: '40px',
+            color: 'rgba(255, 255, 255, 0.85)',
+          }}>
+            供应商管理系统
+          </h2>
+          
+          <div style={{
+            fontSize: '16px',
+            lineHeight: '1.6',
+            color: 'rgba(255, 255, 255, 0.75)',
+            maxWidth: '400px',
+          }}>
+            <div>• 专业的供应商关系管理</div>
+            <div>• 高效的订单跟踪系统</div>
+            <div>• 安全可靠的数据保护</div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 右侧登录区域 */}
+      <div style={{
+        width: '480px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '50px',
+        background: 'white',
+      }}>
+        <Card
+          className="login-card"
+          style={{
+            width: '100%',
+            maxWidth: '380px',
+            border: 'none',
+            boxShadow: 'none',
+          }}
+          bodyStyle={{
+            padding: '0',
+          }}
+        >
+        <div style={{ width: '100%' }}>
+          {/* 登录标题 */}
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <Title level={2} style={{ 
               margin: 0, 
-              color: '#1a1a1a',
-              fontSize: '28px',
-              fontWeight: 'bold'
+              color: '#1f1f1f',
+              fontSize: '24px',
+              fontWeight: '600',
+              marginBottom: '8px'
             }}>
-              欢迎使用农福尚汇供应商管理系统
+              系统登录
             </Title>
             <Text style={{ 
-              color: '#666', 
-              fontSize: '16px',
-              marginTop: '8px',
-              display: 'block'
+              color: '#8c8c8c', 
+              fontSize: '14px'
             }}>
-              专业的供应商关系管理平台
+              请输入访问密码进入管理系统
             </Text>
-          </div>
-
-          <Divider style={{ margin: '24px 0' }} />
-
-          {/* 安全提示 */}
-          <div style={{
-            background: '#f8f9fa',
-            padding: '16px',
-            borderRadius: '8px',
-            borderLeft: '4px solid #667eea',
-          }}>
-            <Space>
-              <SafetyOutlined style={{ color: '#667eea', fontSize: '16px' }} />
-              <Text style={{ color: '#555', fontSize: '14px' }}>
-                为保障系统安全，请输入访问密码
-              </Text>
-            </Space>
           </div>
 
           {/* 登录表单 */}
           <LoginForm onLoginSuccess={onLoginSuccess} />
 
           {/* 底部信息 */}
-          <div style={{ marginTop: '24px' }}>
-            <Text style={{ 
-              color: '#999', 
-              fontSize: '12px',
-              lineHeight: '1.5'
+          <div style={{ 
+            textAlign: 'center', 
+            marginTop: '40px',
+            paddingTop: '24px',
+            borderTop: '1px solid #f0f0f0'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '16px'
             }}>
-              © 2024 农福尚汇客户管理系统<br />
-              专注于农业供应链管理解决方案
+              <SafetyOutlined style={{ color: '#1890ff', fontSize: '16px', marginRight: '8px' }} />
+              <Text style={{ color: '#595959', fontSize: '13px' }}>
+                安全登录保护，5次错误将锁定账户
+              </Text>
+            </div>
+            <Text style={{ 
+              color: '#bfbfbf', 
+              fontSize: '12px'
+            }}>
+              © 2024 农福尚汇 · 版权所有
             </Text>
           </div>
-        </Space>
+        </div>
       </Card>
     </div>
   );

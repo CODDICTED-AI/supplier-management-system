@@ -13,6 +13,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import TestComponent from './components/TestComponent';
 import { WelcomePage } from './components/Auth/WelcomePage';
 import { useAuth } from './hooks/useAuth';
+import { warmupApi } from './services/api';
 import 'antd/dist/reset.css';
 
 const { Header, Sider, Content } = Layout;
@@ -50,9 +51,16 @@ const AppContent: React.FC = () => {
     logout();
   };
 
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = async () => {
     // 登录成功后的处理，useAuth已经更新了状态
     console.log('登录成功');
+    
+    // 预热API服务器
+    try {
+      await warmupApi();
+    } catch (error) {
+      console.warn('API预热失败，但不影响使用:', error);
+    }
   };
 
   // 加载状态
