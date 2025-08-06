@@ -19,8 +19,8 @@ import {
   EditOutlined, 
   DeleteOutlined,
   UploadOutlined,
-  DownloadOutlined,
   EyeOutlined,
+  DownloadOutlined,
   FileTextOutlined
 } from '@ant-design/icons';
 import { supplierApi } from '../../services/api';
@@ -201,8 +201,8 @@ export const SupplierList: React.FC = () => {
         if (!path) return '-';
         
         const filename = path.split('/').pop();
-        const downloadUrl = `${process.env.REACT_APP_API_URL || 'https://supplier-management-system-3hp8.onrender.com/api'}/files/download/${filename}`;
-        const viewUrl = `${process.env.REACT_APP_API_URL || 'https://supplier-management-system-3hp8.onrender.com/api'}/${path}`;
+        const downloadUrl = `${process.env.REACT_APP_API_URL || '/api'}/files/download/${filename}`;
+        const viewUrl = `${process.env.REACT_APP_API_URL || '/api'}/${path}`;
         
         return (
           <Space direction="vertical" size="small">

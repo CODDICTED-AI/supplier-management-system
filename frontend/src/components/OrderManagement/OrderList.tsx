@@ -55,25 +55,17 @@ export const OrderList: React.FC = () => {
           } else {
             console.error('订单数据格式错误:', responseData);
             message.error('订单数据格式错误');
-            setOrders([]);
-            setTotal(0);
           }
         } else {
           console.error('响应数据格式错误:', responseData);
           message.error('响应数据格式错误');
-          setOrders([]);
-          setTotal(0);
         }
       } else {
         message.error(response.data.error || '获取订单列表失败');
-        setOrders([]);
-        setTotal(0);
       }
     } catch (error: any) {
       console.error('获取订单列表错误:', error);
       message.error(error.response?.data?.error || '获取订单列表失败');
-      setOrders([]);
-      setTotal(0);
     } finally {
       setLoading(false);
     }
@@ -170,12 +162,7 @@ export const OrderList: React.FC = () => {
         setModalVisible(false);
         form.resetFields();
         // 重新获取订单列表
-        try {
-          await fetchOrders();
-        } catch (fetchError) {
-          console.error('重新获取订单列表失败:', fetchError);
-          // 即使重新获取失败，也不影响用户操作
-        }
+        await fetchOrders();
       } else {
         message.error(response.data.error || '创建失败');
       }
@@ -186,18 +173,12 @@ export const OrderList: React.FC = () => {
   }, [fetchOrders, form]);
 
   useEffect(() => {
-    const loadOrders = async () => {
-      await fetchOrders();
-    };
-    loadOrders();
-  }, [currentPage, statusFilter, searchKeyword]);
+    fetchOrders();
+  }, [fetchOrders]);
 
   useEffect(() => {
-    const loadSuppliers = async () => {
-      await fetchSuppliers();
-    };
-    loadSuppliers();
-  }, []);
+    fetchSuppliers();
+  }, [fetchSuppliers]);
 
   const columns = [
     {
@@ -232,10 +213,7 @@ export const OrderList: React.FC = () => {
       title: '订货单价',
       dataIndex: 'unit_price',
       key: 'unit_price',
-      render: (price: number) => {
-        const numPrice = Number(price);
-        return `¥${(!isNaN(numPrice) && numPrice !== null) ? numPrice.toFixed(2) : '0.00'}`;
-      },
+      render: (price: number) => `¥${price?.toFixed(2) || '0.00'}`,
     },
     {
       title: '订货数量',
@@ -246,10 +224,7 @@ export const OrderList: React.FC = () => {
       title: '总金额',
       dataIndex: 'total_amount',
       key: 'total_amount',
-      render: (amount: number) => {
-        const numAmount = Number(amount);
-        return `¥${(!isNaN(numAmount) && numAmount !== null) ? numAmount.toFixed(2) : '0.00'}`;
-      },
+      render: (amount: number) => `¥${amount?.toFixed(2) || '0.00'}`,
     },
     {
       title: '预计到货时间',
@@ -485,15 +460,9 @@ export const OrderList: React.FC = () => {
             <p><strong>订货联系人：</strong>{selectedOrder.order_contact}</p>
             <p><strong>供应产品：</strong>{selectedOrder.product_name}</p>
             <p><strong>订货时间：</strong>{dayjs(selectedOrder.order_date).format('YYYY-MM-DD')}</p>
-            <p><strong>订货单价：</strong>¥{(() => {
-              const price = Number(selectedOrder.unit_price);
-              return (!isNaN(price) && price !== null) ? price.toFixed(2) : '0.00';
-            })()}</p>
-            <p><strong>订货数量：</strong>{selectedOrder.quantity || 0}</p>
-            <p><strong>总金额：</strong>¥{(() => {
-              const amount = Number(selectedOrder.total_amount);
-              return (!isNaN(amount) && amount !== null) ? amount.toFixed(2) : '0.00';
-            })()}</p>
+            <p><strong>订货单价：</strong>¥{selectedOrder.unit_price.toFixed(2)}</p>
+            <p><strong>订货数量：</strong>{selectedOrder.quantity}</p>
+            <p><strong>总金额：</strong>¥{selectedOrder.total_amount?.toFixed(2)}</p>
             <p><strong>预计到货时间：</strong>
               {selectedOrder.expected_delivery_date 
                 ? dayjs(selectedOrder.expected_delivery_date).format('YYYY-MM-DD')
