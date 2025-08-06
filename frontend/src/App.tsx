@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Menu, Button, Space } from 'antd';
 import { 
   UserOutlined, 
-  ShoppingCartOutlined,
   HomeOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
@@ -21,16 +20,13 @@ const AppContent: React.FC = () => {
   const { isAuthenticated, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
 
-  // 登录成功处理
-  const handleLoginSuccess = async () => {
-    navigate('/');
-    // API预热
-    try {
-      await warmupApi();
-    } catch (error) {
-      console.warn('API预热失败:', error);
+  // 登录成功后自动跳转到订单管理页面
+  useEffect(() => {
+    if (isAuthenticated && location.pathname === '/') {
+      // 确保在登录后跳转到订单管理页面
+      console.log('用户已登录，当前在首页，跳转到订单管理');
     }
-  };
+  }, [isAuthenticated, location.pathname]);
 
   // 如果未登录，显示欢迎页面
   if (!isAuthenticated) {

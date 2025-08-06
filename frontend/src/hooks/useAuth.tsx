@@ -8,6 +8,7 @@ interface AuthContextType {
   failedAttempts: number;
   isLocked: boolean;
   lockTimeRemaining: number;
+  getLockoutInfo: () => { isLocked: boolean; remainingTime: number; };
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -82,6 +83,37 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   }, [lockTime]);
 
+  // 定期检查会话是否过期
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const checkSession = () => {
+      const sessionTime = localStorage.getItem('session_time');
+      const authStatus = localStorage.getItem('auth_status');
+      
+      if (authStatus === 'authenticated' && sessionTime) {
+        const sessionStart = parseInt(sessionTime);
+        const now = Date.now();
+        
+        if (now - sessionStart >= SESSION_DURATION) {
+          console.log('会话过期，自动登出');
+          setIsAuthenticated(false);
+          localStorage.removeItem('auth_status');
+          localStorage.removeItem('session_time');
+          setFailedAttempts(0);
+          setLockTime(null);
+          localStorage.removeItem('failed_attempts');
+          localStorage.removeItem('lock_time');
+        }
+      }
+    };
+
+    // 每分钟检查一次会话
+    const sessionCheckInterval = setInterval(checkSession, 60000);
+    
+    return () => clearInterval(sessionCheckInterval);
+  }, [isAuthenticated]);
+
   const login = async (password: string): Promise<boolean> => {
     const now = Date.now();
     
@@ -126,6 +158,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsAuthenticated(false);
     localStorage.removeItem('auth_status');
     localStorage.removeItem('session_time');
+    setFailedAttempts(0);
+    setLockTime(null);
+    localStorage.removeItem('failed_attempts');
+    localStorage.removeItem('lock_time');
+  };
+
+  const getLockoutInfo = () => {
+    const now = Date.now();
+    const isCurrentlyLocked = lockTime !== null && now < lockTime;
+    const remainingTime = isCurrentlyLocked ? Math.max(0, lockTime! - now) : 0;
+    return { isLocked: isCurrentlyLocked, remainingTime };
   };
 
   const isLocked = lockTime !== null && Date.now() < lockTime;
@@ -138,7 +181,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         logout,
         failedAttempts,
         isLocked,
-        lockTimeRemaining
+        lockTimeRemaining,
+        getLockoutInfo
       }}
     >
       {children}

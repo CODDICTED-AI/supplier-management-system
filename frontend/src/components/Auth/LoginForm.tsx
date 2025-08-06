@@ -27,7 +27,8 @@ export const LoginForm: React.FC = () => {
       if (isLocked) {
         message.error('密码错误次数过多，账户已被锁定5分钟');
       } else {
-        message.error(`密码错误，还可尝试${3 - failedAttempts - 1}次`);
+        const remainingAttempts = 3 - (failedAttempts + 1);
+        message.error(`密码错误，还可尝试${remainingAttempts}次`);
       }
       form.resetFields();
     }
