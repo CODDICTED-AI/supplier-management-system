@@ -55,17 +55,25 @@ export const OrderList: React.FC = () => {
           } else {
             console.error('订单数据格式错误:', responseData);
             message.error('订单数据格式错误');
+            setOrders([]);
+            setTotal(0);
           }
         } else {
           console.error('响应数据格式错误:', responseData);
           message.error('响应数据格式错误');
+          setOrders([]);
+          setTotal(0);
         }
       } else {
         message.error(response.data.error || '获取订单列表失败');
+        setOrders([]);
+        setTotal(0);
       }
     } catch (error: any) {
       console.error('获取订单列表错误:', error);
       message.error(error.response?.data?.error || '获取订单列表失败');
+      setOrders([]);
+      setTotal(0);
     } finally {
       setLoading(false);
     }
@@ -162,7 +170,12 @@ export const OrderList: React.FC = () => {
         setModalVisible(false);
         form.resetFields();
         // 重新获取订单列表
-        await fetchOrders();
+        try {
+          await fetchOrders();
+        } catch (fetchError) {
+          console.error('重新获取订单列表失败:', fetchError);
+          // 即使重新获取失败，也不影响用户操作
+        }
       } else {
         message.error(response.data.error || '创建失败');
       }
@@ -173,12 +186,18 @@ export const OrderList: React.FC = () => {
   }, [fetchOrders, form]);
 
   useEffect(() => {
-    fetchOrders();
-  }, [fetchOrders]);
+    const loadOrders = async () => {
+      await fetchOrders();
+    };
+    loadOrders();
+  }, [currentPage, statusFilter, searchKeyword]);
 
   useEffect(() => {
-    fetchSuppliers();
-  }, [fetchSuppliers]);
+    const loadSuppliers = async () => {
+      await fetchSuppliers();
+    };
+    loadSuppliers();
+  }, []);
 
   const columns = [
     {
