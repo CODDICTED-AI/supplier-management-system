@@ -30,7 +30,12 @@ export class SupplierController {
       }
 
       // 处理文件信息
-      let fileInfo = {
+      let fileInfo: {
+        contract_file_path: string | null;
+        contract_file_original_name: string | null;
+        contract_file_size: number | null;
+        contract_file_upload_time: string | null;
+      } = {
         contract_file_path: null,
         contract_file_original_name: null,
         contract_file_size: null,
@@ -194,11 +199,11 @@ export class SupplierController {
           req.file.originalname,
           req.file.size,
           new Date().toISOString(),
-          id
+          String(id)
         );
       } else {
         updateQuery += ` WHERE id = $7 RETURNING *`;
-        updateValues.push(id);
+        updateValues.push(String(id));
       }
 
       // 更新供应商信息
