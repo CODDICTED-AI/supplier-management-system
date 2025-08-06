@@ -9,6 +9,8 @@ if (!fs.existsSync(uploadDir)) {
   console.log('创建上传目录:', uploadDir);
 }
 
+console.log('警告: 在Render等云平台上，文件将存储在临时文件系统中，重启后会丢失');
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
@@ -23,9 +25,16 @@ const storage = multer.diskStorage({
 export const upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
+    console.log('文件过滤检查:', {
+      originalname: file.originalname,
+      mimetype: file.mimetype,
+      size: file.size
+    });
+    
     if (file.mimetype === 'application/pdf') {
       cb(null, true);
     } else {
+      console.error('文件类型不匹配:', file.mimetype);
       cb(new Error('只允许上传PDF文件'));
     }
   },

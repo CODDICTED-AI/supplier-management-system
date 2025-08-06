@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button, Space } from 'antd';
 import { 
   UserOutlined, 
   ShoppingCartOutlined,
-  HomeOutlined
+  HomeOutlined,
+  LogoutOutlined
 } from '@ant-design/icons';
 import { SupplierManagement } from './pages/SupplierManagement';
 import { OrderManagement } from './pages/OrderManagement';
+import { AuthProvider, useAuth } from './hooks/useAuth';
+import { WelcomePage } from './components/Auth/WelcomePage';
 import 'antd/dist/reset.css';
 
 const { Header, Sider, Content } = Layout;
@@ -15,7 +18,24 @@ const { Header, Sider, Content } = Layout;
 const AppContent: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { isAuthenticated, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
+
+  // 登录成功处理
+  const handleLoginSuccess = async () => {
+    navigate('/');
+    // API预热
+    try {
+      await warmupApi();
+    } catch (error) {
+      console.warn('API预热失败:', error);
+    }
+  };
+
+  // 如果未登录，显示欢迎页面
+  if (!isAuthenticated) {
+    return <WelcomePage />;
+  }
 
   const menuItems = [
     {
@@ -32,6 +52,11 @@ const AppContent: React.FC = () => {
 
   const handleMenuClick = ({ key }: { key: string }) => {
     navigate(key);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
   const getSelectedKey = () => {
@@ -76,6 +101,7 @@ const AppContent: React.FC = () => {
           padding: '0 24px',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'space-between',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
           <h1 style={{ 
@@ -86,6 +112,20 @@ const AppContent: React.FC = () => {
           }}>
             农福尚汇客户管理系统
           </h1>
+          
+          <Space>
+            <Button 
+              type="text" 
+              icon={<LogoutOutlined />}
+              onClick={handleLogout}
+              style={{
+                color: '#666',
+                fontSize: '14px'
+              }}
+            >
+              退出登录
+            </Button>
+          </Space>
         </Header>
         <Content style={{ 
           margin: '24px 16px',
@@ -106,9 +146,11 @@ const AppContent: React.FC = () => {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </AuthProvider>
   );
 }
 

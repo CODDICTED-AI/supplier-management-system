@@ -43,25 +43,19 @@ export class SupplierController {
       };
 
       if (req.file) {
-        console.log('文件上传信息:', {
-          filename: req.file.filename,
-          originalname: req.file.originalname,
-          size: req.file.size,
-          path: req.file.path
-        });
-        
         fileInfo = {
-          contract_file_path: `uploads/contracts/${req.file.filename}`,
+          contract_file_path: req.file.path,
           contract_file_original_name: req.file.originalname,
           contract_file_size: req.file.size,
           contract_file_upload_time: new Date().toISOString()
         };
+        console.log('文件上传信息:', fileInfo);
       }
 
       // 插入新供应商
       const result = await db.query(
         `INSERT INTO suppliers (company_name, contact_person, contact_phone, contract_start_date, 
-         contract_end_date, logistics_type, contract_file_path, contract_file_original_name, 
+         contract_end_date, logistics_type, contract_file_path, contract_file_original_name,
          contract_file_size, contract_file_upload_time) 
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
         [
@@ -169,45 +163,55 @@ export class SupplierController {
         });
       }
 
-      // 处理文件信息（如果有新文件上传）
-      let updateFields = {
-        company_name: supplierData.company_name,
-        contact_person: supplierData.contact_person,
-        contact_phone: supplierData.contact_phone || null,
-        contract_start_date: supplierData.contract_start_date || null,
-        contract_end_date: supplierData.contract_end_date || null,
-        logistics_type: supplierData.logistics_type || '随货'
+      // 处理文件信息
+      let fileInfo: {
+        contract_file_path: string | null;
+        contract_file_original_name: string | null;
+        contract_file_size: number | null;
+        contract_file_upload_time: string | null;
+      } = {
+        contract_file_path: supplierData.contract_file_path || null,
+        contract_file_original_name: null,
+        contract_file_size: null,
+        contract_file_upload_time: null
       };
 
-      let updateQuery = `UPDATE suppliers SET company_name = $1, contact_person = $2, contact_phone = $3,
-         contract_start_date = $4, contract_end_date = $5, logistics_type = $6, updated_at = CURRENT_TIMESTAMP`;
-      let updateValues: any[] = [
-        updateFields.company_name,
-        updateFields.contact_person,
-        updateFields.contact_phone,
-        updateFields.contract_start_date,
-        updateFields.contract_end_date,
-        updateFields.logistics_type
+      if (req.file) {
+        fileInfo = {
+          contract_file_path: req.file.path,
+          contract_file_original_name: req.file.originalname,
+          contract_file_size: req.file.size,
+          contract_file_upload_time: new Date().toISOString()
+        };
+        console.log('文件更新信息:', fileInfo);
+      }
+
+      // 构建更新值数组
+      const updateValues: any[] = [
+        supplierData.company_name,
+        supplierData.contact_person,
+        supplierData.contact_phone || null,
+        supplierData.contract_start_date || null,
+        supplierData.contract_end_date || null,
+        supplierData.logistics_type || '随货',
+        fileInfo.contract_file_path
       ];
 
-      // 如果有新文件上传，更新文件信息
+      // 如果有新文件上传，更新文件相关字段
+      let updateQuery = `UPDATE suppliers SET company_name = $1, contact_person = $2, contact_phone = $3,
+         contract_start_date = $4, contract_end_date = $5, logistics_type = $6, 
+         contract_file_path = $7, updated_at = CURRENT_TIMESTAMP`;
+      
       if (req.file) {
-        updateQuery += `, contract_file_path = $7, contract_file_original_name = $8, 
-                         contract_file_size = $9, contract_file_upload_time = $10 WHERE id = $11 RETURNING *`;
-        updateValues.push(
-          `uploads/contracts/${req.file.filename}`,
-          req.file.originalname,
-          req.file.size,
-          new Date().toISOString(),
-          id
-        );
+        updateQuery += `, contract_file_original_name = $8, contract_file_size = $9, contract_file_upload_time = $10 WHERE id = $11`;
+        updateValues.push(fileInfo.contract_file_original_name, fileInfo.contract_file_size, fileInfo.contract_file_upload_time, id);
       } else {
-        updateQuery += ` WHERE id = $7 RETURNING *`;
+        updateQuery += ` WHERE id = $8`;
         updateValues.push(id);
       }
 
       // 更新供应商信息
-      const result = await db.query(updateQuery, updateValues);
+      const result = await db.query(updateQuery + ' RETURNING *', updateValues);
 
       if (result.rows.length === 0) {
         return res.status(404).json({
