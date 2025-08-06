@@ -29,18 +29,40 @@ export class SupplierController {
         });
       }
 
+      // 处理文件信息
+      let fileInfo = {
+        contract_file_path: null,
+        contract_file_original_name: null,
+        contract_file_size: null,
+        contract_file_upload_time: null
+      };
+
+      if (req.file) {
+        fileInfo = {
+          contract_file_path: `uploads/contracts/${req.file.filename}`,
+          contract_file_original_name: req.file.originalname,
+          contract_file_size: req.file.size,
+          contract_file_upload_time: new Date().toISOString()
+        };
+      }
+
       // 插入新供应商
       const result = await db.query(
-        `INSERT INTO suppliers (company_name, contact_person, contract_start_date, 
-         contract_end_date, logistics_type, contract_file_path) 
-         VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+        `INSERT INTO suppliers (company_name, contact_person, contact_phone, contract_start_date, 
+         contract_end_date, logistics_type, contract_file_path, contract_file_original_name, 
+         contract_file_size, contract_file_upload_time) 
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
         [
           supplierData.company_name,
           supplierData.contact_person,
+          supplierData.contact_phone || null,
           supplierData.contract_start_date || null,
           supplierData.contract_end_date || null,
           supplierData.logistics_type || '随货',
-          supplierData.contract_file_path || null
+          fileInfo.contract_file_path,
+          fileInfo.contract_file_original_name,
+          fileInfo.contract_file_size,
+          fileInfo.contract_file_upload_time
         ]
       );
 
@@ -135,22 +157,45 @@ export class SupplierController {
         });
       }
 
-      // 更新供应商信息
-      const result = await db.query(
-        `UPDATE suppliers SET company_name = $1, contact_person = $2, 
-         contract_start_date = $3, contract_end_date = $4, logistics_type = $5, 
-         contract_file_path = $6, updated_at = CURRENT_TIMESTAMP 
-         WHERE id = $7 RETURNING *`,
-        [
-          supplierData.company_name,
-          supplierData.contact_person,
-          supplierData.contract_start_date || null,
-          supplierData.contract_end_date || null,
-          supplierData.logistics_type || '随货',
-          supplierData.contract_file_path || null,
+      // 处理文件信息（如果有新文件上传）
+      let updateFields = {
+        company_name: supplierData.company_name,
+        contact_person: supplierData.contact_person,
+        contact_phone: supplierData.contact_phone || null,
+        contract_start_date: supplierData.contract_start_date || null,
+        contract_end_date: supplierData.contract_end_date || null,
+        logistics_type: supplierData.logistics_type || '随货'
+      };
+
+      let updateQuery = `UPDATE suppliers SET company_name = $1, contact_person = $2, contact_phone = $3,
+         contract_start_date = $4, contract_end_date = $5, logistics_type = $6, updated_at = CURRENT_TIMESTAMP`;
+      let updateValues = [
+        updateFields.company_name,
+        updateFields.contact_person,
+        updateFields.contact_phone,
+        updateFields.contract_start_date,
+        updateFields.contract_end_date,
+        updateFields.logistics_type
+      ];
+
+      // 如果有新文件上传，更新文件信息
+      if (req.file) {
+        updateQuery += `, contract_file_path = $7, contract_file_original_name = $8, 
+                         contract_file_size = $9, contract_file_upload_time = $10 WHERE id = $11 RETURNING *`;
+        updateValues.push(
+          `uploads/contracts/${req.file.filename}`,
+          req.file.originalname,
+          req.file.size,
+          new Date().toISOString(),
           id
-        ]
-      );
+        );
+      } else {
+        updateQuery += ` WHERE id = $7 RETURNING *`;
+        updateValues.push(id);
+      }
+
+      // 更新供应商信息
+      const result = await db.query(updateQuery, updateValues);
 
       if (result.rows.length === 0) {
         return res.status(404).json({

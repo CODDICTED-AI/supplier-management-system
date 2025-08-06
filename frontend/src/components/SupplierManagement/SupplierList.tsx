@@ -18,7 +18,10 @@ import {
   SearchOutlined, 
   EditOutlined, 
   DeleteOutlined,
-  UploadOutlined
+  UploadOutlined,
+  DownloadOutlined,
+  EyeOutlined,
+  FileTextOutlined
 } from '@ant-design/icons';
 import { supplierApi } from '../../services/api';
 import { Supplier } from '../../types';
@@ -117,6 +120,9 @@ export const SupplierList: React.FC = () => {
       // 处理其他字段
       formData.append('company_name', values.company_name);
       formData.append('contact_person', values.contact_person);
+      if (values.contact_phone) {
+        formData.append('contact_phone', values.contact_phone);
+      }
       formData.append('logistics_type', values.logistics_type);
       
       // 处理文件上传
@@ -162,6 +168,12 @@ export const SupplierList: React.FC = () => {
       key: 'contact_person',
     },
     {
+      title: '联系电话',
+      dataIndex: 'contact_phone',
+      key: 'contact_phone',
+      render: (phone: string) => phone || '-',
+    },
+    {
       title: '合同开始日期',
       dataIndex: 'contract_start_date',
       key: 'contract_start_date',
@@ -185,12 +197,47 @@ export const SupplierList: React.FC = () => {
       title: '合同文件',
       dataIndex: 'contract_file_path',
       key: 'contract_file_path',
-      render: (path: string) => 
-        path ? (
-          <a href={`${process.env.REACT_APP_API_URL || '/api'}/${path}`} target="_blank" rel="noopener noreferrer">
-            查看文件
-          </a>
-        ) : '-',
+      render: (path: string, record: Supplier) => {
+        if (!path) return '-';
+        
+        const filename = path.split('/').pop();
+        const downloadUrl = `${process.env.REACT_APP_API_URL || 'https://supplier-management-system-3hp8.onrender.com/api'}/files/download/${filename}`;
+        const viewUrl = `${process.env.REACT_APP_API_URL || 'https://supplier-management-system-3hp8.onrender.com/api'}/${path}`;
+        
+        return (
+          <Space direction="vertical" size="small">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <FileTextOutlined style={{ color: '#1890ff' }} />
+              <span style={{ fontSize: '12px', color: '#666' }}>
+                {record.contract_file_original_name || filename}
+              </span>
+            </div>
+            <Space size="small">
+              <Button 
+                type="link" 
+                size="small" 
+                icon={<EyeOutlined />}
+                onClick={() => window.open(viewUrl, '_blank')}
+              >
+                查看
+              </Button>
+              <Button 
+                type="link" 
+                size="small" 
+                icon={<DownloadOutlined />}
+                onClick={() => window.open(downloadUrl, '_blank')}
+              >
+                下载
+              </Button>
+            </Space>
+            {record.contract_file_size && (
+              <span style={{ fontSize: '11px', color: '#999' }}>
+                大小: {(record.contract_file_size / 1024).toFixed(1)} KB
+              </span>
+            )}
+          </Space>
+        );
+      },
     },
     {
       title: '操作',
@@ -278,6 +325,16 @@ export const SupplierList: React.FC = () => {
             <Input placeholder="请输入联系人" />
           </Form.Item>
           
+          <Form.Item
+            name="contact_phone"
+            label="联系电话"
+            rules={[
+              { pattern: /^[1][3-9][0-9]{9}$|^0\d{2,3}-?\d{7,8}$|^400-?\d{3}-?\d{4}$/, message: '请输入正确的电话号码格式' }
+            ]}
+          >
+            <Input placeholder="请输入联系电话（可选）" />
+          </Form.Item>
+          
           <Form.Item name="contract_start_date" label="合同开始日期">
             <DatePicker style={{ width: '100%' }} placeholder="选择开始日期" />
           </Form.Item>
@@ -302,9 +359,23 @@ export const SupplierList: React.FC = () => {
               beforeUpload={() => false}
               accept=".pdf"
               maxCount={1}
+              showUploadList={{
+                showPreviewIcon: false,
+                showDownloadIcon: false,
+                showRemoveIcon: true,
+              }}
             >
-              <Button icon={<UploadOutlined />}>选择PDF文件</Button>
+              <Button icon={<UploadOutlined />}>选择PDF文件（最大5MB）</Button>
             </Upload>
+            {editingSupplier?.contract_file_original_name && (
+              <div style={{ marginTop: 8, fontSize: '12px', color: '#666' }}>
+                <FileTextOutlined style={{ marginRight: 4 }} />
+                当前文件: {editingSupplier.contract_file_original_name}
+                {editingSupplier.contract_file_size && (
+                  <span> ({(editingSupplier.contract_file_size / 1024).toFixed(1)} KB)</span>
+                )}
+              </div>
+            )}
           </Form.Item>
           
           <Form.Item>

@@ -2,10 +2,14 @@ export interface Supplier {
   id?: number;
   company_name: string;
   contact_person: string;
+  contact_phone?: string;
   contract_start_date?: string;
   contract_end_date?: string;
   logistics_type: '随货' | '独立';
   contract_file_path?: string;
+  contract_file_original_name?: string;
+  contract_file_size?: number;
+  contract_file_upload_time?: string;
   created_at?: string;
   updated_at?: string;
 }

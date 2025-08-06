@@ -55,6 +55,9 @@ const AppContent: React.FC = () => {
     // 登录成功后的处理，useAuth已经更新了状态
     console.log('登录成功');
     
+    // 确保跳转到订单管理页面
+    navigate('/');
+    
     // 预热API服务器
     try {
       await warmupApi();

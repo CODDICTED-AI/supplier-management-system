@@ -6,10 +6,14 @@ CREATE TABLE IF NOT EXISTS suppliers (
   id SERIAL PRIMARY KEY,
   company_name VARCHAR(255) NOT NULL UNIQUE,
   contact_person VARCHAR(100) NOT NULL,
+  contact_phone VARCHAR(20),
   contract_start_date DATE,
   contract_end_date DATE,
   logistics_type VARCHAR(10) DEFAULT '随货' CHECK (logistics_type IN ('随货', '独立')),
   contract_file_path VARCHAR(500),
+  contract_file_original_name VARCHAR(255),
+  contract_file_size INTEGER,
+  contract_file_upload_time TIMESTAMP,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
