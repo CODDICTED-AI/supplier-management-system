@@ -22,11 +22,6 @@ const AppContent: React.FC = () => {
   const menuItems = [
     {
       key: '/',
-      icon: <HomeOutlined />,
-      label: '系统测试',
-    },
-    {
-      key: '/orders',
       icon: <ShoppingCartOutlined />,
       label: '订单管理',
     },
@@ -102,9 +97,9 @@ const AppContent: React.FC = () => {
           minHeight: 280
         }}>
           <Routes>
-            <Route path="/" element={<TestComponent />} />
-            <Route path="/orders" element={<OrderManagement />} />
+            <Route path="/" element={<OrderManagement />} />
             <Route path="/suppliers" element={<SupplierManagement />} />
+            <Route path="/test" element={<TestComponent />} />
           </Routes>
         </Content>
       </Layout>

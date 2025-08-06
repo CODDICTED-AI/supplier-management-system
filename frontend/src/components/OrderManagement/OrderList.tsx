@@ -232,7 +232,10 @@ export const OrderList: React.FC = () => {
       title: '订货单价',
       dataIndex: 'unit_price',
       key: 'unit_price',
-      render: (price: number) => `¥${price?.toFixed(2) || '0.00'}`,
+      render: (price: number) => {
+        const numPrice = Number(price);
+        return `¥${(!isNaN(numPrice) && numPrice !== null) ? numPrice.toFixed(2) : '0.00'}`;
+      },
     },
     {
       title: '订货数量',
@@ -243,7 +246,10 @@ export const OrderList: React.FC = () => {
       title: '总金额',
       dataIndex: 'total_amount',
       key: 'total_amount',
-      render: (amount: number) => `¥${amount?.toFixed(2) || '0.00'}`,
+      render: (amount: number) => {
+        const numAmount = Number(amount);
+        return `¥${(!isNaN(numAmount) && numAmount !== null) ? numAmount.toFixed(2) : '0.00'}`;
+      },
     },
     {
       title: '预计到货时间',
@@ -479,9 +485,15 @@ export const OrderList: React.FC = () => {
             <p><strong>订货联系人：</strong>{selectedOrder.order_contact}</p>
             <p><strong>供应产品：</strong>{selectedOrder.product_name}</p>
             <p><strong>订货时间：</strong>{dayjs(selectedOrder.order_date).format('YYYY-MM-DD')}</p>
-            <p><strong>订货单价：</strong>¥{selectedOrder.unit_price.toFixed(2)}</p>
-            <p><strong>订货数量：</strong>{selectedOrder.quantity}</p>
-            <p><strong>总金额：</strong>¥{selectedOrder.total_amount?.toFixed(2)}</p>
+            <p><strong>订货单价：</strong>¥{(() => {
+              const price = Number(selectedOrder.unit_price);
+              return (!isNaN(price) && price !== null) ? price.toFixed(2) : '0.00';
+            })()}</p>
+            <p><strong>订货数量：</strong>{selectedOrder.quantity || 0}</p>
+            <p><strong>总金额：</strong>¥{(() => {
+              const amount = Number(selectedOrder.total_amount);
+              return (!isNaN(amount) && amount !== null) ? amount.toFixed(2) : '0.00';
+            })()}</p>
             <p><strong>预计到货时间：</strong>
               {selectedOrder.expected_delivery_date 
                 ? dayjs(selectedOrder.expected_delivery_date).format('YYYY-MM-DD')
