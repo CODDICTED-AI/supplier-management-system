@@ -1,0 +1,148 @@
+import React, { useState, useEffect } from 'react';
+import { Form, Input, Button, Alert, Space } from 'antd';
+import { LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { useAuth } from '../../hooks/useAuth';
+
+interface LoginFormProps {
+  onLoginSuccess?: () => void;
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string>('');
+  const [lockoutInfo, setLockoutInfo] = useState({ locked: false, timeLeft: 0 });
+  const { login, getLockoutInfo } = useAuth();
+
+  // 检查锁定状态
+  useEffect(() => {
+    const checkLockout = () => {
+      const info = getLockoutInfo();
+      setLockoutInfo(info);
+    };
+
+    checkLockout();
+    
+    // 如果被锁定，每秒更新剩余时间
+    let interval: NodeJS.Timeout;
+    if (lockoutInfo.locked && lockoutInfo.timeLeft && lockoutInfo.timeLeft > 0) {
+      interval = setInterval(() => {
+        const info = getLockoutInfo();
+        setLockoutInfo(info);
+        
+        // 如果锁定时间结束，清除错误信息
+        if (!info.locked) {
+          setError('');
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [lockoutInfo.locked, lockoutInfo.timeLeft, getLockoutInfo]);
+
+  const handleSubmit = async (values: { password: string }) => {
+    setLoading(true);
+    setError('');
+
+    try {
+      const result = login(values.password);
+      
+      if (result.success) {
+        onLoginSuccess?.();
+      } else {
+        setError(result.error || '登录失败');
+        // 重新检查锁定状态
+        const info = getLockoutInfo();
+        setLockoutInfo(info);
+      }
+    } catch (err) {
+      setError('登录过程中发生错误，请重试');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isDisabled = lockoutInfo.locked || loading;
+
+  return (
+    <div style={{ width: '100%', maxWidth: '400px' }}>
+      <Form
+        form={form}
+        onFinish={handleSubmit}
+        layout="vertical"
+        size="large"
+        className="login-form"
+      >
+        <Form.Item
+          name="password"
+          label="请输入访问密码"
+          rules={[
+            { required: true, message: '请输入密码' },
+            { min: 1, message: '密码不能为空' },
+          ]}
+        >
+          <Input.Password
+            prefix={<LockOutlined />}
+            placeholder="请输入密码"
+            disabled={isDisabled}
+            iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+            onPressEnter={() => form.submit()}
+          />
+        </Form.Item>
+
+        {error && (
+          <Form.Item>
+            <Alert
+              message={error}
+              type="error"
+              showIcon
+              style={{ marginBottom: '16px' }}
+            />
+          </Form.Item>
+        )}
+
+        {lockoutInfo.locked && lockoutInfo.timeLeft && (
+          <Form.Item>
+            <Alert
+              message={`登录已被锁定`}
+              description={`剩余时间：${Math.ceil(lockoutInfo.timeLeft / 60)} 分 ${lockoutInfo.timeLeft % 60} 秒`}
+              type="warning"
+              showIcon
+              style={{ marginBottom: '16px' }}
+            />
+          </Form.Item>
+        )}
+
+        <Form.Item>
+          <Space direction="vertical" style={{ width: '100%' }}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={loading}
+              disabled={isDisabled}
+              block
+              size="large"
+            >
+              {loading ? '登录中...' : '登录'}
+            </Button>
+            
+            <div style={{ 
+              textAlign: 'center', 
+              fontSize: '12px', 
+              color: '#666',
+              marginTop: '8px'
+            }}>
+              <div>连续输错5次密码将锁定5分钟</div>
+              <div>登录状态将保持24小时</div>
+            </div>
+          </Space>
+        </Form.Item>
+      </Form>
+    </div>
+  );
+};

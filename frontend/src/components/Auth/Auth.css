@@ -1,0 +1,184 @@
+/* 认证页面样式 */
+
+/* 登录页面动画 */
+.welcome-page {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 登录卡片动画 */
+.login-card {
+  animation: slideUp 0.6s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo动画 */
+.logo-container {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 表单项动画 */
+.login-form .ant-form-item {
+  animation: slideInLeft 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.login-form .ant-form-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.login-form .ant-form-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.login-form .ant-form-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 背景渐变动画 */
+.welcome-background {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 按钮悬停效果 */
+.ant-btn-primary:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* 输入框聚焦效果 */
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
+}
+
+/* 警告提示动画 */
+.ant-alert {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .welcome-page .ant-card {
+    margin: 20px;
+    border-radius: 8px;
+  }
+  
+  .welcome-page .ant-card-body {
+    padding: 24px 20px !important;
+  }
+  
+  .welcome-page .ant-typography h2 {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-page .ant-card {
+    margin: 10px;
+  }
+  
+  .welcome-page .ant-card-body {
+    padding: 20px 16px !important;
+  }
+  
+  .welcome-page .ant-typography h2 {
+    font-size: 20px !important;
+  }
+}
+
+/* 加载状态美化 */
+.loading-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  transition: all 0.3s ease;
+}
+
+.loading-container .ant-spin {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
