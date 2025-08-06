@@ -56,6 +56,11 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
+-- 删除已存在的触发器（如果存在）
+DROP TRIGGER IF EXISTS update_suppliers_updated_at ON suppliers;
+DROP TRIGGER IF EXISTS update_orders_updated_at ON orders;
+
+-- 创建触发器
 CREATE TRIGGER update_suppliers_updated_at BEFORE UPDATE ON suppliers
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 

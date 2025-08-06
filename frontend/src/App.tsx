@@ -8,6 +8,8 @@ import {
 } from '@ant-design/icons';
 import { SupplierManagement } from './pages/SupplierManagement';
 import { OrderManagement } from './pages/OrderManagement';
+import ErrorBoundary from './components/ErrorBoundary';
+import TestComponent from './components/TestComponent';
 import 'antd/dist/reset.css';
 
 const { Header, Sider, Content } = Layout;
@@ -21,6 +23,11 @@ const AppContent: React.FC = () => {
     {
       key: '/',
       icon: <HomeOutlined />,
+      label: '系统测试',
+    },
+    {
+      key: '/orders',
+      icon: <ShoppingCartOutlined />,
       label: '订单管理',
     },
     {
@@ -95,7 +102,8 @@ const AppContent: React.FC = () => {
           minHeight: 280
         }}>
           <Routes>
-            <Route path="/" element={<OrderManagement />} />
+            <Route path="/" element={<TestComponent />} />
+            <Route path="/orders" element={<OrderManagement />} />
             <Route path="/suppliers" element={<SupplierManagement />} />
           </Routes>
         </Content>
@@ -106,9 +114,11 @@ const AppContent: React.FC = () => {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <AppContent />
+      </Router>
+    </ErrorBoundary>
   );
 }
 

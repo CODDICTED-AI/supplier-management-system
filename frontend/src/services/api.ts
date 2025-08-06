@@ -1,10 +1,13 @@
 import axios from 'axios';
 
-// 获取 API 基础 URL，优先使用环境变量，否则使用相对路径
-const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
+// 获取 API 基础 URL，优先使用环境变量，否则使用后端URL
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://supplier-management-system-3hp8.onrender.com/api';
+
+console.log('API Base URL:', API_BASE_URL);
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 30000, // 30秒超时
 });
 
 // 请求拦截器
