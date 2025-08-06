@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Table, 
   Button, 
@@ -36,7 +36,7 @@ export const SupplierList: React.FC = () => {
   const [form] = Form.useForm();
 
   // 获取供应商列表
-  const fetchSuppliers = async () => {
+  const fetchSuppliers = useCallback(async () => {
     setLoading(true);
     try {
       const response = await supplierApi.getAll();
@@ -48,10 +48,10 @@ export const SupplierList: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   // 搜索供应商
-  const handleSearch = async (value: string) => {
+  const handleSearch = useCallback(async (value: string) => {
     if (!value.trim()) {
       fetchSuppliers();
       return;
@@ -68,17 +68,17 @@ export const SupplierList: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [fetchSuppliers]);
 
   // 添加供应商
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     setEditingSupplier(null);
     form.resetFields();
     setModalVisible(true);
-  };
+  }, [form]);
 
   // 编辑供应商
-  const handleEdit = (record: Supplier) => {
+  const handleEdit = useCallback((record: Supplier) => {
     setEditingSupplier(record);
     form.setFieldsValue({
       ...record,
@@ -86,10 +86,10 @@ export const SupplierList: React.FC = () => {
       contract_end_date: record.contract_end_date ? dayjs(record.contract_end_date) : undefined,
     });
     setModalVisible(true);
-  };
+  }, [form]);
 
   // 删除供应商
-  const handleDelete = async (id: number) => {
+  const handleDelete = useCallback(async (id: number) => {
     try {
       const response = await supplierApi.delete(id);
       if (response.data.success) {
@@ -99,10 +99,10 @@ export const SupplierList: React.FC = () => {
     } catch (error: any) {
       message.error(error.response?.data?.error || '删除失败');
     }
-  };
+  }, [fetchSuppliers]);
 
   // 提交表单
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = useCallback(async (values: any) => {
     try {
       const formData = new FormData();
       
@@ -144,11 +144,11 @@ export const SupplierList: React.FC = () => {
     } catch (error: any) {
       message.error(error.response?.data?.error || '操作失败');
     }
-  };
+  }, [editingSupplier, fetchSuppliers]);
 
   useEffect(() => {
     fetchSuppliers();
-  }, []);
+  }, [fetchSuppliers]);
 
   const columns = [
     {
@@ -187,7 +187,7 @@ export const SupplierList: React.FC = () => {
       key: 'contract_file_path',
       render: (path: string) => 
         path ? (
-          <a href={`http://localhost:3001/${path}`} target="_blank" rel="noopener noreferrer">
+          <a href={`${process.env.REACT_APP_API_URL || '/api'}/${path}`} target="_blank" rel="noopener noreferrer">
             查看文件
           </a>
         ) : '-',

@@ -19,12 +19,12 @@ export class OrderController {
       }
 
       // 验证供应商是否存在
-      const [suppliers] = await db.execute(
-        'SELECT id FROM suppliers WHERE id = ?',
+      const suppliers = await db.query(
+        'SELECT id FROM suppliers WHERE id = $1',
         [orderData.supplier_id]
       );
 
-      if (Array.isArray(suppliers) && suppliers.length === 0) {
+      if (suppliers.rows.length === 0) {
         return res.status(400).json({
           success: false,
           error: '供应商不存在'
@@ -32,10 +32,10 @@ export class OrderController {
       }
 
       // 插入新订单
-      const [result] = await db.execute(
+      const result = await db.query(
         `INSERT INTO orders (supplier_id, order_contact, product_name, order_date, 
          unit_price, quantity, expected_delivery_date, status) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
         [
           orderData.supplier_id,
           orderData.order_contact,
@@ -48,11 +48,9 @@ export class OrderController {
         ]
       );
 
-      const insertResult = result as any;
-      
       res.status(201).json({
         success: true,
-        data: { id: insertResult.insertId, ...orderData },
+        data: result.rows[0],
         message: '订单创建成功'
       });
     } catch (error) {
@@ -74,45 +72,48 @@ export class OrderController {
 
       let whereClause = '';
       let params: any[] = [];
+      let paramIndex = 1;
 
       // 构建查询条件
       if (status && status !== 'all') {
-        whereClause += ' WHERE o.status = ?';
+        whereClause += ` WHERE o.status = $${paramIndex}`;
         params.push(status);
+        paramIndex++;
       }
 
       if (keyword) {
-        const keywordCondition = 'o.product_name LIKE ? OR s.company_name LIKE ?';
+        const keywordCondition = `o.product_name LIKE $${paramIndex} OR s.company_name LIKE $${paramIndex + 1}`;
         if (whereClause) {
           whereClause += ` AND (${keywordCondition})`;
         } else {
           whereClause += ` WHERE ${keywordCondition}`;
         }
         params.push(`%${keyword}%`, `%${keyword}%`);
+        paramIndex += 2;
       }
 
       // 获取总数
-      const [countResult] = await db.execute(
+      const countResult = await db.query(
         `SELECT COUNT(*) as total FROM orders o 
          LEFT JOIN suppliers s ON o.supplier_id = s.id ${whereClause}`,
         params
       );
-      const total = (countResult as any)[0].total;
+      const total = parseInt(countResult.rows[0].total);
 
       // 获取订单列表
-      const [orders] = await db.execute(
+      const orders = await db.query(
         `SELECT o.*, s.company_name FROM orders o 
          LEFT JOIN suppliers s ON o.supplier_id = s.id 
          ${whereClause} 
          ORDER BY o.created_at DESC 
-         LIMIT ? OFFSET ?`,
+         LIMIT $${paramIndex} OFFSET $${paramIndex + 1}`,
         [...params, limitNum, offset]
       );
 
       const totalPages = Math.ceil(total / limitNum);
 
       const response: PaginatedResponse<OrderWithSupplier> = {
-        data: orders as OrderWithSupplier[],
+        data: orders.rows as OrderWithSupplier[],
         total,
         page: pageNum,
         limit: limitNum,
@@ -137,14 +138,14 @@ export class OrderController {
     try {
       const { id } = req.params;
 
-      const [orders] = await db.execute(
+      const orders = await db.query(
         `SELECT o.*, s.company_name FROM orders o 
          LEFT JOIN suppliers s ON o.supplier_id = s.id 
-         WHERE o.id = ?`,
+         WHERE o.id = $1`,
         [id]
       );
 
-      if (Array.isArray(orders) && orders.length === 0) {
+      if (orders.rows.length === 0) {
         return res.status(404).json({
           success: false,
           error: '订单不存在'
@@ -153,7 +154,7 @@ export class OrderController {
 
       res.json({
         success: true,
-        data: (orders as any)[0]
+        data: orders.rows[0]
       });
     } catch (error) {
       console.error('获取订单详情错误:', error);
@@ -177,14 +178,12 @@ export class OrderController {
         });
       }
 
-      const [result] = await db.execute(
-        'UPDATE orders SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
+      const result = await db.query(
+        'UPDATE orders SET status = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2 RETURNING *',
         [status, id]
       );
 
-      const updateResult = result as any;
-      
-      if (updateResult.affectedRows === 0) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           error: '订单不存在'

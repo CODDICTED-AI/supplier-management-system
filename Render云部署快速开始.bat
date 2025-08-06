@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo 农福尚汇客户管理系统 - Supabase云部署快速开始
+echo 农福尚汇客户管理系统 - Render云部署快速开始
 echo ========================================
 echo.
 
@@ -20,8 +20,8 @@ echo 3. 获取连接信息
 echo 4. 执行数据库初始化脚本
 echo.
 
-echo 第三步：部署后端到 Railway
-echo 1. 访问 https://railway.app 注册账号
+echo 第三步：部署后端到 Render
+echo 1. 访问 https://render.com 注册账号
 echo 2. 连接 GitHub 仓库
 echo 3. 设置环境变量
 echo 4. 部署后端服务
@@ -34,12 +34,12 @@ echo 3. 设置环境变量
 echo 4. 部署前端服务
 echo.
 
-echo 详细步骤请参考：Supabase-Vercel-Railway部署指南.md
+echo 详细步骤请参考：Render-Vercel-Supabase部署指南.md
 echo.
 
 echo 部署完成后，您将获得：
 echo - 前端地址：https://your-app-name.vercel.app
-echo - 后端地址：https://your-app-name.railway.app
+echo - 后端地址：https://your-app-name.onrender.com
 echo.
 
 echo 将前端地址分享给远程用户即可！

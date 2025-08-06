@@ -17,12 +17,12 @@ export class SupplierController {
       }
 
       // 检查公司名称是否已存在
-      const [existingSuppliers] = await db.execute(
-        'SELECT id FROM suppliers WHERE company_name = ?',
+      const existingSuppliers = await db.query(
+        'SELECT id FROM suppliers WHERE company_name = $1',
         [supplierData.company_name]
       );
 
-      if (Array.isArray(existingSuppliers) && existingSuppliers.length > 0) {
+      if (existingSuppliers.rows.length > 0) {
         return res.status(400).json({
           success: false,
           error: '公司名称已存在'
@@ -30,10 +30,10 @@ export class SupplierController {
       }
 
       // 插入新供应商
-      const [result] = await db.execute(
+      const result = await db.query(
         `INSERT INTO suppliers (company_name, contact_person, contract_start_date, 
          contract_end_date, logistics_type, contract_file_path) 
-         VALUES (?, ?, ?, ?, ?, ?)`,
+         VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
         [
           supplierData.company_name,
           supplierData.contact_person,
@@ -44,11 +44,9 @@ export class SupplierController {
         ]
       );
 
-      const insertResult = result as any;
-      
       res.status(201).json({
         success: true,
-        data: { id: insertResult.insertId, ...supplierData },
+        data: result.rows[0],
         message: '供应商创建成功'
       });
     } catch (error) {
@@ -63,13 +61,13 @@ export class SupplierController {
   // 获取所有供应商
   async getSuppliers(req: Request, res: Response) {
     try {
-      const [suppliers] = await db.execute(
+      const result = await db.query(
         'SELECT * FROM suppliers ORDER BY created_at DESC'
       );
 
       res.json({
         success: true,
-        data: suppliers
+        data: result.rows
       });
     } catch (error) {
       console.error('获取供应商列表错误:', error);
@@ -92,14 +90,14 @@ export class SupplierController {
         });
       }
 
-      const [suppliers] = await db.execute(
-        'SELECT * FROM suppliers WHERE company_name LIKE ? OR contact_person LIKE ? ORDER BY created_at DESC',
+      const result = await db.query(
+        'SELECT * FROM suppliers WHERE company_name LIKE $1 OR contact_person LIKE $2 ORDER BY created_at DESC',
         [`%${keyword}%`, `%${keyword}%`]
       );
 
       res.json({
         success: true,
-        data: suppliers
+        data: result.rows
       });
     } catch (error) {
       console.error('搜索供应商错误:', error);
@@ -125,12 +123,12 @@ export class SupplierController {
       }
 
       // 检查公司名称是否已被其他供应商使用
-      const [existingSuppliers] = await db.execute(
-        'SELECT id FROM suppliers WHERE company_name = ? AND id != ?',
+      const existingSuppliers = await db.query(
+        'SELECT id FROM suppliers WHERE company_name = $1 AND id != $2',
         [supplierData.company_name, id]
       );
 
-      if (Array.isArray(existingSuppliers) && existingSuppliers.length > 0) {
+      if (existingSuppliers.rows.length > 0) {
         return res.status(400).json({
           success: false,
           error: '公司名称已被其他供应商使用'
@@ -138,11 +136,11 @@ export class SupplierController {
       }
 
       // 更新供应商信息
-      const [result] = await db.execute(
-        `UPDATE suppliers SET company_name = ?, contact_person = ?, 
-         contract_start_date = ?, contract_end_date = ?, logistics_type = ?, 
-         contract_file_path = ?, updated_at = CURRENT_TIMESTAMP 
-         WHERE id = ?`,
+      const result = await db.query(
+        `UPDATE suppliers SET company_name = $1, contact_person = $2, 
+         contract_start_date = $3, contract_end_date = $4, logistics_type = $5, 
+         contract_file_path = $6, updated_at = CURRENT_TIMESTAMP 
+         WHERE id = $7 RETURNING *`,
         [
           supplierData.company_name,
           supplierData.contact_person,
@@ -154,9 +152,7 @@ export class SupplierController {
         ]
       );
 
-      const updateResult = result as any;
-      
-      if (updateResult.affectedRows === 0) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           error: '供应商不存在'
@@ -182,12 +178,12 @@ export class SupplierController {
       const { id } = req.params;
 
       // 检查是否有相关订单
-      const [orders] = await db.execute(
-        'SELECT id FROM orders WHERE supplier_id = ?',
+      const orders = await db.query(
+        'SELECT id FROM orders WHERE supplier_id = $1',
         [id]
       );
 
-      if (Array.isArray(orders) && orders.length > 0) {
+      if (orders.rows.length > 0) {
         return res.status(400).json({
           success: false,
           error: '该供应商存在相关订单，无法删除'
@@ -195,14 +191,12 @@ export class SupplierController {
       }
 
       // 删除供应商
-      const [result] = await db.execute(
-        'DELETE FROM suppliers WHERE id = ?',
+      const result = await db.query(
+        'DELETE FROM suppliers WHERE id = $1 RETURNING *',
         [id]
       );
 
-      const deleteResult = result as any;
-      
-      if (deleteResult.affectedRows === 0) {
+      if (result.rows.length === 0) {
         return res.status(404).json({
           success: false,
           error: '供应商不存在'

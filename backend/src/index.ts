@@ -8,13 +8,22 @@ import { testConnection } from './config/database';
 
 dotenv.config();
 
+// 验证必要的环境变量
+const requiredEnvVars = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME'];
+const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
+
+if (missingEnvVars.length > 0) {
+  console.error('缺少必要的环境变量:', missingEnvVars.join(', '));
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // 中间件
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // 静态文件服务
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
@@ -31,6 +40,7 @@ app.use(errorHandler);
 // 启动服务器
 app.listen(PORT, async () => {
   console.log(`服务器运行在端口 ${PORT}`);
+  console.log(`环境: ${process.env.NODE_ENV || 'development'}`);
   
   // 测试数据库连接
   await testConnection();

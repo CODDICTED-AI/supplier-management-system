@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Table, 
   Button, 
@@ -40,7 +40,7 @@ export const OrderList: React.FC = () => {
   const [form] = Form.useForm();
 
   // 获取订单列表
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     setLoading(true);
     try {
       const response = await orderApi.getAll(currentPage, statusFilter, searchKeyword);
@@ -54,10 +54,10 @@ export const OrderList: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, statusFilter, searchKeyword]);
 
   // 获取供应商列表
-  const fetchSuppliers = async () => {
+  const fetchSuppliers = useCallback(async () => {
     try {
       const response = await supplierApi.getAll();
       if (response.data.success) {
@@ -66,33 +66,33 @@ export const OrderList: React.FC = () => {
     } catch (error) {
       message.error('获取供应商列表失败');
     }
-  };
+  }, []);
 
   // 搜索订单
-  const handleSearch = (value: string) => {
+  const handleSearch = useCallback((value: string) => {
     setSearchKeyword(value);
     setCurrentPage(1);
-  };
+  }, []);
 
   // 状态筛选
-  const handleStatusChange = (value: string) => {
+  const handleStatusChange = useCallback((value: string) => {
     setStatusFilter(value);
     setCurrentPage(1);
-  };
+  }, []);
 
   // 分页变化
-  const handlePageChange = (page: number) => {
+  const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page);
-  };
+  }, []);
 
   // 添加订单
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     form.resetFields();
     setModalVisible(true);
-  };
+  }, [form]);
 
   // 查看订单详情
-  const handleViewDetail = async (id: number) => {
+  const handleViewDetail = useCallback(async (id: number) => {
     try {
       const response = await orderApi.getDetail(id);
       if (response.data.success) {
@@ -102,10 +102,10 @@ export const OrderList: React.FC = () => {
     } catch (error) {
       message.error('获取订单详情失败');
     }
-  };
+  }, []);
 
   // 完成订单
-  const handleComplete = async (id: number) => {
+  const handleComplete = useCallback(async (id: number) => {
     try {
       const response = await orderApi.updateStatus(id, '已完成');
       if (response.data.success) {
@@ -115,10 +115,10 @@ export const OrderList: React.FC = () => {
     } catch (error) {
       message.error('操作失败');
     }
-  };
+  }, [fetchOrders]);
 
   // 提交表单
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = useCallback(async (values: any) => {
     try {
       const orderData = {
         ...values,
@@ -135,15 +135,15 @@ export const OrderList: React.FC = () => {
     } catch (error: any) {
       message.error(error.response?.data?.error || '创建失败');
     }
-  };
+  }, [fetchOrders]);
 
   useEffect(() => {
     fetchOrders();
-  }, [currentPage, statusFilter, searchKeyword]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [fetchOrders]);
 
   useEffect(() => {
     fetchSuppliers();
-  }, []);
+  }, [fetchSuppliers]);
 
   const columns = [
     {
@@ -316,7 +316,17 @@ export const OrderList: React.FC = () => {
           <Form.Item
             name="order_date"
             label="订货时间"
-            rules={[{ required: true, message: '请选择订货时间' }]}
+            rules={[
+              { required: true, message: '请选择订货时间' },
+              {
+                validator: (_, value) => {
+                  if (value && value.isAfter(dayjs(), 'day')) {
+                    return Promise.reject(new Error('订货时间不能晚于今天'));
+                  }
+                  return Promise.resolve();
+                }
+              }
+            ]}
           >
             <DatePicker style={{ width: '100%' }} placeholder="选择订货时间" />
           </Form.Item>
@@ -324,12 +334,15 @@ export const OrderList: React.FC = () => {
           <Form.Item
             name="unit_price"
             label="订货单价"
-            rules={[{ required: true, message: '请输入订货单价' }]}
+            rules={[
+              { required: true, message: '请输入订货单价' },
+              { type: 'number', min: 0.01, message: '单价必须大于0' }
+            ]}
           >
             <InputNumber 
               style={{ width: '100%' }} 
               placeholder="请输入订货单价"
-              min={0}
+              min={0.01}
               precision={2}
               addonAfter="¥"
             />
@@ -338,7 +351,10 @@ export const OrderList: React.FC = () => {
           <Form.Item
             name="quantity"
             label="订货数量"
-            rules={[{ required: true, message: '请输入订货数量' }]}
+            rules={[
+              { required: true, message: '请输入订货数量' },
+              { type: 'number', min: 1, message: '数量必须大于0' }
+            ]}
           >
             <InputNumber 
               style={{ width: '100%' }} 

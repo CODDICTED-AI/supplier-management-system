@@ -1,5 +1,5 @@
 # 农福尚汇客户管理系统 - 云部署指南
-## Supabase + Vercel + Railway 方案
+## Render + Vercel + Supabase 方案
 
 ### 第一步：准备 GitHub 仓库
 
@@ -115,24 +115,27 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 ```
 
-### 第三步：部署后端到 Railway
+### 第三步：部署后端到 Render
 
-1. **注册 Railway 账号**
-   - 访问 https://railway.app
+1. **注册 Render 账号**
+   - 访问 https://render.com
    - 使用 GitHub 账号登录
 
-2. **创建新项目**
-   - 点击 "New Project"
-   - 选择 "Deploy from GitHub repo"
-   - 选择您的仓库
+2. **创建新服务**
+   - 点击 "New +"
+   - 选择 "Web Service"
+   - 连接您的 GitHub 仓库
 
-3. **配置项目**
-   - 选择 `backend` 目录作为根目录
-   - 点击 "Deploy Now"
+3. **配置服务**
+   - **Name**: `supplier-management-backend`
+   - **Root Directory**: `backend`
+   - **Runtime**: `Node`
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Plan**: 选择 "Free"
 
 4. **设置环境变量**
-   - 在项目详情页点击 "Variables" 标签
-   - 添加以下环境变量：
+   - 在 "Environment Variables" 部分添加：
    ```
    DB_HOST=你的Supabase主机地址
    DB_USER=postgres
@@ -143,9 +146,13 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
    UPLOAD_PATH=./uploads
    ```
 
-5. **获取部署 URL**
-   - 部署完成后，Railway 会提供一个 URL
-   - 例如：`https://your-app-name.railway.app`
+5. **创建服务**
+   - 点击 "Create Web Service"
+   - 等待部署完成
+
+6. **获取部署 URL**
+   - 部署完成后，Render 会提供一个 URL
+   - 例如：`https://your-app-name.onrender.com`
    - 记录这个 URL，稍后需要用到
 
 ### 第四步：部署前端到 Vercel
@@ -168,7 +175,7 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
 4. **设置环境变量**
    - 在项目设置中添加环境变量：
    ```
-   REACT_APP_API_URL=https://你的Railway应用URL/api
+   REACT_APP_API_URL=https://你的Render应用URL/api
    ```
 
 5. **部署**
@@ -206,8 +213,8 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
 
 #### 2. 前端无法访问后端
 - 确认 `REACT_APP_API_URL` 环境变量设置正确
-- 检查 Railway 应用是否正常运行
-- 查看 Railway 日志排查问题
+- 检查 Render 应用是否正常运行
+- 查看 Render 日志排查问题
 
 #### 3. 部署失败
 - 检查代码是否有语法错误
@@ -221,7 +228,7 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
    - 也可以手动导出数据
 
 2. **监控应用状态**
-   - Railway 和 Vercel 都提供监控面板
+   - Render 和 Vercel 都提供监控面板
    - 定期检查应用运行状态
 
 3. **更新代码**
@@ -231,7 +238,7 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
 ### 费用说明
 
 - **Vercel**: 免费计划包含每月 100GB 带宽
-- **Railway**: 免费计划包含每月 $5 额度
+- **Render**: 免费计划包含每月 750 小时运行时间
 - **Supabase**: 免费计划包含每月 500MB 数据库 + 2GB 带宽
 
 对于小型项目，免费计划完全够用。 

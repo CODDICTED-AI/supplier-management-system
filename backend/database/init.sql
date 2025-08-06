@@ -1,25 +1,23 @@
--- 创建数据库
-CREATE DATABASE IF NOT EXISTS supplier_management CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE supplier_management;
+-- PostgreSQL 数据库初始化脚本
+-- 适用于 Supabase
 
 -- 1. 供应商表 (suppliers)
 CREATE TABLE IF NOT EXISTS suppliers (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id SERIAL PRIMARY KEY,
   company_name VARCHAR(255) NOT NULL UNIQUE,
   contact_person VARCHAR(100) NOT NULL,
   contract_start_date DATE,
   contract_end_date DATE,
-  logistics_type ENUM('随货', '独立') DEFAULT '随货',
+  logistics_type VARCHAR(10) DEFAULT '随货' CHECK (logistics_type IN ('随货', '独立')),
   contract_file_path VARCHAR(500),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 2. 供应商产品表 (supplier_products)
 CREATE TABLE IF NOT EXISTS supplier_products (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  supplier_id INT NOT NULL,
+  id SERIAL PRIMARY KEY,
+  supplier_id INTEGER NOT NULL,
   product_name VARCHAR(255) NOT NULL,
   supply_price DECIMAL(10,2) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -28,23 +26,38 @@ CREATE TABLE IF NOT EXISTS supplier_products (
 
 -- 3. 订单表 (orders)
 CREATE TABLE IF NOT EXISTS orders (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  supplier_id INT NOT NULL,
+  id SERIAL PRIMARY KEY,
+  supplier_id INTEGER NOT NULL,
   order_contact VARCHAR(100) NOT NULL,
   product_name VARCHAR(255) NOT NULL,
   order_date DATE NOT NULL,
   unit_price DECIMAL(10,2) NOT NULL,
-  quantity INT NOT NULL,
-  total_amount DECIMAL(10,2) GENERATED ALWAYS AS (unit_price * quantity),
+  quantity INTEGER NOT NULL,
+  total_amount DECIMAL(10,2) GENERATED ALWAYS AS (unit_price * quantity) STORED,
   expected_delivery_date DATE,
-  status ENUM('未完成', '已完成') DEFAULT '未完成',
+  status VARCHAR(10) DEFAULT '未完成' CHECK (status IN ('未完成', '已完成')),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (supplier_id) REFERENCES suppliers(id)
 );
 
 -- 创建索引
-CREATE INDEX idx_suppliers_company_name ON suppliers(company_name);
-CREATE INDEX idx_orders_supplier_id ON orders(supplier_id);
-CREATE INDEX idx_orders_status ON orders(status);
-CREATE INDEX idx_orders_order_date ON orders(order_date); 
+CREATE INDEX IF NOT EXISTS idx_suppliers_company_name ON suppliers(company_name);
+CREATE INDEX IF NOT EXISTS idx_orders_supplier_id ON orders(supplier_id);
+CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
+CREATE INDEX IF NOT EXISTS idx_orders_order_date ON orders(order_date);
+
+-- 创建更新时间触发器
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_suppliers_updated_at BEFORE UPDATE ON suppliers
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column(); 
