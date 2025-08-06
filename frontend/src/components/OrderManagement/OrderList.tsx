@@ -45,12 +45,27 @@ export const OrderList: React.FC = () => {
     try {
       const response = await orderApi.getAll(currentPage, statusFilter, searchKeyword);
       if (response.data.success) {
-        const { data, total } = response.data.data;
-        setOrders(data);
-        setTotal(total);
+        const responseData = response.data.data;
+        // 确保数据结构正确
+        if (responseData && typeof responseData === 'object') {
+          const { data, total } = responseData;
+          if (Array.isArray(data)) {
+            setOrders(data);
+            setTotal(total || 0);
+          } else {
+            console.error('订单数据格式错误:', responseData);
+            message.error('订单数据格式错误');
+          }
+        } else {
+          console.error('响应数据格式错误:', responseData);
+          message.error('响应数据格式错误');
+        }
+      } else {
+        message.error(response.data.error || '获取订单列表失败');
       }
-    } catch (error) {
-      message.error('获取订单列表失败');
+    } catch (error: any) {
+      console.error('获取订单列表错误:', error);
+      message.error(error.response?.data?.error || '获取订单列表失败');
     } finally {
       setLoading(false);
     }
@@ -61,10 +76,19 @@ export const OrderList: React.FC = () => {
     try {
       const response = await supplierApi.getAll();
       if (response.data.success) {
-        setSuppliers(response.data.data);
+        const suppliersData = response.data.data;
+        if (Array.isArray(suppliersData)) {
+          setSuppliers(suppliersData);
+        } else {
+          console.error('供应商数据格式错误:', suppliersData);
+          message.error('供应商数据格式错误');
+        }
+      } else {
+        message.error(response.data.error || '获取供应商列表失败');
       }
-    } catch (error) {
-      message.error('获取供应商列表失败');
+    } catch (error: any) {
+      console.error('获取供应商列表错误:', error);
+      message.error(error.response?.data?.error || '获取供应商列表失败');
     }
   }, []);
 
@@ -98,9 +122,12 @@ export const OrderList: React.FC = () => {
       if (response.data.success) {
         setSelectedOrder(response.data.data);
         setDetailModalVisible(true);
+      } else {
+        message.error(response.data.error || '获取订单详情失败');
       }
-    } catch (error) {
-      message.error('获取订单详情失败');
+    } catch (error: any) {
+      console.error('获取订单详情错误:', error);
+      message.error(error.response?.data?.error || '获取订单详情失败');
     }
   }, []);
 
@@ -110,10 +137,13 @@ export const OrderList: React.FC = () => {
       const response = await orderApi.updateStatus(id, '已完成');
       if (response.data.success) {
         message.success('订单已完成');
-        fetchOrders();
+        await fetchOrders();
+      } else {
+        message.error(response.data.error || '操作失败');
       }
-    } catch (error) {
-      message.error('操作失败');
+    } catch (error: any) {
+      console.error('完成订单错误:', error);
+      message.error(error.response?.data?.error || '操作失败');
     }
   }, [fetchOrders]);
 
@@ -130,12 +160,17 @@ export const OrderList: React.FC = () => {
       if (response.data.success) {
         message.success('订单创建成功');
         setModalVisible(false);
-        fetchOrders();
+        form.resetFields();
+        // 重新获取订单列表
+        await fetchOrders();
+      } else {
+        message.error(response.data.error || '创建失败');
       }
     } catch (error: any) {
+      console.error('创建订单错误:', error);
       message.error(error.response?.data?.error || '创建失败');
     }
-  }, [fetchOrders]);
+  }, [fetchOrders, form]);
 
   useEffect(() => {
     fetchOrders();
@@ -165,13 +200,20 @@ export const OrderList: React.FC = () => {
       title: '订货时间',
       dataIndex: 'order_date',
       key: 'order_date',
-      render: (date: string) => dayjs(date).format('YYYY-MM-DD'),
+      render: (date: string) => {
+        try {
+          return date ? dayjs(date).format('YYYY-MM-DD') : '-';
+        } catch (error) {
+          console.error('日期格式化错误:', error);
+          return date || '-';
+        }
+      },
     },
     {
       title: '订货单价',
       dataIndex: 'unit_price',
       key: 'unit_price',
-      render: (price: number) => `¥${price.toFixed(2)}`,
+      render: (price: number) => `¥${price?.toFixed(2) || '0.00'}`,
     },
     {
       title: '订货数量',
@@ -182,13 +224,20 @@ export const OrderList: React.FC = () => {
       title: '总金额',
       dataIndex: 'total_amount',
       key: 'total_amount',
-      render: (amount: number) => `¥${amount.toFixed(2)}`,
+      render: (amount: number) => `¥${amount?.toFixed(2) || '0.00'}`,
     },
     {
       title: '预计到货时间',
       dataIndex: 'expected_delivery_date',
       key: 'expected_delivery_date',
-      render: (date: string) => date ? dayjs(date).format('YYYY-MM-DD') : '-',
+      render: (date: string) => {
+        try {
+          return date ? dayjs(date).format('YYYY-MM-DD') : '-';
+        } catch (error) {
+          console.error('日期格式化错误:', error);
+          return date || '-';
+        }
+      },
     },
     {
       title: '订单状态',
