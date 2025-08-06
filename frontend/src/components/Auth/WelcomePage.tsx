@@ -156,7 +156,8 @@ export const WelcomePage: React.FC<WelcomePageProps> = ({ onLoginSuccess }) => {
             </Text>
           </div>
         </div>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 };
