@@ -181,7 +181,7 @@ export class SupplierController {
 
       let updateQuery = `UPDATE suppliers SET company_name = $1, contact_person = $2, contact_phone = $3,
          contract_start_date = $4, contract_end_date = $5, logistics_type = $6, updated_at = CURRENT_TIMESTAMP`;
-      let updateValues = [
+      let updateValues: any[] = [
         updateFields.company_name,
         updateFields.contact_person,
         updateFields.contact_phone,
@@ -199,11 +199,11 @@ export class SupplierController {
           req.file.originalname,
           req.file.size,
           new Date().toISOString(),
-          String(id)
+          id
         );
       } else {
         updateQuery += ` WHERE id = $7 RETURNING *`;
-        updateValues.push(String(id));
+        updateValues.push(id);
       }
 
       // 更新供应商信息
