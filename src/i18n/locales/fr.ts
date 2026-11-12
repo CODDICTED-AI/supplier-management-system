@@ -3,8 +3,7 @@ import type { Dictionary } from './en'
 const fr: Dictionary = {
   meta: {
     tagline: 'Se faire soigner en Chine : accompagnement des patients internationaux',
-    description:
-      'YiLu Health aide les patients internationaux à accéder aux grands hôpitaux chinois : étude du dossier, rendez-vous, documents de visa, interprètes, aide au paiement et suivi après le retour.',
+    description: 'YiLu Health aide les patients internationaux à accéder aux grands hôpitaux chinois : étude du dossier, rendez-vous, documents de visa, interprètes, aide au paiement et suivi après le retour.',
   },
   nav: {
     treatments: 'Soins',
@@ -22,39 +21,32 @@ const fr: Dictionary = {
   common: {
     reviewed: 'Informations vérifiées le {date}',
     officialSources: 'Sources officielles',
-    learnMore: 'En savoir plus',
     typicalStay: 'Durée de séjour habituelle',
   },
   home: {
     hero: {
       eyebrow: 'Se faire soigner en Chine',
       title: 'Les grands hôpitaux chinois, à votre portée.',
-      subtitle:
-        'Nous orientons les patients internationaux vers le bon hôpital en Chine : étude de votre dossier, rendez-vous, documents de visa, interprètes et paiement — et nous restons à vos côtés jusqu’au suivi après votre retour.',
+      subtitle: 'Nous orientons les patients internationaux vers le bon hôpital en Chine : étude de votre dossier, rendez-vous, documents de visa, interprètes et paiement — et nous restons à vos côtés jusqu’au suivi après votre retour.',
       primary: 'Demander une étude gratuite',
       secondary: 'Voir comment ça marche',
       notes: ['Première évaluation gratuite', 'Sans engagement', 'Confidentiel'],
-    },
-    journey: {
-      title: 'Un parcours type',
-      note: 'Calendrier indicatif — chaque cas est différent.',
-      steps: [
-        { when: 'Jour 1', text: 'Vous envoyez votre dossier médical' },
-        { when: 'Jours 2 à 5', text: 'Avis du spécialiste et devis estimatif' },
-        { when: 'Semaine 2', text: 'Rendez-vous et documents pour le visa' },
-        { when: 'Arrivée', text: 'Accueil, interprète, admission à l’hôpital' },
-        { when: 'Ensuite', text: 'Comptes rendus traduits et suivi à distance' },
-      ],
+      glyphs: { yi: 'médecine', lu: 'chemin' },
     },
     stats: {
       items: [
-        { value: '1,28 M', label: 'de consultations de patients internationaux dans les grands hôpitaux chinois en 2025' },
+        {
+          value: '1,28 M',
+          label: 'de consultations de patients internationaux dans les grands hôpitaux chinois en 2025',
+        },
         { value: '+73,6 %', label: 'de hausse de ces consultations en trois ans' },
-        { value: '79', label: 'pays bénéficiant d’une entrée sans visa en Chine continentale (février 2026)' },
+        {
+          value: '79',
+          label: 'pays bénéficiant d’une entrée sans visa en Chine continentale (février 2026)',
+        },
         { value: '240 h', label: 'de transit sans visa pour les ressortissants de 57 pays' },
       ],
-      source:
-        'Sources : Commission nationale de la santé de Chine ; ministère chinois des Affaires étrangères ; Administration nationale de l’immigration.',
+      source: 'Sources : Commission nationale de la santé de Chine ; ministère chinois des Affaires étrangères ; Administration nationale de l’immigration.',
     },
     why: {
       title: 'Pourquoi les patients choisissent la Chine',
@@ -96,26 +88,32 @@ const fr: Dictionary = {
       subtitle: 'Un seul coordinateur, de votre premier message au suivi à domicile.',
       steps: [
         {
+          when: 'Jour 1',
           title: 'Présentez-nous votre cas',
           body: 'Envoyez votre diagnostic, vos comptes rendus et vos attentes via notre formulaire. Aucun paiement n’est demandé.',
         },
         {
+          when: 'Jours 2 à 5',
           title: 'Recevez des options et un devis',
           body: 'Nous consultons les hôpitaux adaptés et vous transmettons l’avis d’un spécialiste, une proposition de prise en charge et une estimation écrite des coûts.',
         },
         {
+          when: 'Semaine 2',
           title: 'Préparez votre voyage',
           body: 'Nous prenons les rendez-vous, obtenons la lettre de l’hôpital pour votre visa si nécessaire, et organisons l’hébergement et l’accueil à l’aéroport.',
         },
         {
+          when: 'Arrivée',
           title: 'Des soins avec un interprète',
           body: 'Un coordinateur et un interprète médical vous accompagnent pour l’enregistrement, les consultations, les examens et le paiement.',
         },
         {
+          when: 'Ensuite',
           title: 'Un suivi chez vous',
           body: 'Vous repartez avec un dossier traduit et un plan de suivi, et nous organisons des consultations à distance avec votre médecin.',
         },
       ],
+      note: 'Calendrier indicatif — chaque cas est différent.',
     },
     destinations: {
       title: 'Où vous faire soigner',
@@ -149,14 +147,12 @@ const fr: Dictionary = {
   },
   treatments: {
     title: 'Soins et services',
-    intro:
-      'Voici les services que les patients internationaux nous demandent le plus souvent. Si le vôtre n’y figure pas, envoyez-nous votre dossier : nous vous dirons franchement si la Chine est une bonne option.',
+    intro: 'Voici les services que les patients internationaux nous demandent le plus souvent. Si le vôtre n’y figure pas, envoyez-nous votre dossier : nous vous dirons franchement si la Chine est une bonne option.',
     popular: 'Demandes fréquentes',
     items: {
       checkup: {
         name: 'Bilans de santé et dépistage',
-        summary:
-          'Des programmes complets sur un ou deux jours, avec imagerie et endoscopie sur place, puis analyse de vos résultats par un spécialiste.',
+        summary: 'Des programmes complets sur un ou deux jours, avec imagerie et endoscopie sur place, puis analyse de vos résultats par un spécialiste.',
         points: [
           'Bilans de santé complets',
           'IRM, scanner à faible dose et TEP-scan',
@@ -167,8 +163,7 @@ const fr: Dictionary = {
       },
       oncology: {
         name: 'Cancérologie',
-        summary:
-          'Des centres pluridisciplinaires à forte activité, dotés d’une radiothérapie moderne et donnant accès à des thérapies cellulaires et ciblées récemment autorisées.',
+        summary: 'Des centres pluridisciplinaires à forte activité, dotés d’une radiothérapie moderne et donnant accès à des thérapies cellulaires et ciblées récemment autorisées.',
         points: [
           'Thérapie cellulaire CAR-T pour les cancers du sang',
           'Protonthérapie et hadronthérapie par ions carbone',
@@ -179,8 +174,7 @@ const fr: Dictionary = {
       },
       tcm: {
         name: 'Médecine traditionnelle chinoise',
-        summary:
-          'Des programmes intégratifs dans les grands hôpitaux de MTC pour la douleur, la récupération et les maladies chroniques, associés aux examens modernes.',
+        summary: 'Des programmes intégratifs dans les grands hôpitaux de MTC pour la douleur, la récupération et les maladies chroniques, associés aux examens modernes.',
         points: [
           'Acupuncture et moxibustion',
           'Massage thérapeutique tuina',
@@ -191,15 +185,18 @@ const fr: Dictionary = {
       },
       dental: {
         name: 'Soins dentaires',
-        summary:
-          'Implants, orthodontie et réhabilitation complète, avec des systèmes d’implants internationaux et une planification numérique.',
-        points: ['Implants dentaires', 'Couronnes et facettes', 'Orthodontie et aligneurs transparents', 'Réhabilitation complète de la bouche'],
+        summary: 'Implants, orthodontie et réhabilitation complète, avec des systèmes d’implants internationaux et une planification numérique.',
+        points: [
+          'Implants dentaires',
+          'Couronnes et facettes',
+          'Orthodontie et aligneurs transparents',
+          'Réhabilitation complète de la bouche',
+        ],
         stay: '3 à 10 jours ; les implants peuvent nécessiter deux séjours',
       },
       eye: {
         name: 'Ophtalmologie',
-        summary:
-          'Des centres à forte activité pour la chirurgie réfractive au laser, la chirurgie de la cataracte et le bilan rétinien.',
+        summary: 'Des centres à forte activité pour la chirurgie réfractive au laser, la chirurgie de la cataracte et le bilan rétinien.',
         points: [
           'Chirurgie réfractive SMILE et LASIK',
           'Implants intraoculaires ICL',
@@ -210,8 +207,7 @@ const fr: Dictionary = {
       },
       ortho: {
         name: 'Orthopédie et rachis',
-        summary:
-          'Prothèses articulaires, chirurgie du rachis et médecine du sport, de plus en plus souvent robot-assistées, suivies d’une rééducation structurée.',
+        summary: 'Prothèses articulaires, chirurgie du rachis et médecine du sport, de plus en plus souvent robot-assistées, suivies d’une rééducation structurée.',
         points: [
           'Prothèses de hanche et de genou',
           'Chirurgie mini-invasive du rachis',
@@ -222,8 +218,7 @@ const fr: Dictionary = {
       },
       cardio: {
         name: 'Cœur et vaisseaux',
-        summary:
-          'Des centres cardiovasculaires nationaux proposant des traitements interventionnels et chirurgicaux pour les cardiopathies complexes.',
+        summary: 'Des centres cardiovasculaires nationaux proposant des traitements interventionnels et chirurgicaux pour les cardiopathies complexes.',
         points: [
           'Coronarographie et pose de stents',
           'Réparation et remplacement valvulaires, dont le TAVI',
@@ -234,8 +229,7 @@ const fr: Dictionary = {
       },
       remote: {
         name: 'Deuxième avis à distance',
-        summary:
-          'Avant de décider de partir, un spécialiste chinois étudie votre dossier et votre imagerie, puis discute des options avec vous en visioconférence.',
+        summary: 'Avant de décider de partir, un spécialiste chinois étudie votre dossier et votre imagerie, puis discute des options avec vous en visioconférence.',
         points: [
           'Étude des comptes rendus et de l’imagerie',
           'Consultation vidéo avec interprète',
@@ -252,15 +246,9 @@ const fr: Dictionary = {
   },
   hospitals: {
     title: 'Hôpitaux et destinations',
-    intro:
-      'Les meilleurs hôpitaux chinois sont concentrés dans quelques villes. Voici, par ville, des établissements réputés sur lesquels les patients internationaux nous interrogent souvent.',
-    disclaimer:
-      'Ces hôpitaux sont cités à titre d’information. Leur mention n’implique ni partenariat ni recommandation, et les services proposés aux patients internationaux varient d’un établissement à l’autre. Pour chaque dossier, nous vérifions auprès de l’hôpital qu’il peut vous recevoir avant votre départ.',
-    types: {
-      public: 'Hôpital public',
-      private: 'Hôpital privé',
-      zone: 'Hôpital de la zone pilote',
-    },
+    intro: 'Les meilleurs hôpitaux chinois sont concentrés dans quelques villes. Voici, par ville, des établissements réputés sur lesquels les patients internationaux nous interrogent souvent.',
+    disclaimer: 'Ces hôpitaux sont cités à titre d’information. Leur mention n’implique ni partenariat ni recommandation, et les services proposés aux patients internationaux varient d’un établissement à l’autre. Pour chaque dossier, nous vérifions auprès de l’hôpital qu’il peut vous recevoir avant votre départ.',
+    types: { public: 'Hôpital public', private: 'Hôpital privé', zone: 'Hôpital de la zone pilote' },
     tags: {
       general: 'Cas complexes et prise en charge pluridisciplinaire',
       oncology: 'Cancérologie',
@@ -279,18 +267,15 @@ const fr: Dictionary = {
     cities: {
       beijing: {
         name: 'Pékin',
-        blurb:
-          'La capitale réunit bon nombre des meilleurs hôpitaux nationaux : un premier choix pour les diagnostics complexes, la cardiologie, la neurologie et la cancérologie.',
+        blurb: 'La capitale réunit bon nombre des meilleurs hôpitaux nationaux : un premier choix pour les diagnostics complexes, la cardiologie, la neurologie et la cancérologie.',
       },
       shanghai: {
         name: 'Shanghai',
-        blurb:
-          'La ville la plus internationale de Chine, avec plus de 20 hôpitaux publics engagés dans le programme pilote de tourisme médical international et de solides hôpitaux privés. Réputée pour la cancérologie, la protonthérapie et les ions lourds.',
+        blurb: 'La ville la plus internationale de Chine, avec plus de 20 hôpitaux publics engagés dans le programme pilote de tourisme médical international et de solides hôpitaux privés. Réputée pour la cancérologie, la protonthérapie et les ions lourds.',
       },
       guangzhou: {
         name: 'Canton (Guangzhou)',
-        blurb:
-          'Un pôle du sud du pays, proche de Hong Kong et de l’Asie du Sud-Est, reconnu pour la cancérologie, l’ophtalmologie et la médecine traditionnelle chinoise.',
+        blurb: 'Un pôle du sud du pays, proche de Hong Kong et de l’Asie du Sud-Est, reconnu pour la cancérologie, l’ophtalmologie et la médecine traditionnelle chinoise.',
       },
       shenzhen: {
         name: 'Shenzhen',
@@ -298,18 +283,15 @@ const fr: Dictionary = {
       },
       hangzhou: {
         name: 'Hangzhou',
-        blurb:
-          'Siège des hôpitaux universitaires de l’université du Zhejiang, réputés en chirurgie hépatobiliaire et mini-invasive, à environ une heure de train de Shanghai.',
+        blurb: 'Siège des hôpitaux universitaires de l’université du Zhejiang, réputés en chirurgie hépatobiliaire et mini-invasive, à environ une heure de train de Shanghai.',
       },
       chengdu: {
         name: 'Chengdu',
-        blurb:
-          'Le centre médical de l’ouest de la Chine, autour de l’hôpital de Chine de l’Ouest (West China Hospital), l’un des plus grands et des mieux classés du pays.',
+        blurb: 'Le centre médical de l’ouest de la Chine, autour de l’hôpital de Chine de l’Ouest (West China Hospital), l’un des plus grands et des mieux classés du pays.',
       },
       hainan: {
         name: 'Hainan · Boao Lecheng',
-        blurb:
-          'Une île tropicale dotée d’une zone pilote nationale où des hôpitaux agréés peuvent utiliser des médicaments et dispositifs innovants autorisés à l’étranger mais pas encore sur le marché du continent — avec une entrée sans visa qui couvre les soins médicaux.',
+        blurb: 'Une île tropicale dotée d’une zone pilote nationale où des hôpitaux agréés peuvent utiliser des médicaments et dispositifs innovants autorisés à l’étranger mais pas encore sur le marché du continent — avec une entrée sans visa qui couvre les soins médicaux.',
       },
     },
     choose: {
@@ -332,8 +314,7 @@ const fr: Dictionary = {
   },
   visa: {
     title: 'Guide visa et entrée',
-    intro:
-      'Entrer en Chine est devenu bien plus simple depuis 2024. La formule adaptée dépend de votre passeport, de la durée du traitement et du lieu des soins. Cette page donne des indications générales et non un conseil juridique : vérifiez toujours auprès des sources officielles avant de réserver.',
+    intro: 'Entrer en Chine est devenu bien plus simple depuis 2024. La formule adaptée dépend de votre passeport, de la durée du traitement et du lieu des soins. Cette page donne des indications générales et non un conseil juridique : vérifiez toujours auprès des sources officielles avant de réserver.',
     options: [
       {
         title: 'Entrée sans visa pendant 30 jours',
@@ -379,7 +360,9 @@ const fr: Dictionary = {
         title: 'Si le traitement dure plus longtemps que prévu',
         badge: 'Prolongation',
         body: 'Vous pouvez demander au bureau local de l’administration des entrées et sorties une prolongation ou un titre de séjour avant l’expiration de votre autorisation, avec un certificat de votre hôpital.',
-        points: ['Déposez la demande au moins sept jours avant la fin de votre séjour autorisé.'],
+        points: [
+          'Déposez la demande au moins sept jours avant la fin de votre séjour autorisé.',
+        ],
       },
     ],
     arrival: {
@@ -404,17 +387,14 @@ const fr: Dictionary = {
       visaCenter: 'Centre de service de demande de visa chinois',
       arrivalCard: 'Carte d’arrivée en ligne',
     },
-    disclaimer:
-      'Les règles de visa évoluent et sont appliquées au cas par cas par les autorités. Nous ne sommes pas une agence de visas et ne pouvons garantir l’entrée sur le territoire. Les listes de pays et les dates ci-dessus sont des résumés ; les annonces officielles font foi.',
+    disclaimer: 'Les règles de visa évoluent et sont appliquées au cas par cas par les autorités. Nous ne sommes pas une agence de visas et ne pouvons garantir l’entrée sur le territoire. Les listes de pays et les dates ci-dessus sont des résumés ; les annonces officielles font foi.',
   },
   costs: {
     title: 'Tarifs et paiement',
-    intro:
-      'En Chine, les patients internationaux règlent leurs soins eux-mêmes. Les tarifs des services internationaux et des hôpitaux privés sont plus élevés que les tarifs publics locaux, mais souvent bien inférieurs à ceux du secteur privé aux États-Unis et dans d’autres pays où les soins sont chers.',
+    intro: 'En Chine, les patients internationaux règlent leurs soins eux-mêmes. Les tarifs des services internationaux et des hôpitaux privés sont plus élevés que les tarifs publics locaux, mais souvent bien inférieurs à ceux du secteur privé aux États-Unis et dans d’autres pays où les soins sont chers.',
     table: {
       title: 'Fourchettes de prix indicatives',
-      caption:
-        'Fourchettes approximatives en dollars américains, établies à partir de publications de 2026. Il ne s’agit pas de devis : seule l’estimation écrite de votre hôpital fait foi.',
+      caption: 'Fourchettes approximatives en dollars américains, établies à partir de publications de 2026. Il ne s’agit pas de devis : seule l’estimation écrite de votre hôpital fait foi.',
       service: 'Prestation',
       range: 'Fourchette indicative en Chine',
       note: 'Bon à savoir',
@@ -424,8 +404,14 @@ const fr: Dictionary = {
           note: 'Selon l’imagerie (IRM, scanner, TEP-scan) et les endoscopies ajoutées',
         },
         mri: { name: 'IRM, une région', note: 'Généralement disponible en quelques jours' },
-        implant: { name: 'Implant dentaire avec couronne, par dent', note: 'La marque de l’implant détermine le prix' },
-        vision: { name: 'Chirurgie réfractive au laser, les deux yeux', note: 'SMILE ou LASIK ; les implants ICL coûtent plus cher' },
+        implant: {
+          name: 'Implant dentaire avec couronne, par dent',
+          note: 'La marque de l’implant détermine le prix',
+        },
+        vision: {
+          name: 'Chirurgie réfractive au laser, les deux yeux',
+          note: 'SMILE ou LASIK ; les implants ICL coûtent plus cher',
+        },
         proton: {
           name: 'Protonthérapie ou ions lourds, traitement complet',
           note: 'Variable selon le type de tumeur et le nombre de séances',
@@ -536,8 +522,7 @@ const fr: Dictionary = {
   },
   contact: {
     title: 'Demandez l’étude gratuite de votre dossier',
-    intro:
-      'Décrivez-nous brièvement votre besoin. Un coordinateur vous répondra dans votre langue en vous indiquant la suite. L’envoi de ce formulaire ne vous engage à rien.',
+    intro: 'Décrivez-nous brièvement votre besoin. Un coordinateur vous répondra dans votre langue en vous indiquant la suite. L’envoi de ce formulaire ne vous engage à rien.',
     form: {
       name: 'Nom et prénom',
       email: 'E-mail',
@@ -547,8 +532,7 @@ const fr: Dictionary = {
       city: 'Ville souhaitée (facultatif)',
       timeframe: 'Quand souhaitez-vous partir ? (facultatif)',
       message: 'Décrivez brièvement votre situation',
-      messageHint:
-        'Par exemple : votre diagnostic, les traitements déjà reçus et ce que vous attendez. Merci de ne pas envoyer de documents pour l’instant : nous vous indiquerons un moyen sécurisé de les transmettre.',
+      messageHint: 'Par exemple : votre diagnostic, les traitements déjà reçus et ce que vous attendez. Merci de ne pas envoyer de documents pour l’instant : nous vous indiquerons un moyen sécurisé de les transmettre.',
       select: 'Sélectionnez',
       other: 'Autre / je ne sais pas',
       anyCity: 'Sans préférence',
@@ -558,8 +542,7 @@ const fr: Dictionary = {
         quarter: 'D’ici trois mois',
         exploring: 'Je me renseigne simplement',
       },
-      consent:
-        'J’accepte que YiLu Health utilise les informations que je fournis, y compris des données de santé, pour répondre à ma demande, comme indiqué dans la notice de confidentialité.',
+      consent: 'J’accepte que YiLu Health utilise les informations que je fournis, y compris des données de santé, pour répondre à ma demande, comme indiqué dans la notice de confidentialité.',
       privacyLink: 'Notice de confidentialité',
       submit: 'Envoyer ma demande',
       sending: 'Envoi en cours…',
@@ -578,8 +561,7 @@ const fr: Dictionary = {
         'Nous vous indiquons quels documents envoyer et comment les transmettre en toute sécurité.',
         'Vous recevez l’avis d’un spécialiste, des options et une estimation des coûts.',
       ],
-      privacy:
-        'Vos informations servent uniquement à répondre à votre demande et ne sont transmises à un hôpital qu’avec votre accord.',
+      privacy: 'Vos informations servent uniquement à répondre à votre demande et ne sont transmises à un hôpital qu’avec votre accord.',
       directTitle: 'Vous préférez nous écrire directement ?',
       email: 'E-mail',
       whatsapp: 'WhatsApp',
@@ -625,8 +607,7 @@ const fr: Dictionary = {
     explore: 'Explorer',
     support: 'Assistance',
     legal: 'Confidentialité et avertissement',
-    disclaimer:
-      'YiLu Health est un coordinateur de séjours médicaux, et non un prestataire de soins. Le contenu de ce site est une information générale et ne constitue pas un avis médical.',
+    disclaimer: 'YiLu Health est un coordinateur de séjours médicaux, et non un prestataire de soins. Le contenu de ce site est une information générale et ne constitue pas un avis médical.',
     rights: 'Tous droits réservés.',
   },
   notFound: {

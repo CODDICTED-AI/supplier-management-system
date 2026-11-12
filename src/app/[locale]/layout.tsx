@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import type { ReactNode } from 'react'
-import '@fontsource-variable/source-sans-3/index.css'
-import '@fontsource-variable/source-serif-4/opsz.css'
-import '@fontsource-variable/noto-sans-arabic/index.css'
-import '@fontsource-variable/noto-naskh-arabic/index.css'
+import '@fontsource-variable/ibm-plex-sans/index.css'
+import '@fontsource/ibm-plex-mono/400.css'
+import '@fontsource/ibm-plex-mono/500.css'
+import '@fontsource/ibm-plex-sans-arabic/400.css'
+import '@fontsource/ibm-plex-sans-arabic/500.css'
+import '@fontsource/ibm-plex-sans-arabic/600.css'
 import '../globals.css'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -22,7 +24,7 @@ export function generateStaticParams() {
 export const dynamicParams = false
 
 export const viewport: Viewport = {
-  themeColor: '#f8f5ee',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
 }
@@ -51,7 +53,7 @@ export default async function RootLayout({ children, params }: Props) {
       <body className="flex min-h-dvh flex-col">
         <a
           href="#content"
-          className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-jade-700 focus:px-5 focus:py-2.5 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-5 focus:py-2.5 focus:text-white"
         >
           {dict.nav.skip}
         </a>

@@ -48,18 +48,15 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
         aria-controls={menuId}
         aria-label={`${label}: ${localeMeta[locale].name}`}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex h-10 items-center gap-1.5 rounded-full border border-line-strong bg-white/60 px-3 text-[0.9375rem] font-medium text-ink-soft transition hover:border-jade-600 hover:text-jade-700"
+        className="inline-flex h-10 items-center gap-2 whitespace-nowrap text-[0.9375rem] text-ink-soft transition-colors hover:text-ink"
       >
-        <Icon name="globe" className="size-[1.1rem]" />
+        <Icon name="globe" className="size-[1.125rem]" />
         <span>{localeMeta[locale].name}</span>
-        <Icon name="chevron" className={`size-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <Icon name="chevron" className={`size-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
-        <ul
-          id={menuId}
-          className="absolute end-0 top-[calc(100%+0.5rem)] z-50 w-52 overflow-hidden rounded-2xl border border-line bg-white p-1.5 shadow-lift"
-        >
+        <ul id={menuId} className="absolute end-0 top-[calc(100%+0.75rem)] z-50 w-56 border border-ink bg-paper py-1.5">
           {locales.map((code) => {
             const meta = localeMeta[code]
             const active = code === locale
@@ -70,16 +67,15 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
                   href={switchLocalePath(pathname, code)}
                   hrefLang={meta.htmlLang}
                   lang={meta.htmlLang}
-                  dir={meta.dir}
                   aria-current={active ? 'true' : undefined}
                   onClick={() => rememberLocale(code)}
-                  className={`flex items-center justify-between gap-3 rounded-xl px-3 py-2 text-[0.9375rem] transition ${
-                    active ? 'bg-jade-50 font-semibold text-jade-800' : 'text-ink-soft hover:bg-paper'
+                  className={`flex items-center justify-between gap-3 px-4 py-2 text-[0.9375rem] transition-colors ${
+                    active ? 'font-medium text-cobalt' : 'text-ink-soft hover:bg-wash hover:text-ink'
                   }`}
                   style={{ fontFamily: 'var(--ff-system)' }}
                 >
                   <span>{meta.name}</span>
-                  {active && <Icon name="check" className="size-4 text-jade-600" />}
+                  {active && <Icon name="check" className="size-4" />}
                 </a>
               </li>
             )

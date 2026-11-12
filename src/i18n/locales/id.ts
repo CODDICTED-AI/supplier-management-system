@@ -3,8 +3,7 @@ import type { Dictionary } from './en'
 const id: Dictionary = {
   meta: {
     tagline: 'Layanan berobat ke Tiongkok bagi pasien internasional',
-    description:
-      'YiLu Health membantu pasien internasional berobat di rumah sakit terkemuka di Tiongkok: tinjauan kasus, janji temu, dokumen visa, penerjemah, bantuan pembayaran, dan tindak lanjut setelah pulang.',
+    description: 'YiLu Health membantu pasien internasional berobat di rumah sakit terkemuka di Tiongkok: tinjauan kasus, janji temu, dokumen visa, penerjemah, bantuan pembayaran, dan tindak lanjut setelah pulang.',
   },
   nav: {
     treatments: 'Perawatan',
@@ -22,39 +21,32 @@ const id: Dictionary = {
   common: {
     reviewed: 'Informasi terakhir ditinjau: {date}',
     officialSources: 'Sumber resmi',
-    learnMore: 'Selengkapnya',
     typicalStay: 'Lama tinggal umumnya',
   },
   home: {
     hero: {
       eyebrow: 'Berobat ke Tiongkok',
       title: 'Rumah sakit terbaik Tiongkok, dalam jangkauan Anda.',
-      subtitle:
-        'Kami memandu pasien internasional ke rumah sakit yang tepat di Tiongkok — meninjau kasus Anda, mengatur janji temu, dokumen visa, penerjemah, dan pembayaran, serta mendampingi Anda hingga tindak lanjut setelah pulang.',
+      subtitle: 'Kami memandu pasien internasional ke rumah sakit yang tepat di Tiongkok — meninjau kasus Anda, mengatur janji temu, dokumen visa, penerjemah, dan pembayaran, serta mendampingi Anda hingga tindak lanjut setelah pulang.',
       primary: 'Mulai tinjauan kasus gratis',
       secondary: 'Lihat cara kerjanya',
       notes: ['Penilaian awal gratis', 'Tanpa kewajiban', 'Rahasia terjaga'],
-    },
-    journey: {
-      title: 'Gambaran perjalanan berobat',
-      note: 'Jadwal hanya ilustrasi — setiap kasus berbeda.',
-      steps: [
-        { when: 'Hari 1', text: 'Anda mengirim rekam medis' },
-        { when: 'Hari 2–5', text: 'Masukan dokter spesialis dan perkiraan biaya' },
-        { when: 'Minggu 2', text: 'Janji temu dan dokumen visa' },
-        { when: 'Kedatangan', text: 'Penjemputan, penerjemah, pendaftaran rumah sakit' },
-        { when: 'Setelahnya', text: 'Laporan terjemahan dan tindak lanjut jarak jauh' },
-      ],
+      glyphs: { yi: 'pengobatan', lu: 'jalan' },
     },
     stats: {
       items: [
-        { value: '1,28 juta', label: 'kunjungan pasien internasional ke rumah sakit besar Tiongkok pada 2025' },
+        {
+          value: '1,28 juta',
+          label: 'kunjungan pasien internasional ke rumah sakit besar Tiongkok pada 2025',
+        },
         { value: '+73,6%', label: 'pertumbuhan kunjungan tersebut dalam tiga tahun' },
-        { value: '79', label: 'negara dengan akses bebas visa ke Tiongkok daratan (Februari 2026)' },
+        {
+          value: '79',
+          label: 'negara dengan akses bebas visa ke Tiongkok daratan (Februari 2026)',
+        },
         { value: '240 jam', label: 'transit bebas visa bagi warga 57 negara' },
       ],
-      source:
-        'Sumber: Komisi Kesehatan Nasional Tiongkok; Kementerian Luar Negeri Tiongkok; Administrasi Imigrasi Nasional Tiongkok.',
+      source: 'Sumber: Komisi Kesehatan Nasional Tiongkok; Kementerian Luar Negeri Tiongkok; Administrasi Imigrasi Nasional Tiongkok.',
     },
     why: {
       title: 'Mengapa pasien memilih Tiongkok',
@@ -96,26 +88,32 @@ const id: Dictionary = {
       subtitle: 'Satu koordinator, sejak pesan pertama hingga tindak lanjut di rumah.',
       steps: [
         {
+          when: 'Hari 1',
           title: 'Ceritakan kasus Anda',
           body: 'Kirim diagnosis, laporan medis, dan harapan Anda melalui formulir kami. Tidak ada biaya apa pun.',
         },
         {
+          when: 'Hari 2–5',
           title: 'Terima pilihan dan perkiraan biaya',
           body: 'Kami menghubungi rumah sakit yang sesuai, lalu mengirimkan masukan dokter spesialis, usulan rencana, dan perkiraan biaya tertulis.',
         },
         {
+          when: 'Minggu 2',
           title: 'Siapkan perjalanan',
           body: 'Kami membuat janji temu, mengurus surat rumah sakit untuk visa bila diperlukan, serta mengatur penginapan dan penjemputan bandara.',
         },
         {
+          when: 'Kedatangan',
           title: 'Berobat dengan penerjemah',
           body: 'Koordinator dan penerjemah medis mendampingi Anda saat pendaftaran, konsultasi, pemeriksaan, dan pembayaran.',
         },
         {
+          when: 'Setelahnya',
           title: 'Tindak lanjut di rumah',
           body: 'Anda pulang membawa rekam medis terjemahan dan rencana tindak lanjut, dan kami mengatur konsultasi jarak jauh dengan dokter Anda.',
         },
       ],
+      note: 'Jadwal hanya ilustrasi — setiap kasus berbeda.',
     },
     destinations: {
       title: 'Di mana Anda bisa berobat',
@@ -149,14 +147,12 @@ const id: Dictionary = {
   },
   treatments: {
     title: 'Perawatan dan layanan',
-    intro:
-      'Inilah layanan yang paling sering ditanyakan pasien internasional. Jika kebutuhan Anda tidak tercantum, kirimkan kasus Anda — kami akan menyampaikan dengan jujur apakah Tiongkok pilihan yang tepat.',
+    intro: 'Inilah layanan yang paling sering ditanyakan pasien internasional. Jika kebutuhan Anda tidak tercantum, kirimkan kasus Anda — kami akan menyampaikan dengan jujur apakah Tiongkok pilihan yang tepat.',
     popular: 'Sering diminta',
     items: {
       checkup: {
         name: 'Medical check-up & skrining',
-        summary:
-          'Program menyeluruh selama satu hingga dua hari, dengan pencitraan dan endoskopi di satu tempat serta pembahasan hasil bersama dokter spesialis.',
+        summary: 'Program menyeluruh selama satu hingga dua hari, dengan pencitraan dan endoskopi di satu tempat serta pembahasan hasil bersama dokter spesialis.',
         points: [
           'Paket medical check-up eksekutif',
           'MRI, CT dosis rendah, dan PET-CT',
@@ -167,8 +163,7 @@ const id: Dictionary = {
       },
       oncology: {
         name: 'Perawatan kanker',
-        summary:
-          'Pusat kanker multidisiplin dengan jumlah kasus yang besar, radioterapi modern, dan akses ke terapi sel serta terapi target yang baru disetujui.',
+        summary: 'Pusat kanker multidisiplin dengan jumlah kasus yang besar, radioterapi modern, dan akses ke terapi sel serta terapi target yang baru disetujui.',
         points: [
           'Terapi sel CAR-T untuk kanker darah',
           'Terapi proton dan ion berat (ion karbon)',
@@ -179,8 +174,7 @@ const id: Dictionary = {
       },
       tcm: {
         name: 'Pengobatan Tradisional Tiongkok',
-        summary:
-          'Program integratif di rumah sakit TCM terkemuka untuk nyeri, pemulihan, dan penyakit kronis, disertai diagnostik modern.',
+        summary: 'Program integratif di rumah sakit TCM terkemuka untuk nyeri, pemulihan, dan penyakit kronis, disertai diagnostik modern.',
         points: [
           'Akupunktur dan moksibusi',
           'Pijat terapeutik tuina',
@@ -191,9 +185,13 @@ const id: Dictionary = {
       },
       dental: {
         name: 'Perawatan gigi',
-        summary:
-          'Implan, ortodonti, dan rehabilitasi seluruh mulut dengan sistem implan internasional dan perencanaan perawatan digital.',
-        points: ['Implan gigi', 'Mahkota dan veneer', 'Ortodonti dan aligner bening', 'Rehabilitasi seluruh mulut'],
+        summary: 'Implan, ortodonti, dan rehabilitasi seluruh mulut dengan sistem implan internasional dan perencanaan perawatan digital.',
+        points: [
+          'Implan gigi',
+          'Mahkota dan veneer',
+          'Ortodonti dan aligner bening',
+          'Rehabilitasi seluruh mulut',
+        ],
         stay: '3–10 hari; implan mungkin memerlukan dua kali kunjungan',
       },
       eye: {
@@ -209,8 +207,7 @@ const id: Dictionary = {
       },
       ortho: {
         name: 'Ortopedi & tulang belakang',
-        summary:
-          'Penggantian sendi, bedah tulang belakang, dan kedokteran olahraga, yang makin banyak berbantuan robot, dilanjutkan rehabilitasi terstruktur.',
+        summary: 'Penggantian sendi, bedah tulang belakang, dan kedokteran olahraga, yang makin banyak berbantuan robot, dilanjutkan rehabilitasi terstruktur.',
         points: [
           'Penggantian sendi panggul dan lutut',
           'Bedah tulang belakang minimal invasif',
@@ -221,8 +218,7 @@ const id: Dictionary = {
       },
       cardio: {
         name: 'Jantung & pembuluh darah',
-        summary:
-          'Pusat kardiovaskular nasional yang menyediakan tindakan intervensi dan bedah untuk penyakit jantung kompleks.',
+        summary: 'Pusat kardiovaskular nasional yang menyediakan tindakan intervensi dan bedah untuk penyakit jantung kompleks.',
         points: [
           'Angiografi koroner dan pemasangan stent',
           'Perbaikan dan penggantian katup, termasuk TAVR',
@@ -233,8 +229,7 @@ const id: Dictionary = {
       },
       remote: {
         name: 'Second opinion jarak jauh',
-        summary:
-          'Sebelum memutuskan berangkat, dokter spesialis di Tiongkok meninjau rekam medis dan hasil pencitraan Anda, lalu membahas pilihan melalui panggilan video.',
+        summary: 'Sebelum memutuskan berangkat, dokter spesialis di Tiongkok meninjau rekam medis dan hasil pencitraan Anda, lalu membahas pilihan melalui panggilan video.',
         points: [
           'Tinjauan laporan dan hasil pencitraan',
           'Konsultasi video dengan penerjemah',
@@ -251,10 +246,8 @@ const id: Dictionary = {
   },
   hospitals: {
     title: 'Rumah sakit dan kota tujuan',
-    intro:
-      'Rumah sakit terkuat di Tiongkok terpusat di beberapa kota. Berikut institusi ternama yang sering ditanyakan pasien internasional, dikelompokkan per kota.',
-    disclaimer:
-      'Daftar rumah sakit ini hanya sebagai informasi. Pencantuman tidak berarti ada kemitraan atau rekomendasi, dan layanan bagi pasien internasional berbeda di tiap rumah sakit. Untuk setiap kasus, kami memastikan kepada rumah sakit bahwa Anda dapat diterima sebelum Anda berangkat.',
+    intro: 'Rumah sakit terkuat di Tiongkok terpusat di beberapa kota. Berikut institusi ternama yang sering ditanyakan pasien internasional, dikelompokkan per kota.',
+    disclaimer: 'Daftar rumah sakit ini hanya sebagai informasi. Pencantuman tidak berarti ada kemitraan atau rekomendasi, dan layanan bagi pasien internasional berbeda di tiap rumah sakit. Untuk setiap kasus, kami memastikan kepada rumah sakit bahwa Anda dapat diterima sebelum Anda berangkat.',
     types: {
       public: 'Rumah sakit pemerintah',
       private: 'Rumah sakit swasta',
@@ -278,18 +271,15 @@ const id: Dictionary = {
     cities: {
       beijing: {
         name: 'Beijing',
-        blurb:
-          'Ibu kota ini menjadi tempat banyak rumah sakit nasional terbaik Tiongkok — pilihan utama untuk diagnosis kompleks, penyakit jantung, saraf, dan kanker.',
+        blurb: 'Ibu kota ini menjadi tempat banyak rumah sakit nasional terbaik Tiongkok — pilihan utama untuk diagnosis kompleks, penyakit jantung, saraf, dan kanker.',
       },
       shanghai: {
         name: 'Shanghai',
-        blurb:
-          'Kota paling internasional di Tiongkok, dengan lebih dari 20 rumah sakit pemerintah dalam program percontohan wisata medis internasional serta rumah sakit swasta yang kuat. Dikenal untuk onkologi serta terapi proton dan ion berat.',
+        blurb: 'Kota paling internasional di Tiongkok, dengan lebih dari 20 rumah sakit pemerintah dalam program percontohan wisata medis internasional serta rumah sakit swasta yang kuat. Dikenal untuk onkologi serta terapi proton dan ion berat.',
       },
       guangzhou: {
         name: 'Guangzhou',
-        blurb:
-          'Pusat medis di selatan yang dekat dengan Hong Kong dan Asia Tenggara, terkenal untuk perawatan kanker, mata, dan Pengobatan Tradisional Tiongkok.',
+        blurb: 'Pusat medis di selatan yang dekat dengan Hong Kong dan Asia Tenggara, terkenal untuk perawatan kanker, mata, dan Pengobatan Tradisional Tiongkok.',
       },
       shenzhen: {
         name: 'Shenzhen',
@@ -297,18 +287,15 @@ const id: Dictionary = {
       },
       hangzhou: {
         name: 'Hangzhou',
-        blurb:
-          'Lokasi rumah sakit pendidikan Universitas Zhejiang yang unggul dalam bedah hepatobilier dan bedah minimal invasif, sekitar satu jam naik kereta dari Shanghai.',
+        blurb: 'Lokasi rumah sakit pendidikan Universitas Zhejiang yang unggul dalam bedah hepatobilier dan bedah minimal invasif, sekitar satu jam naik kereta dari Shanghai.',
       },
       chengdu: {
         name: 'Chengdu',
-        blurb:
-          'Pusat medis Tiongkok bagian barat, dengan West China Hospital sebagai andalannya — salah satu rumah sakit terbesar dan berperingkat tertinggi di negeri ini.',
+        blurb: 'Pusat medis Tiongkok bagian barat, dengan West China Hospital sebagai andalannya — salah satu rumah sakit terbesar dan berperingkat tertinggi di negeri ini.',
       },
       hainan: {
         name: 'Hainan · Boao Lecheng',
-        blurb:
-          'Pulau tropis dengan zona percontohan nasional, tempat rumah sakit berizin boleh menggunakan obat dan alat inovatif yang telah disetujui di luar negeri tetapi belum beredar di Tiongkok daratan — dan bebas visanya mencakup tujuan berobat.',
+        blurb: 'Pulau tropis dengan zona percontohan nasional, tempat rumah sakit berizin boleh menggunakan obat dan alat inovatif yang telah disetujui di luar negeri tetapi belum beredar di Tiongkok daratan — dan bebas visanya mencakup tujuan berobat.',
       },
     },
     choose: {
@@ -331,8 +318,7 @@ const id: Dictionary = {
   },
   visa: {
     title: 'Panduan visa & masuk',
-    intro:
-      'Masuk ke Tiongkok jauh lebih mudah sejak 2024. Jalur yang cocok bergantung pada paspor Anda, lama perawatan, dan lokasi berobat. Halaman ini berisi panduan umum, bukan nasihat hukum — selalu pastikan ke sumber resmi sebelum memesan tiket.',
+    intro: 'Masuk ke Tiongkok jauh lebih mudah sejak 2024. Jalur yang cocok bergantung pada paspor Anda, lama perawatan, dan lokasi berobat. Halaman ini berisi panduan umum, bukan nasihat hukum — selalu pastikan ke sumber resmi sebelum memesan tiket.',
     options: [
       {
         title: 'Bebas visa 30 hari',
@@ -378,7 +364,9 @@ const id: Dictionary = {
         title: 'Jika perawatan lebih lama dari rencana',
         badge: 'Perpanjangan',
         body: 'Anda dapat mengajukan perpanjangan atau izin tinggal ke kantor Administrasi Keluar-Masuk setempat sebelum izin Anda berakhir, dengan surat keterangan dari rumah sakit.',
-        points: ['Ajukan sekurang-kurangnya tujuh hari sebelum masa tinggal yang diizinkan berakhir.'],
+        points: [
+          'Ajukan sekurang-kurangnya tujuh hari sebelum masa tinggal yang diizinkan berakhir.',
+        ],
       },
     ],
     arrival: {
@@ -403,17 +391,14 @@ const id: Dictionary = {
       visaCenter: 'Pusat Layanan Permohonan Visa Tiongkok',
       arrivalCard: 'Kartu kedatangan daring',
     },
-    disclaimer:
-      'Aturan visa dapat berubah dan diterapkan pihak berwenang kasus per kasus. Kami bukan agen visa dan tidak dapat menjamin Anda diizinkan masuk. Daftar negara dan tanggal di atas hanyalah ringkasan; pengumuman resmilah yang berlaku.',
+    disclaimer: 'Aturan visa dapat berubah dan diterapkan pihak berwenang kasus per kasus. Kami bukan agen visa dan tidak dapat menjamin Anda diizinkan masuk. Daftar negara dan tanggal di atas hanyalah ringkasan; pengumuman resmilah yang berlaku.',
   },
   costs: {
     title: 'Biaya & pembayaran',
-    intro:
-      'Pasien internasional membayar sendiri biaya berobat di Tiongkok. Tarif di departemen internasional dan rumah sakit swasta lebih tinggi daripada tarif rumah sakit pemerintah setempat, tetapi sering kali jauh di bawah tarif swasta di Amerika Serikat dan negara berbiaya tinggi lainnya.',
+    intro: 'Pasien internasional membayar sendiri biaya berobat di Tiongkok. Tarif di departemen internasional dan rumah sakit swasta lebih tinggi daripada tarif rumah sakit pemerintah setempat, tetapi sering kali jauh di bawah tarif swasta di Amerika Serikat dan negara berbiaya tinggi lainnya.',
     table: {
       title: 'Kisaran harga indikatif',
-      caption:
-        'Kisaran perkiraan dalam dolar AS, dihimpun dari pemberitaan publik tahun 2026. Ini bukan penawaran harga — yang berlaku adalah perkiraan tertulis dari rumah sakit Anda.',
+      caption: 'Kisaran perkiraan dalam dolar AS, dihimpun dari pemberitaan publik tahun 2026. Ini bukan penawaran harga — yang berlaku adalah perkiraan tertulis dari rumah sakit Anda.',
       service: 'Layanan',
       range: 'Kisaran indikatif di Tiongkok',
       note: 'Perlu diketahui',
@@ -423,8 +408,14 @@ const id: Dictionary = {
           note: 'Bergantung pada tambahan pencitraan (MRI, CT, PET-CT) dan endoskopi',
         },
         mri: { name: 'MRI, satu area', note: 'Biasanya tersedia dalam beberapa hari' },
-        implant: { name: 'Implan gigi dengan mahkota, per gigi', note: 'Merek implan paling menentukan harga' },
-        vision: { name: 'Koreksi penglihatan laser, kedua mata', note: 'SMILE atau LASIK; lensa ICL lebih mahal' },
+        implant: {
+          name: 'Implan gigi dengan mahkota, per gigi',
+          note: 'Merek implan paling menentukan harga',
+        },
+        vision: {
+          name: 'Koreksi penglihatan laser, kedua mata',
+          note: 'SMILE atau LASIK; lensa ICL lebih mahal',
+        },
         proton: {
           name: 'Terapi proton atau ion berat, satu rangkaian penuh',
           note: 'Bervariasi menurut jenis tumor dan jumlah sesi',
@@ -535,8 +526,7 @@ const id: Dictionary = {
   },
   contact: {
     title: 'Mulai tinjauan kasus gratis Anda',
-    intro:
-      'Ceritakan secara singkat kebutuhan Anda. Koordinator akan membalas dalam bahasa Anda beserta langkah selanjutnya. Mengirim formulir ini tidak menimbulkan kewajiban apa pun.',
+    intro: 'Ceritakan secara singkat kebutuhan Anda. Koordinator akan membalas dalam bahasa Anda beserta langkah selanjutnya. Mengirim formulir ini tidak menimbulkan kewajiban apa pun.',
     form: {
       name: 'Nama lengkap',
       email: 'Email',
@@ -546,8 +536,7 @@ const id: Dictionary = {
       city: 'Kota pilihan (opsional)',
       timeframe: 'Kapan Anda ingin berangkat? (opsional)',
       message: 'Jelaskan secara singkat situasi Anda',
-      messageHint:
-        'Misalnya: diagnosis, perawatan yang sudah dijalani, dan harapan Anda. Mohon jangan mengirim dokumen dulu — kami akan memberikan cara yang aman untuk membagikannya.',
+      messageHint: 'Misalnya: diagnosis, perawatan yang sudah dijalani, dan harapan Anda. Mohon jangan mengirim dokumen dulu — kami akan memberikan cara yang aman untuk membagikannya.',
       select: 'Silakan pilih',
       other: 'Lainnya / belum yakin',
       anyCity: 'Tidak ada preferensi',
@@ -557,8 +546,7 @@ const id: Dictionary = {
         quarter: 'Dalam tiga bulan',
         exploring: 'Masih mencari informasi',
       },
-      consent:
-        'Saya setuju YiLu Health menggunakan informasi yang saya berikan, termasuk informasi kesehatan, untuk menjawab pertanyaan saya, sebagaimana dijelaskan dalam pemberitahuan privasi.',
+      consent: 'Saya setuju YiLu Health menggunakan informasi yang saya berikan, termasuk informasi kesehatan, untuk menjawab pertanyaan saya, sebagaimana dijelaskan dalam pemberitahuan privasi.',
       privacyLink: 'Pemberitahuan privasi',
       submit: 'Kirim pertanyaan',
       sending: 'Mengirim…',
@@ -577,8 +565,7 @@ const id: Dictionary = {
         'Kami memberi tahu rekam medis apa yang perlu dikirim dan cara membagikannya dengan aman.',
         'Anda menerima masukan dokter spesialis, pilihan, dan perkiraan biaya.',
       ],
-      privacy:
-        'Informasi Anda hanya digunakan untuk menjawab pertanyaan Anda dan hanya dibagikan kepada rumah sakit atas persetujuan Anda.',
+      privacy: 'Informasi Anda hanya digunakan untuk menjawab pertanyaan Anda dan hanya dibagikan kepada rumah sakit atas persetujuan Anda.',
       directTitle: 'Lebih suka menghubungi kami langsung?',
       email: 'Email',
       whatsapp: 'WhatsApp',
@@ -624,8 +611,7 @@ const id: Dictionary = {
     explore: 'Jelajahi',
     support: 'Bantuan',
     legal: 'Privasi & penafian',
-    disclaimer:
-      'YiLu Health adalah koordinator perjalanan medis, bukan penyedia layanan medis. Isi situs ini merupakan informasi umum, bukan nasihat medis.',
+    disclaimer: 'YiLu Health adalah koordinator perjalanan medis, bukan penyedia layanan medis. Isi situs ini merupakan informasi umum, bukan nasihat medis.',
     rights: 'Hak cipta dilindungi.',
   },
   notFound: {

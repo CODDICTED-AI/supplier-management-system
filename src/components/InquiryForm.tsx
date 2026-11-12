@@ -69,13 +69,13 @@ export function InquiryForm({ locale, labels, treatments, cities, legalHref }: P
 
   if (status === 'success') {
     return (
-      <div className="card p-8 text-center sm:p-12" role="status">
-        <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-jade-50 text-jade-600">
-          <Icon name="check" className="size-7" />
+      <div className="border border-ink p-8 sm:p-12" role="status">
+        <span className="flex size-12 items-center justify-center bg-cobalt text-white">
+          <Icon name="check" className="size-6" />
         </span>
-        <h2 className="title-md mt-6">{labels.successTitle}</h2>
-        <p className="mx-auto mt-3 max-w-md text-ink-soft">{labels.successBody}</p>
-        <button type="button" className="btn btn-ghost mt-8" onClick={() => setStatus('idle')}>
+        <h2 className="h3 mt-7">{labels.successTitle}</h2>
+        <p className="mt-3 max-w-md text-ink-soft">{labels.successBody}</p>
+        <button type="button" className="btn btn-outline mt-9" onClick={() => setStatus('idle')}>
           {labels.again}
         </button>
       </div>
@@ -83,7 +83,7 @@ export function InquiryForm({ locale, labels, treatments, cities, legalHref }: P
   }
 
   return (
-    <form onSubmit={onSubmit} className="card grid gap-5 p-6 sm:grid-cols-2 sm:p-9">
+    <form onSubmit={onSubmit} className="grid gap-x-6 gap-y-6 sm:grid-cols-2">
       <div>
         <label htmlFor="inq-name" className="field-label">
           {labels.name}
@@ -207,7 +207,7 @@ export function InquiryForm({ locale, labels, treatments, cities, legalHref }: P
             type="checkbox"
             name="consent"
             required
-            className="mt-1 size-[1.15rem] shrink-0 accent-jade-600"
+            className="mt-1 size-[1.15rem] shrink-0 accent-cobalt"
             aria-invalid={bad('consent')}
           />
           <span>
@@ -220,7 +220,7 @@ export function InquiryForm({ locale, labels, treatments, cities, legalHref }: P
       </div>
 
       {error && (
-        <p role="alert" className="rounded-xl bg-cinnabar-soft px-4 py-3 text-[0.9375rem] font-medium text-cinnabar-deep sm:col-span-2">
+        <p role="alert" className="border-s-2 border-seal bg-seal-wash px-4 py-3 text-[0.9375rem] font-medium text-seal-deep sm:col-span-2">
           {error}
         </p>
       )}
@@ -228,7 +228,7 @@ export function InquiryForm({ locale, labels, treatments, cities, legalHref }: P
       <div className="sm:col-span-2">
         <button type="submit" className="btn btn-primary w-full sm:w-auto" disabled={status === 'sending'}>
           {status === 'sending' ? labels.sending : labels.submit}
-          {status !== 'sending' && <Icon name="send" className="size-[1.1rem] rtl:-scale-x-100" />}
+          {status !== 'sending' && <Icon name="arrow" flip className="size-5" />}
         </button>
       </div>
     </form>

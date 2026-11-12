@@ -9,6 +9,17 @@
 export const cityIds = ['beijing', 'shanghai', 'guangzhou', 'shenzhen', 'hangzhou', 'chengdu', 'hainan'] as const
 export type CityId = (typeof cityIds)[number]
 
+/** IATA code of the main international airport serving each destination. */
+export const cityAirports: Record<CityId, string> = {
+  beijing: 'PEK',
+  shanghai: 'PVG',
+  guangzhou: 'CAN',
+  shenzhen: 'SZX',
+  hangzhou: 'HGH',
+  chengdu: 'TFU',
+  hainan: 'HAK',
+}
+
 export type HospitalType = 'public' | 'private' | 'zone'
 
 export type HospitalTag =

@@ -3,8 +3,7 @@ import type { Dictionary } from './en'
 const vi: Dictionary = {
   meta: {
     tagline: 'Dịch vụ khám chữa bệnh tại Trung Quốc cho bệnh nhân quốc tế',
-    description:
-      'YiLu Health hỗ trợ bệnh nhân quốc tế đến các bệnh viện hàng đầu Trung Quốc: đánh giá hồ sơ, đặt lịch khám, giấy tờ xin thị thực, phiên dịch, hỗ trợ thanh toán và theo dõi sau khi về nước.',
+    description: 'YiLu Health hỗ trợ bệnh nhân quốc tế đến các bệnh viện hàng đầu Trung Quốc: đánh giá hồ sơ, đặt lịch khám, giấy tờ xin thị thực, phiên dịch, hỗ trợ thanh toán và theo dõi sau khi về nước.',
   },
   nav: {
     treatments: 'Dịch vụ điều trị',
@@ -22,39 +21,32 @@ const vi: Dictionary = {
   common: {
     reviewed: 'Thông tin được rà soát lần cuối: {date}',
     officialSources: 'Nguồn chính thức',
-    learnMore: 'Tìm hiểu thêm',
     typicalStay: 'Thời gian lưu trú thường gặp',
   },
   home: {
     hero: {
       eyebrow: 'Khám chữa bệnh tại Trung Quốc',
       title: 'Bệnh viện hàng đầu Trung Quốc, trong tầm tay bạn.',
-      subtitle:
-        'Chúng tôi giúp bệnh nhân quốc tế tìm đúng bệnh viện tại Trung Quốc — đánh giá hồ sơ, sắp xếp lịch khám, giấy tờ xin thị thực, phiên dịch và thanh toán, đồng hành cùng bạn đến tận giai đoạn theo dõi sau khi về nước.',
+      subtitle: 'Chúng tôi giúp bệnh nhân quốc tế tìm đúng bệnh viện tại Trung Quốc — đánh giá hồ sơ, sắp xếp lịch khám, giấy tờ xin thị thực, phiên dịch và thanh toán, đồng hành cùng bạn đến tận giai đoạn theo dõi sau khi về nước.',
       primary: 'Bắt đầu đánh giá miễn phí',
       secondary: 'Xem quy trình',
       notes: ['Đánh giá ban đầu miễn phí', 'Không ràng buộc', 'Bảo mật'],
-    },
-    journey: {
-      title: 'Một hành trình điển hình',
-      note: 'Lộ trình mang tính minh họa — mỗi trường hợp một khác.',
-      steps: [
-        { when: 'Ngày 1', text: 'Bạn gửi hồ sơ bệnh án' },
-        { when: 'Ngày 2–5', text: 'Ý kiến bác sĩ chuyên khoa và dự toán chi phí' },
-        { when: 'Tuần 2', text: 'Lịch hẹn và giấy tờ xin thị thực' },
-        { when: 'Khi đến nơi', text: 'Đón sân bay, phiên dịch, làm thủ tục nhập viện' },
-        { when: 'Sau đó', text: 'Hồ sơ đã dịch và theo dõi từ xa' },
-      ],
+      glyphs: { yi: 'y học', lu: 'con đường' },
     },
     stats: {
       items: [
-        { value: '1,28 triệu', label: 'lượt bệnh nhân quốc tế đến các bệnh viện lớn của Trung Quốc năm 2025' },
+        {
+          value: '1,28 triệu',
+          label: 'lượt bệnh nhân quốc tế đến các bệnh viện lớn của Trung Quốc năm 2025',
+        },
         { value: '+73,6%', label: 'mức tăng số lượt khám này trong ba năm' },
-        { value: '79', label: 'quốc gia được miễn thị thực nhập cảnh Trung Quốc đại lục (tháng 2/2026)' },
+        {
+          value: '79',
+          label: 'quốc gia được miễn thị thực nhập cảnh Trung Quốc đại lục (tháng 2/2026)',
+        },
         { value: '240 giờ', label: 'quá cảnh miễn thị thực cho công dân 57 quốc gia' },
       ],
-      source:
-        'Nguồn: Ủy ban Y tế Quốc gia Trung Quốc; Bộ Ngoại giao Trung Quốc; Cục Quản lý Xuất nhập cảnh Quốc gia Trung Quốc.',
+      source: 'Nguồn: Ủy ban Y tế Quốc gia Trung Quốc; Bộ Ngoại giao Trung Quốc; Cục Quản lý Xuất nhập cảnh Quốc gia Trung Quốc.',
     },
     why: {
       title: 'Vì sao bệnh nhân chọn Trung Quốc',
@@ -96,26 +88,32 @@ const vi: Dictionary = {
       subtitle: 'Một điều phối viên duy nhất, từ tin nhắn đầu tiên đến khi theo dõi tại nhà.',
       steps: [
         {
+          when: 'Ngày 1',
           title: 'Chia sẻ trường hợp của bạn',
           body: 'Gửi chẩn đoán, kết quả xét nghiệm và mong muốn của bạn qua biểu mẫu. Không cần thanh toán.',
         },
         {
+          when: 'Ngày 2–5',
           title: 'Nhận phương án và dự toán',
           body: 'Chúng tôi trao đổi với các bệnh viện phù hợp rồi gửi bạn ý kiến bác sĩ chuyên khoa, kế hoạch đề xuất và dự toán chi phí bằng văn bản.',
         },
         {
+          when: 'Tuần 2',
           title: 'Chuẩn bị chuyến đi',
           body: 'Chúng tôi đặt lịch khám, xin thư của bệnh viện để làm thị thực nếu cần, đồng thời sắp xếp chỗ ở và đón sân bay.',
         },
         {
+          when: 'Khi đến nơi',
           title: 'Điều trị có phiên dịch',
           body: 'Điều phối viên và phiên dịch y khoa đi cùng bạn khi đăng ký, khám, làm xét nghiệm và thanh toán.',
         },
         {
+          when: 'Sau đó',
           title: 'Theo dõi tại nhà',
           body: 'Bạn ra về với hồ sơ đã dịch và kế hoạch theo dõi; chúng tôi sắp xếp các buổi tái khám từ xa với bác sĩ của bạn.',
         },
       ],
+      note: 'Lộ trình mang tính minh họa — mỗi trường hợp một khác.',
     },
     destinations: {
       title: 'Bạn có thể điều trị ở đâu',
@@ -149,14 +147,12 @@ const vi: Dictionary = {
   },
   treatments: {
     title: 'Dịch vụ điều trị',
-    intro:
-      'Đây là những dịch vụ bệnh nhân quốc tế hỏi chúng tôi nhiều nhất. Nếu nhu cầu của bạn không có trong danh sách, hãy gửi hồ sơ — chúng tôi sẽ nói thẳng liệu Trung Quốc có phải lựa chọn phù hợp hay không.',
+    intro: 'Đây là những dịch vụ bệnh nhân quốc tế hỏi chúng tôi nhiều nhất. Nếu nhu cầu của bạn không có trong danh sách, hãy gửi hồ sơ — chúng tôi sẽ nói thẳng liệu Trung Quốc có phải lựa chọn phù hợp hay không.',
     popular: 'Thường được yêu cầu',
     items: {
       checkup: {
         name: 'Khám sức khỏe tổng quát & tầm soát',
-        summary:
-          'Chương trình toàn diện trong một đến hai ngày, chẩn đoán hình ảnh và nội soi ngay tại chỗ, có bác sĩ chuyên khoa giải thích kết quả.',
+        summary: 'Chương trình toàn diện trong một đến hai ngày, chẩn đoán hình ảnh và nội soi ngay tại chỗ, có bác sĩ chuyên khoa giải thích kết quả.',
         points: [
           'Gói khám sức khỏe cao cấp',
           'MRI, CT liều thấp và PET-CT',
@@ -167,8 +163,7 @@ const vi: Dictionary = {
       },
       oncology: {
         name: 'Điều trị ung thư',
-        summary:
-          'Các trung tâm ung bướu đa chuyên khoa với số ca lớn, xạ trị hiện đại và khả năng tiếp cận các liệu pháp tế bào, thuốc nhắm trúng đích mới được phê duyệt.',
+        summary: 'Các trung tâm ung bướu đa chuyên khoa với số ca lớn, xạ trị hiện đại và khả năng tiếp cận các liệu pháp tế bào, thuốc nhắm trúng đích mới được phê duyệt.',
         points: [
           'Liệu pháp tế bào CAR-T cho ung thư máu',
           'Xạ trị proton và ion nặng (ion carbon)',
@@ -179,15 +174,24 @@ const vi: Dictionary = {
       },
       tcm: {
         name: 'Y học cổ truyền Trung Quốc',
-        summary:
-          'Chương trình kết hợp Đông – Tây y tại các bệnh viện y học cổ truyền hàng đầu cho đau mạn tính, phục hồi và bệnh mạn tính, đi kèm chẩn đoán hiện đại.',
-        points: ['Châm cứu và cứu ngải', 'Xoa bóp trị liệu tuina', 'Thuốc thảo dược kê theo từng người', 'Phục hồi chức năng sau đột quỵ hoặc phẫu thuật'],
+        summary: 'Chương trình kết hợp Đông – Tây y tại các bệnh viện y học cổ truyền hàng đầu cho đau mạn tính, phục hồi và bệnh mạn tính, đi kèm chẩn đoán hiện đại.',
+        points: [
+          'Châm cứu và cứu ngải',
+          'Xoa bóp trị liệu tuina',
+          'Thuốc thảo dược kê theo từng người',
+          'Phục hồi chức năng sau đột quỵ hoặc phẫu thuật',
+        ],
         stay: '1–4 tuần',
       },
       dental: {
         name: 'Nha khoa',
         summary: 'Cấy ghép implant, chỉnh nha và phục hình toàn hàm với các hệ thống implant quốc tế và kế hoạch điều trị kỹ thuật số.',
-        points: ['Cấy ghép implant', 'Mão răng và mặt dán sứ', 'Chỉnh nha và khay trong suốt', 'Phục hình toàn hàm'],
+        points: [
+          'Cấy ghép implant',
+          'Mão răng và mặt dán sứ',
+          'Chỉnh nha và khay trong suốt',
+          'Phục hình toàn hàm',
+        ],
         stay: '3–10 ngày; cấy implant có thể cần hai lần đi',
       },
       eye: {
@@ -203,9 +207,13 @@ const vi: Dictionary = {
       },
       ortho: {
         name: 'Chấn thương chỉnh hình & cột sống',
-        summary:
-          'Thay khớp, phẫu thuật cột sống và y học thể thao, ngày càng nhiều ca có robot hỗ trợ, tiếp nối bằng chương trình phục hồi chức năng bài bản.',
-        points: ['Thay khớp háng và khớp gối', 'Phẫu thuật cột sống ít xâm lấn', 'Nội soi khớp và chấn thương thể thao', 'Chương trình phục hồi chức năng'],
+        summary: 'Thay khớp, phẫu thuật cột sống và y học thể thao, ngày càng nhiều ca có robot hỗ trợ, tiếp nối bằng chương trình phục hồi chức năng bài bản.',
+        points: [
+          'Thay khớp háng và khớp gối',
+          'Phẫu thuật cột sống ít xâm lấn',
+          'Nội soi khớp và chấn thương thể thao',
+          'Chương trình phục hồi chức năng',
+        ],
         stay: '2–4 tuần',
       },
       cardio: {
@@ -221,8 +229,7 @@ const vi: Dictionary = {
       },
       remote: {
         name: 'Hội chẩn từ xa',
-        summary:
-          'Trước khi quyết định lên đường, một bác sĩ chuyên khoa Trung Quốc xem hồ sơ và phim chụp của bạn, rồi trao đổi các lựa chọn qua cuộc gọi video.',
+        summary: 'Trước khi quyết định lên đường, một bác sĩ chuyên khoa Trung Quốc xem hồ sơ và phim chụp của bạn, rồi trao đổi các lựa chọn qua cuộc gọi video.',
         points: [
           'Xem xét kết quả và phim chụp',
           'Tư vấn qua video có phiên dịch',
@@ -239,10 +246,8 @@ const vi: Dictionary = {
   },
   hospitals: {
     title: 'Bệnh viện và điểm đến',
-    intro:
-      'Những bệnh viện mạnh nhất Trung Quốc tập trung ở một số thành phố. Dưới đây là các cơ sở nổi tiếng mà bệnh nhân quốc tế thường hỏi, xếp theo thành phố.',
-    disclaimer:
-      'Danh sách bệnh viện chỉ nhằm cung cấp thông tin. Việc nêu tên không hàm ý quan hệ đối tác hay bảo chứng, và dịch vụ dành cho bệnh nhân quốc tế ở mỗi bệnh viện một khác. Với từng trường hợp, chúng tôi xác nhận với bệnh viện về khả năng tiếp nhận trước khi bạn lên đường.',
+    intro: 'Những bệnh viện mạnh nhất Trung Quốc tập trung ở một số thành phố. Dưới đây là các cơ sở nổi tiếng mà bệnh nhân quốc tế thường hỏi, xếp theo thành phố.',
+    disclaimer: 'Danh sách bệnh viện chỉ nhằm cung cấp thông tin. Việc nêu tên không hàm ý quan hệ đối tác hay bảo chứng, và dịch vụ dành cho bệnh nhân quốc tế ở mỗi bệnh viện một khác. Với từng trường hợp, chúng tôi xác nhận với bệnh viện về khả năng tiếp nhận trước khi bạn lên đường.',
     types: {
       public: 'Bệnh viện công',
       private: 'Bệnh viện tư',
@@ -266,13 +271,11 @@ const vi: Dictionary = {
     cities: {
       beijing: {
         name: 'Bắc Kinh',
-        blurb:
-          'Thủ đô tập trung nhiều bệnh viện tuyến quốc gia hàng đầu Trung Quốc — lựa chọn số một cho chẩn đoán phức tạp, bệnh tim, thần kinh và ung thư.',
+        blurb: 'Thủ đô tập trung nhiều bệnh viện tuyến quốc gia hàng đầu Trung Quốc — lựa chọn số một cho chẩn đoán phức tạp, bệnh tim, thần kinh và ung thư.',
       },
       shanghai: {
         name: 'Thượng Hải',
-        blurb:
-          'Thành phố quốc tế nhất Trung Quốc, có hơn 20 bệnh viện công tham gia chương trình thí điểm du lịch y tế quốc tế cùng các bệnh viện tư mạnh. Nổi tiếng về ung bướu và xạ trị proton, ion nặng.',
+        blurb: 'Thành phố quốc tế nhất Trung Quốc, có hơn 20 bệnh viện công tham gia chương trình thí điểm du lịch y tế quốc tế cùng các bệnh viện tư mạnh. Nổi tiếng về ung bướu và xạ trị proton, ion nặng.',
       },
       guangzhou: {
         name: 'Quảng Châu',
@@ -284,18 +287,15 @@ const vi: Dictionary = {
       },
       hangzhou: {
         name: 'Hàng Châu',
-        blurb:
-          'Nơi đặt các bệnh viện thực hành của Đại học Chiết Giang, mạnh về phẫu thuật gan mật và phẫu thuật ít xâm lấn, cách Thượng Hải khoảng một giờ tàu cao tốc.',
+        blurb: 'Nơi đặt các bệnh viện thực hành của Đại học Chiết Giang, mạnh về phẫu thuật gan mật và phẫu thuật ít xâm lấn, cách Thượng Hải khoảng một giờ tàu cao tốc.',
       },
       chengdu: {
         name: 'Thành Đô',
-        blurb:
-          'Trung tâm y tế của miền Tây Trung Quốc, với trụ cột là Bệnh viện Hoa Tây (West China Hospital) — một trong những bệnh viện lớn nhất và được xếp hạng cao nhất cả nước.',
+        blurb: 'Trung tâm y tế của miền Tây Trung Quốc, với trụ cột là Bệnh viện Hoa Tây (West China Hospital) — một trong những bệnh viện lớn nhất và được xếp hạng cao nhất cả nước.',
       },
       hainan: {
         name: 'Hải Nam · Bác Ngao Lạc Thành',
-        blurb:
-          'Hòn đảo nhiệt đới có khu thí điểm cấp quốc gia, nơi các bệnh viện được cấp phép có thể dùng thuốc và thiết bị tiên tiến đã được phê duyệt ở nước ngoài nhưng chưa lưu hành tại Trung Quốc đại lục — cùng chính sách miễn thị thực áp dụng cả cho mục đích chữa bệnh.',
+        blurb: 'Hòn đảo nhiệt đới có khu thí điểm cấp quốc gia, nơi các bệnh viện được cấp phép có thể dùng thuốc và thiết bị tiên tiến đã được phê duyệt ở nước ngoài nhưng chưa lưu hành tại Trung Quốc đại lục — cùng chính sách miễn thị thực áp dụng cả cho mục đích chữa bệnh.',
       },
     },
     choose: {
@@ -318,8 +318,7 @@ const vi: Dictionary = {
   },
   visa: {
     title: 'Hướng dẫn thị thực & nhập cảnh',
-    intro:
-      'Từ năm 2024, nhập cảnh Trung Quốc đã đơn giản hơn nhiều. Lựa chọn phù hợp tùy vào hộ chiếu, thời gian điều trị và nơi bạn điều trị. Trang này là hướng dẫn chung, không phải tư vấn pháp lý — hãy luôn kiểm tra nguồn chính thức trước khi đặt vé.',
+    intro: 'Từ năm 2024, nhập cảnh Trung Quốc đã đơn giản hơn nhiều. Lựa chọn phù hợp tùy vào hộ chiếu, thời gian điều trị và nơi bạn điều trị. Trang này là hướng dẫn chung, không phải tư vấn pháp lý — hãy luôn kiểm tra nguồn chính thức trước khi đặt vé.',
     options: [
       {
         title: 'Miễn thị thực 30 ngày',
@@ -335,7 +334,10 @@ const vi: Dictionary = {
         title: 'Miễn thị thực 30 ngày vào Hải Nam',
         badge: 'Được phép chữa bệnh',
         body: 'Công dân khoảng 60 quốc gia được vào tỉnh Hải Nam không cần thị thực tối đa 30 ngày, và chữa bệnh là mục đích được nêu rõ là hợp lệ. Hải Nam là nơi có Khu thí điểm du lịch y tế quốc tế Bác Ngao Lạc Thành.',
-        points: ['Bạn chỉ được lưu trú trong phạm vi tỉnh Hải Nam.', 'Phù hợp cho khám tổng quát, thủ thuật theo kế hoạch và các liệu pháp có tại Bác Ngao Lạc Thành.'],
+        points: [
+          'Bạn chỉ được lưu trú trong phạm vi tỉnh Hải Nam.',
+          'Phù hợp cho khám tổng quát, thủ thuật theo kế hoạch và các liệu pháp có tại Bác Ngao Lạc Thành.',
+        ],
       },
       {
         title: 'Quá cảnh miễn thị thực 240 giờ',
@@ -362,7 +364,9 @@ const vi: Dictionary = {
         title: 'Nếu điều trị kéo dài hơn dự kiến',
         badge: 'Gia hạn',
         body: 'Bạn có thể nộp đơn tại cơ quan quản lý xuất nhập cảnh địa phương để xin gia hạn hoặc giấy phép lưu trú trước khi hết thời hạn được phép, kèm giấy xác nhận của bệnh viện.',
-        points: ['Hãy nộp đơn ít nhất bảy ngày trước khi hết thời hạn lưu trú được phép.'],
+        points: [
+          'Hãy nộp đơn ít nhất bảy ngày trước khi hết thời hạn lưu trú được phép.',
+        ],
       },
     ],
     arrival: {
@@ -387,17 +391,14 @@ const vi: Dictionary = {
       visaCenter: 'Trung tâm Dịch vụ Thị thực Trung Quốc',
       arrivalCard: 'Tờ khai nhập cảnh trực tuyến',
     },
-    disclaimer:
-      'Quy định thị thực có thể thay đổi và được cơ quan chức năng áp dụng theo từng trường hợp. Chúng tôi không phải đại lý thị thực và không thể bảo đảm việc nhập cảnh. Danh sách quốc gia và ngày tháng nêu trên chỉ là tóm tắt; thông báo chính thức mới có giá trị.',
+    disclaimer: 'Quy định thị thực có thể thay đổi và được cơ quan chức năng áp dụng theo từng trường hợp. Chúng tôi không phải đại lý thị thực và không thể bảo đảm việc nhập cảnh. Danh sách quốc gia và ngày tháng nêu trên chỉ là tóm tắt; thông báo chính thức mới có giá trị.',
   },
   costs: {
     title: 'Chi phí & thanh toán',
-    intro:
-      'Bệnh nhân quốc tế tự chi trả khi điều trị tại Trung Quốc. Giá tại các khoa quốc tế và bệnh viện tư cao hơn giá bệnh viện công thông thường, nhưng thường vẫn thấp hơn nhiều so với giá dịch vụ tư nhân tại Mỹ và các thị trường đắt đỏ khác.',
+    intro: 'Bệnh nhân quốc tế tự chi trả khi điều trị tại Trung Quốc. Giá tại các khoa quốc tế và bệnh viện tư cao hơn giá bệnh viện công thông thường, nhưng thường vẫn thấp hơn nhiều so với giá dịch vụ tư nhân tại Mỹ và các thị trường đắt đỏ khác.',
     table: {
       title: 'Khoảng giá tham khảo',
-      caption:
-        'Khoảng giá ước tính bằng đô la Mỹ, tổng hợp từ các thông tin công khai năm 2026. Đây không phải báo giá — bản dự toán bằng văn bản của bệnh viện mới là căn cứ.',
+      caption: 'Khoảng giá ước tính bằng đô la Mỹ, tổng hợp từ các thông tin công khai năm 2026. Đây không phải báo giá — bản dự toán bằng văn bản của bệnh viện mới là căn cứ.',
       service: 'Dịch vụ',
       range: 'Khoảng giá tham khảo tại Trung Quốc',
       note: 'Lưu ý',
@@ -407,8 +408,14 @@ const vi: Dictionary = {
           note: 'Tùy các hạng mục chẩn đoán hình ảnh (MRI, CT, PET-CT) và nội soi bổ sung',
         },
         mri: { name: 'Chụp MRI một vùng', note: 'Thường có lịch trong vài ngày' },
-        implant: { name: 'Cấy implant kèm mão răng, mỗi răng', note: 'Giá phụ thuộc chủ yếu vào hãng implant' },
-        vision: { name: 'Phẫu thuật khúc xạ bằng laser, hai mắt', note: 'SMILE hoặc LASIK; kính nội nhãn ICL đắt hơn' },
+        implant: {
+          name: 'Cấy implant kèm mão răng, mỗi răng',
+          note: 'Giá phụ thuộc chủ yếu vào hãng implant',
+        },
+        vision: {
+          name: 'Phẫu thuật khúc xạ bằng laser, hai mắt',
+          note: 'SMILE hoặc LASIK; kính nội nhãn ICL đắt hơn',
+        },
         proton: {
           name: 'Xạ trị proton hoặc ion nặng, trọn liệu trình',
           note: 'Thay đổi theo loại khối u và số buổi chiếu',
@@ -519,8 +526,7 @@ const vi: Dictionary = {
   },
   contact: {
     title: 'Bắt đầu đánh giá hồ sơ miễn phí',
-    intro:
-      'Hãy cho chúng tôi biết ngắn gọn bạn cần gì. Điều phối viên sẽ trả lời bằng ngôn ngữ của bạn kèm các bước tiếp theo. Việc gửi biểu mẫu này không tạo ra ràng buộc nào.',
+    intro: 'Hãy cho chúng tôi biết ngắn gọn bạn cần gì. Điều phối viên sẽ trả lời bằng ngôn ngữ của bạn kèm các bước tiếp theo. Việc gửi biểu mẫu này không tạo ra ràng buộc nào.',
     form: {
       name: 'Họ và tên',
       email: 'Email',
@@ -530,8 +536,7 @@ const vi: Dictionary = {
       city: 'Thành phố mong muốn (không bắt buộc)',
       timeframe: 'Bạn muốn đi khi nào? (không bắt buộc)',
       message: 'Mô tả ngắn gọn tình hình của bạn',
-      messageHint:
-        'Ví dụ: chẩn đoán, điều trị đã thực hiện và điều bạn mong đạt được. Vui lòng chưa gửi tài liệu — chúng tôi sẽ hướng dẫn cách chia sẻ an toàn.',
+      messageHint: 'Ví dụ: chẩn đoán, điều trị đã thực hiện và điều bạn mong đạt được. Vui lòng chưa gửi tài liệu — chúng tôi sẽ hướng dẫn cách chia sẻ an toàn.',
       select: 'Vui lòng chọn',
       other: 'Khác / chưa chắc',
       anyCity: 'Không có yêu cầu',
@@ -541,8 +546,7 @@ const vi: Dictionary = {
         quarter: 'Trong vòng ba tháng',
         exploring: 'Chỉ đang tìm hiểu',
       },
-      consent:
-        'Tôi đồng ý để YiLu Health sử dụng thông tin tôi cung cấp, bao gồm thông tin sức khỏe, nhằm trả lời yêu cầu của tôi, như nêu trong thông báo về quyền riêng tư.',
+      consent: 'Tôi đồng ý để YiLu Health sử dụng thông tin tôi cung cấp, bao gồm thông tin sức khỏe, nhằm trả lời yêu cầu của tôi, như nêu trong thông báo về quyền riêng tư.',
       privacyLink: 'Thông báo về quyền riêng tư',
       submit: 'Gửi yêu cầu',
       sending: 'Đang gửi…',
@@ -607,8 +611,7 @@ const vi: Dictionary = {
     explore: 'Khám phá',
     support: 'Hỗ trợ',
     legal: 'Quyền riêng tư & miễn trừ',
-    disclaimer:
-      'YiLu Health là đơn vị điều phối hành trình y tế, không phải nhà cung cấp dịch vụ y tế. Nội dung trên trang web này là thông tin chung, không phải lời khuyên y khoa.',
+    disclaimer: 'YiLu Health là đơn vị điều phối hành trình y tế, không phải nhà cung cấp dịch vụ y tế. Nội dung trên trang web này là thông tin chung, không phải lời khuyên y khoa.',
     rights: 'Bảo lưu mọi quyền.',
   },
   notFound: {

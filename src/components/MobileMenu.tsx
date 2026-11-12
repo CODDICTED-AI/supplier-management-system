@@ -41,38 +41,37 @@ export function MobileMenu({ locale, links, cta, labels }: Props) {
         aria-controls="mobile-menu"
         aria-label={open ? labels.close : labels.menu}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex size-11 items-center justify-center rounded-full border border-line-strong bg-white/60 text-ink"
+        className="-me-2 inline-flex size-11 items-center justify-center text-ink"
       >
-        <Icon name={open ? 'close' : 'menu'} />
+        <Icon name={open ? 'close' : 'menu'} className="size-6" />
       </button>
 
       {open && (
+        // Anchored to the sticky header (its positioned ancestor), filling the rest of the viewport.
         <div
           id="mobile-menu"
-          className="fixed inset-x-0 bottom-0 top-[4.5rem] z-40 overflow-y-auto border-t border-line bg-paper"
+          className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4.25rem)] overflow-y-auto border-t border-rule bg-paper"
         >
-          <nav className="shell flex flex-col gap-1 py-6">
+          <nav className="shell flex flex-col pb-10 pt-2">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 aria-current={pathname === link.href ? 'page' : undefined}
-                className="flex items-center justify-between rounded-2xl px-4 py-3.5 text-xl font-semibold text-ink aria-[current=page]:bg-jade-50 aria-[current=page]:text-jade-800"
+                className="flex items-center justify-between border-b border-rule py-4 text-[1.375rem] font-medium tracking-[-0.01em] text-ink aria-[current=page]:text-cobalt"
               >
                 {link.label}
                 <Icon name="arrow" flip className="size-5 text-ink-mute" />
               </Link>
             ))}
 
-            <Link href={cta.href} onClick={() => setOpen(false)} className="btn btn-primary mt-5">
+            <Link href={cta.href} onClick={() => setOpen(false)} className="btn btn-primary mt-7">
               {cta.label}
             </Link>
 
-            <p className="mt-8 px-1 text-sm font-semibold uppercase tracking-[var(--caps-tracking)] text-ink-mute">
-              {labels.language}
-            </p>
-            <ul className="mt-3 grid grid-cols-2 gap-2">
+            <p className="label mt-10">{labels.language}</p>
+            <ul className="mt-3 grid grid-cols-2 gap-x-6">
               {locales.map((code) => {
                 const meta = localeMeta[code]
                 const active = code === locale
@@ -82,14 +81,9 @@ export function MobileMenu({ locale, links, cta, labels }: Props) {
                       href={switchLocalePath(pathname, code)}
                       hrefLang={meta.htmlLang}
                       lang={meta.htmlLang}
-                      dir={meta.dir}
                       aria-current={active ? 'true' : undefined}
                       onClick={() => rememberLocale(code)}
-                      className={`block rounded-xl border px-3 py-2.5 text-center text-[0.9375rem] ${
-                        active
-                          ? 'border-jade-600 bg-jade-50 font-semibold text-jade-800'
-                          : 'border-line bg-white text-ink-soft'
-                      }`}
+                      className={`block border-b border-rule py-3 text-base ${active ? 'font-medium text-cobalt' : 'text-ink-soft'}`}
                       style={{ fontFamily: 'var(--ff-system)' }}
                     >
                       {meta.name}

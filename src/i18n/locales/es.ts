@@ -3,8 +3,7 @@ import type { Dictionary } from './en'
 const es: Dictionary = {
   meta: {
     tagline: 'Atención médica en China para pacientes internacionales',
-    description:
-      'YiLu Health ayuda a pacientes internacionales a acceder a los principales hospitales de China: valoración del caso, citas, documentación para el visado, intérpretes, apoyo con los pagos y seguimiento tras el regreso.',
+    description: 'YiLu Health ayuda a pacientes internacionales a acceder a los principales hospitales de China: valoración del caso, citas, documentación para el visado, intérpretes, apoyo con los pagos y seguimiento tras el regreso.',
   },
   nav: {
     treatments: 'Tratamientos',
@@ -22,39 +21,32 @@ const es: Dictionary = {
   common: {
     reviewed: 'Información revisada el {date}',
     officialSources: 'Fuentes oficiales',
-    learnMore: 'Más información',
     typicalStay: 'Estancia habitual',
   },
   home: {
     hero: {
       eyebrow: 'Atención médica en China',
       title: 'Los mejores hospitales de China, a su alcance.',
-      subtitle:
-        'Orientamos a pacientes internacionales hacia el hospital adecuado en China: valoramos su caso, gestionamos citas, documentación para el visado, intérpretes y pagos, y le acompañamos hasta el seguimiento tras su regreso.',
+      subtitle: 'Orientamos a pacientes internacionales hacia el hospital adecuado en China: valoramos su caso, gestionamos citas, documentación para el visado, intérpretes y pagos, y le acompañamos hasta el seguimiento tras su regreso.',
       primary: 'Solicitar valoración gratuita',
       secondary: 'Ver cómo funciona',
       notes: ['Valoración inicial gratuita', 'Sin compromiso', 'Confidencial'],
-    },
-    journey: {
-      title: 'Un recorrido típico',
-      note: 'Calendario orientativo: cada caso es distinto.',
-      steps: [
-        { when: 'Día 1', text: 'Usted envía su historial médico' },
-        { when: 'Días 2–5', text: 'Opinión del especialista y presupuesto estimado' },
-        { when: 'Semana 2', text: 'Cita y documentos para el visado' },
-        { when: 'Llegada', text: 'Recogida, intérprete e ingreso en el hospital' },
-        { when: 'Después', text: 'Informes traducidos y seguimiento a distancia' },
-      ],
+      glyphs: { yi: 'medicina', lu: 'camino' },
     },
     stats: {
       items: [
-        { value: '1,28 M', label: 'de visitas de pacientes internacionales a grandes hospitales chinos en 2025' },
+        {
+          value: '1,28 M',
+          label: 'de visitas de pacientes internacionales a grandes hospitales chinos en 2025',
+        },
         { value: '+73,6 %', label: 'de crecimiento de esas visitas en tres años' },
-        { value: '79', label: 'países con entrada sin visado a China continental (febrero de 2026)' },
+        {
+          value: '79',
+          label: 'países con entrada sin visado a China continental (febrero de 2026)',
+        },
         { value: '240 h', label: 'de tránsito sin visado para ciudadanos de 57 países' },
       ],
-      source:
-        'Fuentes: Comisión Nacional de Salud de China; Ministerio de Asuntos Exteriores de China; Administración Nacional de Inmigración.',
+      source: 'Fuentes: Comisión Nacional de Salud de China; Ministerio de Asuntos Exteriores de China; Administración Nacional de Inmigración.',
     },
     why: {
       title: 'Por qué los pacientes eligen China',
@@ -96,26 +88,32 @@ const es: Dictionary = {
       subtitle: 'Un único coordinador, desde su primer mensaje hasta el seguimiento en casa.',
       steps: [
         {
+          when: 'Día 1',
           title: 'Cuéntenos su caso',
           body: 'Envíe su diagnóstico, sus informes y sus objetivos mediante nuestro formulario. No hay que pagar nada.',
         },
         {
+          when: 'Días 2–5',
           title: 'Reciba opciones y un presupuesto',
           body: 'Consultamos a los hospitales adecuados y le enviamos la opinión de un especialista, un plan propuesto y una estimación de costes por escrito.',
         },
         {
+          when: 'Semana 2',
           title: 'Prepare el viaje',
           body: 'Reservamos las citas, obtenemos la carta del hospital para el visado si la necesita y organizamos el alojamiento y la recogida en el aeropuerto.',
         },
         {
+          when: 'Llegada',
           title: 'Tratamiento con intérprete',
           body: 'Un coordinador y un intérprete médico le acompañan en el registro, las consultas, las pruebas y los pagos.',
         },
         {
+          when: 'Después',
           title: 'Seguimiento en casa',
           body: 'Regresa con sus informes traducidos y un plan de seguimiento, y organizamos revisiones a distancia con su médico.',
         },
       ],
+      note: 'Calendario orientativo: cada caso es distinto.',
     },
     destinations: {
       title: 'Dónde puede tratarse',
@@ -149,14 +147,12 @@ const es: Dictionary = {
   },
   treatments: {
     title: 'Tratamientos y servicios',
-    intro:
-      'Estos son los servicios por los que más nos preguntan los pacientes internacionales. Si el suyo no aparece, envíenos su caso: le diremos con franqueza si China es una buena opción.',
+    intro: 'Estos son los servicios por los que más nos preguntan los pacientes internacionales. Si el suyo no aparece, envíenos su caso: le diremos con franqueza si China es una buena opción.',
     popular: 'Lo más solicitado',
     items: {
       checkup: {
         name: 'Chequeos y cribado',
-        summary:
-          'Programas completos de uno o dos días, con pruebas de imagen y endoscopia en el mismo centro y revisión de los resultados con un especialista.',
+        summary: 'Programas completos de uno o dos días, con pruebas de imagen y endoscopia en el mismo centro y revisión de los resultados con un especialista.',
         points: [
           'Chequeos ejecutivos completos',
           'Resonancia magnética, TC de baja dosis y PET-TC',
@@ -167,8 +163,7 @@ const es: Dictionary = {
       },
       oncology: {
         name: 'Oncología',
-        summary:
-          'Centros oncológicos multidisciplinares con gran volumen de casos, radioterapia moderna y acceso a terapias celulares y dirigidas de aprobación reciente.',
+        summary: 'Centros oncológicos multidisciplinares con gran volumen de casos, radioterapia moderna y acceso a terapias celulares y dirigidas de aprobación reciente.',
         points: [
           'Terapia celular CAR-T para cánceres hematológicos',
           'Terapia con protones e iones pesados (iones de carbono)',
@@ -179,8 +174,7 @@ const es: Dictionary = {
       },
       tcm: {
         name: 'Medicina tradicional china',
-        summary:
-          'Programas integrativos en los principales hospitales de MTC para el dolor, la recuperación y las enfermedades crónicas, junto con diagnóstico moderno.',
+        summary: 'Programas integrativos en los principales hospitales de MTC para el dolor, la recuperación y las enfermedades crónicas, junto con diagnóstico moderno.',
         points: [
           'Acupuntura y moxibustión',
           'Masaje terapéutico tuina',
@@ -191,15 +185,18 @@ const es: Dictionary = {
       },
       dental: {
         name: 'Odontología',
-        summary:
-          'Implantes, ortodoncia y rehabilitación oral completa con sistemas de implantes internacionales y planificación digital.',
-        points: ['Implantes dentales', 'Coronas y carillas', 'Ortodoncia y alineadores transparentes', 'Rehabilitación oral completa'],
+        summary: 'Implantes, ortodoncia y rehabilitación oral completa con sistemas de implantes internacionales y planificación digital.',
+        points: [
+          'Implantes dentales',
+          'Coronas y carillas',
+          'Ortodoncia y alineadores transparentes',
+          'Rehabilitación oral completa',
+        ],
         stay: '3–10 días; los implantes pueden requerir dos visitas',
       },
       eye: {
         name: 'Oftalmología',
-        summary:
-          'Centros oftalmológicos de gran volumen para cirugía refractiva con láser, cirugía de cataratas y estudio de la retina.',
+        summary: 'Centros oftalmológicos de gran volumen para cirugía refractiva con láser, cirugía de cataratas y estudio de la retina.',
         points: [
           'Cirugía refractiva SMILE y LASIK',
           'Lentes intraoculares ICL',
@@ -210,8 +207,7 @@ const es: Dictionary = {
       },
       ortho: {
         name: 'Traumatología y columna',
-        summary:
-          'Prótesis articulares, cirugía de columna y medicina deportiva, cada vez más asistidas por robot, seguidas de una rehabilitación estructurada.',
+        summary: 'Prótesis articulares, cirugía de columna y medicina deportiva, cada vez más asistidas por robot, seguidas de una rehabilitación estructurada.',
         points: [
           'Prótesis de cadera y de rodilla',
           'Cirugía de columna mínimamente invasiva',
@@ -222,8 +218,7 @@ const es: Dictionary = {
       },
       cardio: {
         name: 'Corazón y sistema vascular',
-        summary:
-          'Centros cardiovasculares nacionales que ofrecen tratamiento intervencionista y quirúrgico para cardiopatías complejas.',
+        summary: 'Centros cardiovasculares nacionales que ofrecen tratamiento intervencionista y quirúrgico para cardiopatías complejas.',
         points: [
           'Coronariografía e implante de stents',
           'Reparación y sustitución valvular, incluido el TAVI',
@@ -234,8 +229,7 @@ const es: Dictionary = {
       },
       remote: {
         name: 'Segunda opinión a distancia',
-        summary:
-          'Antes de decidir si viaja, un especialista chino revisa su historial y sus pruebas de imagen y comenta las opciones con usted por videollamada.',
+        summary: 'Antes de decidir si viaja, un especialista chino revisa su historial y sus pruebas de imagen y comenta las opciones con usted por videollamada.',
         points: [
           'Revisión de informes y pruebas de imagen',
           'Videoconsulta con intérprete',
@@ -252,10 +246,8 @@ const es: Dictionary = {
   },
   hospitals: {
     title: 'Hospitales y destinos',
-    intro:
-      'Los hospitales más sólidos de China se concentran en unas pocas ciudades. A continuación figuran, por ciudad, instituciones conocidas por las que los pacientes internacionales preguntan a menudo.',
-    disclaimer:
-      'Los hospitales se citan solo a título informativo. Su mención no implica una colaboración ni una recomendación, y los servicios para pacientes internacionales varían de un hospital a otro. En cada caso confirmamos con el hospital que puede atenderle antes de que usted viaje.',
+    intro: 'Los hospitales más sólidos de China se concentran en unas pocas ciudades. A continuación figuran, por ciudad, instituciones conocidas por las que los pacientes internacionales preguntan a menudo.',
+    disclaimer: 'Los hospitales se citan solo a título informativo. Su mención no implica una colaboración ni una recomendación, y los servicios para pacientes internacionales varían de un hospital a otro. En cada caso confirmamos con el hospital que puede atenderle antes de que usted viaje.',
     types: {
       public: 'Hospital público',
       private: 'Hospital privado',
@@ -279,18 +271,15 @@ const es: Dictionary = {
     cities: {
       beijing: {
         name: 'Pekín',
-        blurb:
-          'La capital concentra muchos de los mejores hospitales nacionales de China: la primera opción para diagnósticos complejos, cardiología, neurología y oncología.',
+        blurb: 'La capital concentra muchos de los mejores hospitales nacionales de China: la primera opción para diagnósticos complejos, cardiología, neurología y oncología.',
       },
       shanghai: {
         name: 'Shanghái',
-        blurb:
-          'La ciudad más internacional de China, con más de 20 hospitales públicos en su programa piloto de turismo médico internacional y sólidos hospitales privados. Destaca en oncología y en terapia con protones e iones pesados.',
+        blurb: 'La ciudad más internacional de China, con más de 20 hospitales públicos en su programa piloto de turismo médico internacional y sólidos hospitales privados. Destaca en oncología y en terapia con protones e iones pesados.',
       },
       guangzhou: {
         name: 'Cantón (Guangzhou)',
-        blurb:
-          'Un polo del sur del país, cerca de Hong Kong y del Sudeste Asiático, reconocido por la oncología, la oftalmología y la medicina tradicional china.',
+        blurb: 'Un polo del sur del país, cerca de Hong Kong y del Sudeste Asiático, reconocido por la oncología, la oftalmología y la medicina tradicional china.',
       },
       shenzhen: {
         name: 'Shenzhen',
@@ -298,18 +287,15 @@ const es: Dictionary = {
       },
       hangzhou: {
         name: 'Hangzhou',
-        blurb:
-          'Sede de los hospitales universitarios de la Universidad de Zhejiang, fuertes en cirugía hepatobiliar y mínimamente invasiva, a aproximadamente una hora en tren de Shanghái.',
+        blurb: 'Sede de los hospitales universitarios de la Universidad de Zhejiang, fuertes en cirugía hepatobiliar y mínimamente invasiva, a aproximadamente una hora en tren de Shanghái.',
       },
       chengdu: {
         name: 'Chengdu',
-        blurb:
-          'El centro médico del oeste de China, con el Hospital de China Occidental (West China Hospital) a la cabeza, uno de los mayores y mejor clasificados del país.',
+        blurb: 'El centro médico del oeste de China, con el Hospital de China Occidental (West China Hospital) a la cabeza, uno de los mayores y mejor clasificados del país.',
       },
       hainan: {
         name: 'Hainan · Boao Lecheng',
-        blurb:
-          'Una isla tropical con una zona piloto nacional donde los hospitales autorizados pueden utilizar fármacos y dispositivos innovadores aprobados en el extranjero pero aún no comercializados en el resto del país, y con una entrada sin visado que contempla el tratamiento médico.',
+        blurb: 'Una isla tropical con una zona piloto nacional donde los hospitales autorizados pueden utilizar fármacos y dispositivos innovadores aprobados en el extranjero pero aún no comercializados en el resto del país, y con una entrada sin visado que contempla el tratamiento médico.',
       },
     },
     choose: {
@@ -332,8 +318,7 @@ const es: Dictionary = {
   },
   visa: {
     title: 'Guía de visado y entrada',
-    intro:
-      'Entrar en China es mucho más sencillo desde 2024. La vía adecuada depende de su pasaporte, de la duración del tratamiento y del lugar donde vaya a tratarse. Esta página ofrece orientación general, no asesoramiento jurídico: confirme siempre con las fuentes oficiales antes de reservar.',
+    intro: 'Entrar en China es mucho más sencillo desde 2024. La vía adecuada depende de su pasaporte, de la duración del tratamiento y del lugar donde vaya a tratarse. Esta página ofrece orientación general, no asesoramiento jurídico: confirme siempre con las fuentes oficiales antes de reservar.',
     options: [
       {
         title: 'Entrada sin visado durante 30 días',
@@ -379,7 +364,9 @@ const es: Dictionary = {
         title: 'Si el tratamiento se alarga',
         badge: 'Prórrogas',
         body: 'Puede solicitar en la Administración de Entradas y Salidas local una prórroga o un permiso de estancia antes de que venza su autorización, con un certificado de su hospital.',
-        points: ['Presente la solicitud al menos siete días antes de que termine su estancia autorizada.'],
+        points: [
+          'Presente la solicitud al menos siete días antes de que termine su estancia autorizada.',
+        ],
       },
     ],
     arrival: {
@@ -404,17 +391,14 @@ const es: Dictionary = {
       visaCenter: 'Centro de Servicio de Solicitud de Visados de China',
       arrivalCard: 'Tarjeta de llegada en línea',
     },
-    disclaimer:
-      'Las normas de visado cambian y las autoridades las aplican caso por caso. No somos una agencia de visados y no podemos garantizar la entrada. Las listas de países y las fechas anteriores son resúmenes; prevalecen los anuncios oficiales.',
+    disclaimer: 'Las normas de visado cambian y las autoridades las aplican caso por caso. No somos una agencia de visados y no podemos garantizar la entrada. Las listas de países y las fechas anteriores son resúmenes; prevalecen los anuncios oficiales.',
   },
   costs: {
     title: 'Costes y pagos',
-    intro:
-      'Los pacientes internacionales pagan su atención de forma privada en China. Los precios de los departamentos internacionales y de los hospitales privados son más altos que las tarifas públicas locales, pero a menudo muy inferiores a los precios privados de Estados Unidos y de otros mercados caros.',
+    intro: 'Los pacientes internacionales pagan su atención de forma privada en China. Los precios de los departamentos internacionales y de los hospitales privados son más altos que las tarifas públicas locales, pero a menudo muy inferiores a los precios privados de Estados Unidos y de otros mercados caros.',
     table: {
       title: 'Rangos de precios orientativos',
-      caption:
-        'Rangos aproximados en dólares estadounidenses, elaborados a partir de informaciones publicadas en 2026. No son presupuestos: lo que cuenta es la estimación por escrito de su hospital.',
+      caption: 'Rangos aproximados en dólares estadounidenses, elaborados a partir de informaciones publicadas en 2026. No son presupuestos: lo que cuenta es la estimación por escrito de su hospital.',
       service: 'Servicio',
       range: 'Rango orientativo en China',
       note: 'Conviene saber',
@@ -424,8 +408,14 @@ const es: Dictionary = {
           note: 'Depende de las pruebas de imagen (resonancia, TC, PET-TC) y de las endoscopias añadidas',
         },
         mri: { name: 'Resonancia magnética, una región', note: 'Suele estar disponible en pocos días' },
-        implant: { name: 'Implante dental con corona, por diente', note: 'La marca del implante determina el precio' },
-        vision: { name: 'Cirugía refractiva con láser, ambos ojos', note: 'SMILE o LASIK; las lentes ICL cuestan más' },
+        implant: {
+          name: 'Implante dental con corona, por diente',
+          note: 'La marca del implante determina el precio',
+        },
+        vision: {
+          name: 'Cirugía refractiva con láser, ambos ojos',
+          note: 'SMILE o LASIK; las lentes ICL cuestan más',
+        },
         proton: {
           name: 'Terapia con protones o iones pesados, tratamiento completo',
           note: 'Varía según el tipo de tumor y el número de sesiones',
@@ -536,8 +526,7 @@ const es: Dictionary = {
   },
   contact: {
     title: 'Solicite la valoración gratuita de su caso',
-    intro:
-      'Cuéntenos brevemente qué necesita. Un coordinador le responderá en su idioma con los pasos siguientes. Enviar este formulario no le compromete a nada.',
+    intro: 'Cuéntenos brevemente qué necesita. Un coordinador le responderá en su idioma con los pasos siguientes. Enviar este formulario no le compromete a nada.',
     form: {
       name: 'Nombre y apellidos',
       email: 'Correo electrónico',
@@ -547,8 +536,7 @@ const es: Dictionary = {
       city: 'Ciudad preferida (opcional)',
       timeframe: '¿Cuándo le gustaría viajar? (opcional)',
       message: 'Describa brevemente su situación',
-      messageHint:
-        'Por ejemplo: su diagnóstico, el tratamiento recibido hasta ahora y lo que espera conseguir. Por favor, no envíe documentos todavía: le indicaremos una forma segura de compartirlos.',
+      messageHint: 'Por ejemplo: su diagnóstico, el tratamiento recibido hasta ahora y lo que espera conseguir. Por favor, no envíe documentos todavía: le indicaremos una forma segura de compartirlos.',
       select: 'Seleccione',
       other: 'Otra cosa / no lo sé',
       anyCity: 'Sin preferencia',
@@ -558,8 +546,7 @@ const es: Dictionary = {
         quarter: 'En el plazo de tres meses',
         exploring: 'Solo me estoy informando',
       },
-      consent:
-        'Acepto que YiLu Health utilice la información que facilito, incluida la relativa a mi salud, para responder a mi consulta, según se describe en el aviso de privacidad.',
+      consent: 'Acepto que YiLu Health utilice la información que facilito, incluida la relativa a mi salud, para responder a mi consulta, según se describe en el aviso de privacidad.',
       privacyLink: 'Aviso de privacidad',
       submit: 'Enviar consulta',
       sending: 'Enviando…',
@@ -624,8 +611,7 @@ const es: Dictionary = {
     explore: 'Explorar',
     support: 'Ayuda',
     legal: 'Privacidad y aviso médico',
-    disclaimer:
-      'YiLu Health es un coordinador de viajes médicos, no un proveedor de servicios sanitarios. El contenido de este sitio es información general y no constituye consejo médico.',
+    disclaimer: 'YiLu Health es un coordinador de viajes médicos, no un proveedor de servicios sanitarios. El contenido de este sitio es información general y no constituye consejo médico.',
     rights: 'Todos los derechos reservados.',
   },
   notFound: {

@@ -11,18 +11,16 @@ export default async function NotFound() {
   const dict = await getDictionary(locale)
 
   return (
-    <section className="hero-bg">
-      <div className="shell flex min-h-[60vh] flex-col items-start justify-center py-24">
-        <p className="font-display text-7xl font-medium text-cinnabar" dir="ltr">
-          404
-        </p>
-        <h1 className="title-xl mt-6">{dict.notFound.title}</h1>
-        <p className="lede mt-4 max-w-xl">{dict.notFound.body}</p>
-        <Link href={href(locale)} className="btn btn-primary mt-9">
-          {dict.notFound.cta}
-          <Icon name="arrow" flip className="size-5" />
-        </Link>
-      </div>
+    <section className="shell flex min-h-[60vh] flex-col items-start justify-center py-24">
+      <p className="font-mono text-lg font-medium text-cobalt" dir="ltr">
+        404
+      </p>
+      <h1 className="h1 mt-5">{dict.notFound.title}</h1>
+      <p className="lede mt-5 max-w-xl">{dict.notFound.body}</p>
+      <Link href={href(locale)} className="btn btn-primary mt-10">
+        {dict.notFound.cta}
+        <Icon name="arrow" flip className="size-5" />
+      </Link>
     </section>
   )
 }

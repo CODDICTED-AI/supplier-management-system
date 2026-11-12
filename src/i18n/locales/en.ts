@@ -5,8 +5,7 @@
 const en = {
   meta: {
     tagline: 'Medical travel to China for international patients',
-    description:
-      'YiLu Health helps international patients reach leading hospitals in China: case review, appointments, visa paperwork, interpreters, payment support and follow-up.',
+    description: 'YiLu Health helps international patients reach leading hospitals in China: case review, appointments, visa paperwork, interpreters, payment support and follow-up.',
   },
   nav: {
     treatments: 'Treatments',
@@ -24,39 +23,29 @@ const en = {
   common: {
     reviewed: 'Information last reviewed: {date}',
     officialSources: 'Official sources',
-    learnMore: 'Learn more',
     typicalStay: 'Typical stay',
   },
   home: {
     hero: {
       eyebrow: 'Medical travel to China',
-      title: "China’s leading hospitals, within your reach.",
-      subtitle:
-        'We guide international patients to the right hospital in China — reviewing your case, arranging appointments, visa paperwork, interpreters and payment, and staying with you through follow-up.',
+      title: 'China’s leading hospitals, within your reach.',
+      subtitle: 'We guide international patients to the right hospital in China — reviewing your case, arranging appointments, visa paperwork, interpreters and payment, and staying with you through follow-up.',
       primary: 'Start a free case review',
       secondary: 'See how it works',
       notes: ['Free initial assessment', 'No obligation', 'Confidential'],
-    },
-    journey: {
-      title: 'A typical journey',
-      note: 'Illustrative timeline — every case is different.',
-      steps: [
-        { when: 'Day 1', text: 'You send your medical records' },
-        { when: 'Days 2–5', text: 'Specialist feedback and cost estimate' },
-        { when: 'Week 2', text: 'Appointment and visa documents' },
-        { when: 'Arrival', text: 'Pickup, interpreter, hospital admission' },
-        { when: 'Afterwards', text: 'Translated reports and remote follow-up' },
-      ],
+      glyphs: { yi: 'medicine', lu: 'road' },
     },
     stats: {
       items: [
-        { value: '1.28M', label: 'international patient visits to major Chinese hospitals in 2025' },
+        {
+          value: '1.28M',
+          label: 'international patient visits to major Chinese hospitals in 2025',
+        },
         { value: '+73.6%', label: 'growth in those visits over three years' },
         { value: '79', label: 'countries with visa-free entry to mainland China (Feb 2026)' },
         { value: '240 h', label: 'visa-free transit for citizens of 57 countries' },
       ],
-      source:
-        'Sources: National Health Commission of China; Ministry of Foreign Affairs; National Immigration Administration.',
+      source: 'Sources: National Health Commission of China; Ministry of Foreign Affairs; National Immigration Administration.',
     },
     why: {
       title: 'Why patients are choosing China',
@@ -98,30 +87,36 @@ const en = {
       subtitle: 'One coordinator, from your first message to your follow-up at home.',
       steps: [
         {
+          when: 'Day 1',
           title: 'Tell us about your case',
           body: 'Send your diagnosis, reports and goals through our inquiry form. No payment is needed.',
         },
         {
+          when: 'Days 2–5',
           title: 'Receive options and an estimate',
           body: 'We consult suitable hospitals and send you specialist feedback, a proposed plan and a written cost estimate.',
         },
         {
+          when: 'Week 2',
           title: 'Prepare your trip',
           body: 'We book appointments, obtain the hospital letter for your visa if you need one, and arrange lodging and airport pickup.',
         },
         {
+          when: 'Arrival',
           title: 'Treatment with an interpreter',
           body: 'A coordinator and medical interpreter accompany you through registration, consultations, tests and payment.',
         },
         {
+          when: 'Afterwards',
           title: 'Follow-up at home',
           body: 'You leave with translated records and a follow-up plan, and we arrange remote reviews with your doctor.',
         },
       ],
+      note: 'Illustrative timeline — every case is different.',
     },
     destinations: {
       title: 'Where you can be treated',
-      subtitle: "We help you choose among China’s main medical hubs according to your condition, not a fixed list.",
+      subtitle: 'We help you choose among China’s main medical hubs according to your condition, not a fixed list.',
       cta: 'Explore hospitals and cities',
     },
     entry: {
@@ -151,14 +146,12 @@ const en = {
   },
   treatments: {
     title: 'Treatments and services',
-    intro:
-      'These are the services international patients ask us about most. If yours is not listed, send us your case — we will tell you honestly whether China is a good option for it.',
+    intro: 'These are the services international patients ask us about most. If yours is not listed, send us your case — we will tell you honestly whether China is a good option for it.',
     popular: 'Commonly requested',
     items: {
       checkup: {
         name: 'Health check-ups & screening',
-        summary:
-          'Comprehensive one- or two-day programmes with on-site imaging, endoscopy and specialist review of your results.',
+        summary: 'Comprehensive one- or two-day programmes with on-site imaging, endoscopy and specialist review of your results.',
         points: [
           'Executive check-up packages',
           'MRI, low-dose CT and PET-CT',
@@ -169,8 +162,7 @@ const en = {
       },
       oncology: {
         name: 'Cancer care',
-        summary:
-          'Multidisciplinary cancer centres with high case volumes, modern radiotherapy and access to recently approved cell and targeted therapies.',
+        summary: 'Multidisciplinary cancer centres with high case volumes, modern radiotherapy and access to recently approved cell and targeted therapies.',
         points: [
           'CAR-T cell therapy for blood cancers',
           'Proton and heavy-ion (carbon-ion) therapy',
@@ -181,8 +173,7 @@ const en = {
       },
       tcm: {
         name: 'Traditional Chinese Medicine',
-        summary:
-          'Integrative programmes at leading TCM hospitals for pain, recovery and chronic conditions, alongside modern diagnostics.',
+        summary: 'Integrative programmes at leading TCM hospitals for pain, recovery and chronic conditions, alongside modern diagnostics.',
         points: [
           'Acupuncture and moxibustion',
           'Tuina therapeutic massage',
@@ -193,9 +184,13 @@ const en = {
       },
       dental: {
         name: 'Dental care',
-        summary:
-          'Implants, orthodontics and full-mouth restoration using international implant systems and digital treatment planning.',
-        points: ['Dental implants', 'Crowns and veneers', 'Orthodontics and clear aligners', 'Full-mouth rehabilitation'],
+        summary: 'Implants, orthodontics and full-mouth restoration using international implant systems and digital treatment planning.',
+        points: [
+          'Dental implants',
+          'Crowns and veneers',
+          'Orthodontics and clear aligners',
+          'Full-mouth rehabilitation',
+        ],
         stay: '3–10 days; implants may need two visits',
       },
       eye: {
@@ -211,8 +206,7 @@ const en = {
       },
       ortho: {
         name: 'Orthopaedics & spine',
-        summary:
-          'Joint replacement, spine surgery and sports medicine, increasingly robot-assisted, followed by structured rehabilitation.',
+        summary: 'Joint replacement, spine surgery and sports medicine, increasingly robot-assisted, followed by structured rehabilitation.',
         points: [
           'Hip and knee replacement',
           'Minimally invasive spine surgery',
@@ -223,8 +217,7 @@ const en = {
       },
       cardio: {
         name: 'Heart & vascular care',
-        summary:
-          'National cardiovascular centres offering interventional and surgical treatment for complex heart disease.',
+        summary: 'National cardiovascular centres offering interventional and surgical treatment for complex heart disease.',
         points: [
           'Coronary angiography and stenting',
           'Valve repair and replacement, including TAVR',
@@ -235,8 +228,7 @@ const en = {
       },
       remote: {
         name: 'Remote second opinion',
-        summary:
-          'Before you decide to travel, a Chinese specialist reviews your records and imaging and discusses your options by video.',
+        summary: 'Before you decide to travel, a Chinese specialist reviews your records and imaging and discusses your options by video.',
         points: [
           'Review of reports and imaging',
           'Video consultation with an interpreter',
@@ -253,15 +245,9 @@ const en = {
   },
   hospitals: {
     title: 'Hospitals and destinations',
-    intro:
-      "China’s strongest hospitals are concentrated in a handful of cities. Below are well-known institutions that international patients often ask about, grouped by city.",
-    disclaimer:
-      'Hospitals are listed for information only. A listing does not imply a partnership or endorsement, and services for international patients vary by hospital. For every case we confirm with the hospital that it can accept you before you travel.',
-    types: {
-      public: 'Public hospital',
-      private: 'Private hospital',
-      zone: 'Pilot-zone hospital',
-    },
+    intro: 'China’s strongest hospitals are concentrated in a handful of cities. Below are well-known institutions that international patients often ask about, grouped by city.',
+    disclaimer: 'Hospitals are listed for information only. A listing does not imply a partnership or endorsement, and services for international patients vary by hospital. For every case we confirm with the hospital that it can accept you before you travel.',
+    types: { public: 'Public hospital', private: 'Private hospital', zone: 'Pilot-zone hospital' },
     tags: {
       general: 'Complex & multidisciplinary care',
       oncology: 'Oncology',
@@ -280,18 +266,15 @@ const en = {
     cities: {
       beijing: {
         name: 'Beijing',
-        blurb:
-          "The capital concentrates many of China’s top national hospitals — a first choice for complex diagnoses, heart disease, neurology and cancer.",
+        blurb: 'The capital concentrates many of China’s top national hospitals — a first choice for complex diagnoses, heart disease, neurology and cancer.',
       },
       shanghai: {
         name: 'Shanghai',
-        blurb:
-          "China’s most international city, with more than 20 public hospitals in its international medical tourism pilot and strong private hospitals. Known for oncology and proton and heavy-ion therapy.",
+        blurb: 'China’s most international city, with more than 20 public hospitals in its international medical tourism pilot and strong private hospitals. Known for oncology and proton and heavy-ion therapy.',
       },
       guangzhou: {
         name: 'Guangzhou',
-        blurb:
-          'A southern hub close to Hong Kong and Southeast Asia, noted for cancer care, ophthalmology and Traditional Chinese Medicine.',
+        blurb: 'A southern hub close to Hong Kong and Southeast Asia, noted for cancer care, ophthalmology and Traditional Chinese Medicine.',
       },
       shenzhen: {
         name: 'Shenzhen',
@@ -299,18 +282,15 @@ const en = {
       },
       hangzhou: {
         name: 'Hangzhou',
-        blurb:
-          "Home to Zhejiang University’s teaching hospitals, strong in hepatobiliary and minimally invasive surgery, about an hour from Shanghai by train.",
+        blurb: 'Home to Zhejiang University’s teaching hospitals, strong in hepatobiliary and minimally invasive surgery, about an hour from Shanghai by train.',
       },
       chengdu: {
         name: 'Chengdu',
-        blurb:
-          "The medical centre of western China, anchored by West China Hospital — one of the country’s largest and highest-ranked.",
+        blurb: 'The medical centre of western China, anchored by West China Hospital — one of the country’s largest and highest-ranked.',
       },
       hainan: {
         name: 'Hainan · Boao Lecheng',
-        blurb:
-          'A tropical island with a national pilot zone where licensed hospitals may use innovative drugs and devices approved overseas but not yet on the mainland market — and visa-free entry that covers medical treatment.',
+        blurb: 'A tropical island with a national pilot zone where licensed hospitals may use innovative drugs and devices approved overseas but not yet on the mainland market — and visa-free entry that covers medical treatment.',
       },
     },
     choose: {
@@ -333,8 +313,7 @@ const en = {
   },
   visa: {
     title: 'Visa & entry guide',
-    intro:
-      'Entering China has become much simpler since 2024. Which route fits you depends on your passport, how long treatment will take and where you will be treated. This page is general guidance, not legal advice — always confirm with official sources before you book.',
+    intro: 'Entering China has become much simpler since 2024. Which route fits you depends on your passport, how long treatment will take and where you will be treated. This page is general guidance, not legal advice — always confirm with official sources before you book.',
     options: [
       {
         title: '30-day visa-free entry',
@@ -368,7 +347,7 @@ const en = {
       {
         title: 'S2 visa for medical treatment',
         badge: 'Planned treatment',
-        body: "For planned treatment, longer stays, or passports without visa-free access, the usual route is an S2 (short-term private affairs) visa supported by a hospital’s invitation or admission letter.",
+        body: 'For planned treatment, longer stays, or passports without visa-free access, the usual route is an S2 (short-term private affairs) visa supported by a hospital’s invitation or admission letter.',
         points: [
           'Typical documents: passport, application form, photo, and a hospital letter stating the diagnosis, planned treatment, duration and estimated cost. Proof of funds may be requested.',
           'S2 covers stays of up to 180 days. Longer treatment requires an S1 visa and a residence permit.',
@@ -405,17 +384,14 @@ const en = {
       visaCenter: 'Chinese Visa Application Service Center',
       arrivalCard: 'Online arrival card',
     },
-    disclaimer:
-      'Visa rules change and are applied by the authorities case by case. We are not a visa agency and cannot guarantee entry. The country lists and dates above are summaries; the official announcements prevail.',
+    disclaimer: 'Visa rules change and are applied by the authorities case by case. We are not a visa agency and cannot guarantee entry. The country lists and dates above are summaries; the official announcements prevail.',
   },
   costs: {
     title: 'Costs & payment',
-    intro:
-      'International patients pay privately in China. Prices in international departments and private hospitals are higher than local public rates, yet often well below private prices in the United States and other high-cost markets.',
+    intro: 'International patients pay privately in China. Prices in international departments and private hospitals are higher than local public rates, yet often well below private prices in the United States and other high-cost markets.',
     table: {
       title: 'Indicative price ranges',
-      caption:
-        'Approximate ranges in US dollars, compiled from public reports in 2026. They are not quotations — the written estimate from your hospital is what counts.',
+      caption: 'Approximate ranges in US dollars, compiled from public reports in 2026. They are not quotations — the written estimate from your hospital is what counts.',
       service: 'Service',
       range: 'Indicative range in China',
       note: 'Good to know',
@@ -425,8 +401,14 @@ const en = {
           note: 'Depends on imaging (MRI, CT, PET-CT) and endoscopy add-ons',
         },
         mri: { name: 'MRI scan, one region', note: 'Usually available within days' },
-        implant: { name: 'Dental implant with crown, per tooth', note: 'The implant brand drives the price' },
-        vision: { name: 'Laser vision correction, both eyes', note: 'SMILE or LASIK; ICL lenses cost more' },
+        implant: {
+          name: 'Dental implant with crown, per tooth',
+          note: 'The implant brand drives the price',
+        },
+        vision: {
+          name: 'Laser vision correction, both eyes',
+          note: 'SMILE or LASIK; ICL lenses cost more',
+        },
         proton: {
           name: 'Proton or heavy-ion therapy, full course',
           note: 'Varies with tumour type and number of sessions',
@@ -461,7 +443,7 @@ const en = {
     insurance: {
       title: 'Insurance',
       points: [
-        "China’s public health insurance does not cover visitors.",
+        'China’s public health insurance does not cover visitors.',
         'Many private hospitals and some international departments offer direct billing with international insurers; pre-authorisation is usually required.',
         'Otherwise you pay first and claim afterwards. We help you obtain itemised invoices and medical reports in English.',
         'Before you travel, check whether your policy covers planned treatment abroad.',
@@ -537,8 +519,7 @@ const en = {
   },
   contact: {
     title: 'Start your free case review',
-    intro:
-      'Tell us briefly what you need. A coordinator will reply in your language with next steps. Sending this form creates no obligation.',
+    intro: 'Tell us briefly what you need. A coordinator will reply in your language with next steps. Sending this form creates no obligation.',
     form: {
       name: 'Full name',
       email: 'Email',
@@ -548,8 +529,7 @@ const en = {
       city: 'Preferred city (optional)',
       timeframe: 'When would you like to travel? (optional)',
       message: 'Briefly describe your situation',
-      messageHint:
-        'For example: your diagnosis, treatment so far and what you hope to achieve. Please do not send documents yet — we will give you a secure way to share them.',
+      messageHint: 'For example: your diagnosis, treatment so far and what you hope to achieve. Please do not send documents yet — we will give you a secure way to share them.',
       select: 'Please select',
       other: 'Something else / not sure',
       anyCity: 'No preference',
@@ -559,8 +539,7 @@ const en = {
         quarter: 'Within three months',
         exploring: 'Just exploring',
       },
-      consent:
-        'I agree that YiLu Health may use the information I provide, including health information, to answer my inquiry, as described in the privacy notice.',
+      consent: 'I agree that YiLu Health may use the information I provide, including health information, to answer my inquiry, as described in the privacy notice.',
       privacyLink: 'Privacy notice',
       submit: 'Send inquiry',
       sending: 'Sending…',
@@ -579,8 +558,7 @@ const en = {
         'We tell you which records to send and how to share them securely.',
         'You receive specialist feedback, options and a cost estimate.',
       ],
-      privacy:
-        'Your information is used only to answer your inquiry and is shared with a hospital only with your consent.',
+      privacy: 'Your information is used only to answer your inquiry and is shared with a hospital only with your consent.',
       directTitle: 'Prefer to write to us directly?',
       email: 'Email',
       whatsapp: 'WhatsApp',
@@ -626,8 +604,7 @@ const en = {
     explore: 'Explore',
     support: 'Support',
     legal: 'Privacy & disclaimer',
-    disclaimer:
-      'YiLu Health is a medical travel coordinator, not a medical provider. Content on this site is general information, not medical advice.',
+    disclaimer: 'YiLu Health is a medical travel coordinator, not a medical provider. Content on this site is general information, not medical advice.',
     rights: 'All rights reserved.',
   },
   notFound: {

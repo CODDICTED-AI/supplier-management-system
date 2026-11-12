@@ -24,11 +24,11 @@ export default async function LegalPage({ params }: LocaleParams) {
     <>
       <PageHero eyebrow={dict.footer.legal} title={l.title} intro={updated} />
       <section className="shell section">
-        <div className="mx-auto max-w-3xl space-y-10">
+        <div className="border-t border-ink">
           {l.sections.map((section) => (
-            <section key={section.title}>
-              <h2 className="title-md">{section.title}</h2>
-              <p className="mt-3 text-ink-soft">{section.body}</p>
+            <section key={section.title} className="grid gap-x-8 gap-y-3 border-b border-rule py-9 lg:grid-cols-12">
+              <h2 className="h4 lg:col-span-4">{section.title}</h2>
+              <p className="max-w-3xl text-ink-soft lg:col-span-8">{section.body}</p>
             </section>
           ))}
         </div>
